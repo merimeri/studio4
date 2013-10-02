@@ -5,7 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 Namiska nappula = new Namiska(200,200,50,50);
-
+Namiska nappula2 = new Namiska(400,200,50,50);
+  String[] info;
+  String[] tefy;
+  String[] tik;
+  String[] tuta;
+  String[] kaikki;
 
 void setup(){
   size(800, 800);
@@ -14,13 +19,28 @@ void setup(){
 
 void draw(){
   nappula.draw();
+  nappula2.draw();
+  piirraMaa();  
 }  
+
+/**
+*Metodi, joka piirtää maan sinikäyrän avulla
+**/
+void piirraMaa(){
+  float a = 0.0;
+  float lisays = TWO_PI/560.0;
+
+  for(int i=0; i<width; i++) {
+    line(i, height, i, abs(700+sin(a)*10.0));
+    a = a + lisays;
+  }
+}
   
-  String[] info;
-  String[] tefy;
-  String[] tik;
-  String[] tuta;
-  String[] kaikki;
+  
+  
+  
+  
+  
   /**
    * Metodi, joka luo pelin kaikki mahdolliset radat ja tallentaa ne luokalle
    */
@@ -59,6 +79,7 @@ void draw(){
   
   void mouseClicked() {
    nappula.mouseClicked();  
+   nappula2.mouseClicked();
   }
   
   
