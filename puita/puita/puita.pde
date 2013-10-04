@@ -24,7 +24,7 @@ void pallot() {
     }
     runko();
     
-    for (int a=0; a<90; a++) {
+    for (int a=0; a<130; a++) {
        fill(15, 200+0.7*a, 70+0.8*a, 90);
        float randomx = random(10,250);
        float randomy = random(40, 200);
