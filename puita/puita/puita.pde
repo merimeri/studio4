@@ -1,8 +1,10 @@
-void setup() {
-  //maaritellaan koko, ladataan kuvat ja maaritetaan ensimmainen piirtovari
-  size(720, 480);
-  background(255);
+class Puu{
+  int x; 
+  int y;
   
+void Puu(int x, int y){
+     this.x = x;
+     this.y = y;
 }
 
 void draw() {
@@ -36,6 +38,7 @@ void runko() {
  triangle(90, 420, 120, 90, 150, 420);
  triangle(120, 200, 120, 220, 230, 120);
  triangle(120, 180, 120, 200, 50, 140);
+}
 }
 
 
