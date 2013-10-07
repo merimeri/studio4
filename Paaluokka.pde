@@ -11,6 +11,8 @@ String line;
   String[] tik;
   String[] tuta;
   String[] kaikki;
+  
+Puu infoPuu = new Puu(500, 300, 100, 50);  
 
 void setup(){
   size(800, 800);
@@ -25,6 +27,7 @@ void draw(){
   piirraValikko();
   nappula.draw();
   nappula2.draw(); 
+  infoPuu.draw();
 }  
 
 /**

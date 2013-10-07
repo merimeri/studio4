@@ -12,15 +12,15 @@ class Puu{
 }
 
 void draw() {
-  pallot();
+  piirraPuu();
   fill(0);
-  
+  noLoop();
 }
 
 
-void pallot() {
+void piirraPuu() {
     noStroke();
- 
+    
     for (int i=0; i<90; i++) {
       fill(15, 150+0.7*i, 1+0.8*i, 90);
       float randomx = random(10,250);
@@ -43,7 +43,7 @@ void runko() {
  triangle(x, y, x+(leveys/2), y-korkeus, x+leveys, y);
  triangle(x+(leveys/2), y-(0.7*korkeus), x+(leveys/2), y-(0.75*korkeus), x+(2*leveys), y-(0.9*korkeus));
  triangle(x+(leveys/2), y-(0.75*korkeus), x+(leveys/2), y-(0.8)*korkeus, x-(2.5*leveys), y-(0.95*korkeus));
-  }
+}
   
   
   
