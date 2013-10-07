@@ -12,7 +12,7 @@ String line;
   String[] tuta;
   String[] kaikki;
   
-Puu infoPuu = new Puu(500, 300, 100, 50);  
+Puu infoPuu = new Puu(200, 600, 400, 50);  
 
 void setup(){
   size(800, 800);
