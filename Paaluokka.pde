@@ -1,8 +1,6 @@
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
+
 
 Namiska nappula = new Namiska(600,50,25,25);
 Namiska nappula2 = new Namiska(700,50,25,25);
@@ -13,13 +11,15 @@ String line;
   String[] tik;
   String[] tuta;
   String[] kaikki;
+  
+Puu infoPuu = new Puu(500, 300, 100, 50);  
 
 void setup(){
   size(800, 800);
   // Open the file from the createWriter() example
   reader = createReader("palkkatilastot.txt");    
-  //luoPalkkataulukot();
-  nakki();
+  luoPalkkataulukot();
+
 }
 
 void draw(){
@@ -27,6 +27,7 @@ void draw(){
   piirraValikko();
   nappula.draw();
   nappula2.draw(); 
+  infoPuu.draw();
 }  
 
 /**
@@ -56,78 +57,55 @@ void piirraValikko(){
    */
   public void luoPalkkataulukot(){
     try {
-      FileInputStream fis = new FileInputStream("palkkatilastot.txt");
+     /** FileInputStream fis = new FileInputStream("palkkatilastot.txt");
       InputStreamReader in = new InputStreamReader(fis);
       BufferedReader lukija = new BufferedReader(in);
-      String rivi;
+      String rivi;**/
       int i = 0;
-      while ((rivi = lukija.readLine()) != null) {
+      while ((line = reader.readLine()) != null) {
         i++;
         System.out.println(i);
-        System.out.println(rivi);
+        System.out.println(line);
         if(i==1){
-          info = rivi.split(" ");
+          info = line.split(" ");
         }else if(i==2){
-          tefy = rivi.split(" ");
-        }else if(i==3){
-          tik = rivi.split(" ");
-        }else if(i == 4){
-          tuta = rivi.split(" ");
+          tefy = line.split(" ");
+        }else if(i==4){
+          tik = line.split(" ");
+        }else if(i == 6){
+          tuta = line.split(" ");
         }else{
-          kaikki = rivi.split(" ");
+          kaikki = line.split(" ");
         }
           
       }
 
-    lukija.close();    
+    //lukija.close();    
     } catch (FileNotFoundException e) {
       System.out.println("File not found!");
     } catch (IOException e) {
       System.out.println("nonne!!!!!!!");
     }  
+    println(info.length);
+  println(tefy.length);
+println(tik.length);
+println(tuta.length);
+println(kaikki.length);
+    
   }
   
-void nakki(){
-  try {
-    line = reader.readLine();
-  } catch (IOException e) {
-    e.printStackTrace();
-    line = null;
-  }
-  if (line == null) {
-    // Stop reading because of an error or file is empty
-    noLoop();  
-  } else {
-    int i = 0;
-    while(line != null){
-     i++;
-     if(i==1){
-          info = line.split(" ");
-        }else if(i==2){
-          tefy = line.split(" ");
-        }else if(i==3){
-          tik = line.split(" ");
-        }else if(i == 4){
-          tuta = line.split(" ");
-        }else{
-          kaikki = line.split(" ");
-        } 
-    }  
 
-  }
-
-}
-
+void testi(){
+  for(int i = 0; i < 8; i++){
+     println(kaikki[i]);
+  }  
+    
+}  
   
- 
-  
-  
-  
-  
-  void mouseClicked() {
+void mouseClicked() {
    nappula.mouseClicked();  
    nappula2.mouseClicked();
-  }
+}
   
   
 class Namiska {
