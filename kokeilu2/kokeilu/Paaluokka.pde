@@ -28,18 +28,13 @@ void setup(){
 void draw(){
   background(255); 
   piirraValikko();
-  piirraMaa();
-    
   nappula.draw();
   nappula2.draw();
   nappula3.draw();
   nappula4.draw();
   puu.draw();
-  
-  
-
- 
-loop(); 
+  piirraMaa();
+  loop(); 
  
   //infoPuu.draw();
   
@@ -51,6 +46,7 @@ loop();
 *Metodi, joka piirtää maan sinikäyrän avulla
 **/
 void piirraMaa(){
+  //ystem.out.println("Maata näkyvissä");
   float a = 0.0;
   float lisays = TWO_PI/560.0;
    strokeWeight(2);

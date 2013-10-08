@@ -6,7 +6,8 @@ boolean suunta;
 float muuttuja;
 float lehtienYmpyra;
 boolean looppi;
-color varit[];
+int x;
+
 
 
  LiikkuvaPuu(){
@@ -14,10 +15,6 @@ color varit[];
    this.muuttuja = 0;
    this.lehtienYmpyra = 210;
    this.looppi = true;
-   this.varit = {color(55,220,116),
-                 color(99,220,144),
-                 color(0,185,69),
-                 color(35,139,73)}
                  
  }  
 
@@ -27,84 +24,80 @@ void draw() {
   testi(muuttuja);
   piirraRunko();
   piirraLehdet();
-  noLoop();
+
 }
 
 void piirraRunko(){
   line(0,0,0,muuttuja);
-  strokeWeight(muuttuja/20);
   noFill();
 }
 
 void piirraLehdet(){
   noStroke();
-  int index = int(random(varit.length));
-  fill(index); 
+   
+  
   if(muuttuja > 125){ 
-  for(int i = 0; i < 10*muuttuja; i++){
+  for(int i = 0; i < 12*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
      if(overCircle(0, -100, 130-lehtienYmpyra/2, x, y)){
-      ellipse(x, y, 25, 25);
+        color varit[] = {color(55,220,116,70),
+                   color(99,220,144,70),
+                   color(0,185,69,70),
+                   color(35,139,73,70)};
+        int index = int(random(varit.length));
+        fill(varit[index]); 
+        ellipse(x, y, 25, 25);
     } 
   } 
  }
   else{
-     for(int i = 0; i < 8*muuttuja; i++){
+     for(int i = 0; i < 10*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
        if(overCircle(0, -120, 130-lehtienYmpyra/2, x, y)){
+        color varit[] = {color(55,220,116,90),
+                   color(99,220,144,90),
+                   color(0,185,69,90),
+                   color(35,139,73,90)};
+        int index = int(random(varit.length));
+        fill(varit[index]); 
         ellipse(x, y, 25, 25);
       } 
     }
   }
 }
 
-void piirraLisaLehdet(){
-  noStroke();
-  fill(55,220,116,90); 
-  for(int i = 0; i < 5*muuttuja; i++){
-    float x = random(-muuttuja/2 -100, muuttuja/2+100);
-    float y = random(-muuttuja/2 -185, muuttuja/2);
-     if(overCircle(0, -100, 130-lehtienYmpyra/2, x, y)){
-      ellipse(x, y, 25, 25);
-    } 
-  } 
-}
 
 
 void muutaArvoa(){
-       System.out.println(muuttuja);
-  if(suunta){
-    muuttuja = muuttuja + 3;
-    lehtienYmpyra = lehtienYmpyra - 3;
+  System.out.println(muuttuja);
+   koko = infonPalkka/20;
+  if(koko >= muuttuja){
+    suunta = true;
   }else{
-   muuttuja = muuttuja - 3;
-   lehtienYmpyra = lehtienYmpyra + 3;
-  }  
-  if(muuttuja <= 0){
-    suunta = true;   
+    suunta = false; 
   }
-  if(muuttuja >= 400){
-    suunta = false;
+  
+  if(suunta){
+    muuttuja = muuttuja + 1;
+    lehtienYmpyra = lehtienYmpyra - 1;
+  }else{
+   muuttuja = muuttuja - 1;
+   lehtienYmpyra = lehtienYmpyra + 1;
+  }
+  
+  if(muuttuja == koko){
+   muutaLooppia();
   }  
   
 }  
 
-void mouseClicked(){
- if(looppi){
-  looppi = false;
-  noLoop();
- }else{
-  looppi = true;
-  loop();
- } 
-}
 
 void testi(float kulma){
   float a = (0.2+(kulma / (float) width)) * 60f;
   theta = radians(a);
-  translate(width/2,height);
+  translate(x,height);
  // line(0,0,0,-10);
   translate(0,-muuttuja);
   // Start the recursive branching!
@@ -153,14 +146,13 @@ boolean overCircle(int x, int y, float radius, float x2, float y2){
   } 
 } 
 
-void nollaaPuu(){
-  this.muuttuja = 0;
-  this.lehtienYmpyra = 210;
-  this.looppi = true;
-  println("sprolol");
+void muutaLooppia(){
+  if(this.looppi == true){
+   this.looppi = false;
+  }else{
+   this.looppi = true;
+  }
 }
-
-
   
 } 
 
