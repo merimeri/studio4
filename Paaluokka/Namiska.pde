@@ -3,14 +3,16 @@ class Namiska {
   int y;
   int leveys;
   int korkeus;
+  int tunniste;
   boolean painettu; // false jos ei painettu, muuten true
 
-  Namiska (int x, int y, int korkeus, int leveys) {
+  Namiska (int x, int y, int korkeus, int leveys, int tunniste) {
     this.x = x;
     this.y = y;
     this.leveys = leveys;
     this.korkeus = korkeus;
     this.painettu = false;
+    this.tunniste = tunniste;
   }
 
   void draw() {
@@ -25,12 +27,16 @@ class Namiska {
 
   void mouseClicked() {
     
-    if(overCircle(this.x, this.y,this.leveys/2)){
+    if(overCircle(this.x, this.y,this.leveys/2) && (valittuNappula == 0 || valittuNappula == this.tunniste)){
+      
       if(this.painettu){
-        this.painettu = false;       
-      }else{
-        
+        this.painettu = false;
+        valittuNappula = 0;       
+      }else{    
         this.painettu = true;
+        valittuNappula = this.tunniste;
+        lataaPalkkatiedot(this.tunniste);
+        println(infonPalkka);
       }  
     }  
   }
@@ -60,3 +66,16 @@ boolean overCircle(int x, int y, int radius){
     return false;  
   } 
 }
+
+void lataaPalkkatiedot(int tunniste){
+  puu.muutaLooppia();
+  infonPalkka = int(info[2*tunniste-1]);
+  int tutanPalkka = int(tuta[2*tunniste-1]);
+  int tefynPalkka = int(tefy[2*tunniste-1]);
+  int tikinPalkka = int(tik[2*tunniste-1]);
+  int kaikkienPalkka = int(kaikki[2*tunniste-1]);
+} 
+  
+  
+  
+
