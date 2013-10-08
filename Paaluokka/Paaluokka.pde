@@ -2,10 +2,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
-Namiska nappula = new Namiska(400,50,25,25,1);
-Namiska nappula2 = new Namiska(500,50,25,25,2);
-Namiska nappula3 = new Namiska(600, 50,25,25,3);
-Namiska nappula4 = new Namiska(700, 50, 25, 25,4);
+Namiska nappula = new Namiska(100, 50,25,25,1);
+Namiska nappula2 = new Namiska(200,50,25,25,2);
+Namiska nappula3 = new Namiska(300, 50,25,25,3);
+Namiska nappula4 = new Namiska(400, 50, 25, 25,4);
 BufferedReader reader;
 String line;
   String[] info;
@@ -19,16 +19,17 @@ String line;
   int tikinPalkka = 2000;
   int kaikkienPalkka = 2000;
   
-LiikkuvaPuu puu = new LiikkuvaPuu(100);
-LiikkuvaPuu puu2 = new LiikkuvaPuu(300);
-LiikkuvaPuu puu3 = new LiikkuvaPuu(500);
-LiikkuvaPuu puu4 = new LiikkuvaPuu(650);
+LiikkuvaPuu puu = new LiikkuvaPuu(100,1);
+LiikkuvaPuu puu2 = new LiikkuvaPuu(300,2);
+LiikkuvaPuu puu3 = new LiikkuvaPuu(500,3);
+LiikkuvaPuu puu4 = new LiikkuvaPuu(650,4);
+LiikkuvaPuu puu5 = new LiikkuvaPuu(800,5);
 int valittuNappula = 0;
 
 
 
 void setup(){
-  size(800, 800);
+  size(1100, 700);
   // Open the file from the createWriter() example
   reader = createReader("palkkatilastot.txt");    
   luoPalkkataulukot();
@@ -54,10 +55,8 @@ void draw(){
   resetMatrix();
   puu3.draw();
  resetMatrix(); 
-  
-  println(puu.x);
-  
-  
+ puu5.draw();
+ resetMatrix();   
   
  }else{
   

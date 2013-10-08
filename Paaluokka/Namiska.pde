@@ -71,10 +71,10 @@ boolean overCircle(int x, int y, int radius){
 void lataaPalkkatiedot(int tunniste){
   puu.muutaLooppia();
   infonPalkka = int(info[2*tunniste-1]);
-  int tutanPalkka = int(tuta[2*tunniste-1]);
-  int tefynPalkka = int(tefy[2*tunniste-1]);
-  int tikinPalkka = int(tik[2*tunniste-1]);
-  int kaikkienPalkka = int(kaikki[2*tunniste-1]);
+  tutanPalkka = int(tuta[2*tunniste-1]);
+  tefynPalkka = int(tefy[2*tunniste-1]);
+  tikinPalkka = int(tik[2*tunniste-1]);
+  kaikkienPalkka = int(kaikki[2*tunniste-1]);
 } 
   
   

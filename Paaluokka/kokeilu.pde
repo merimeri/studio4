@@ -8,13 +8,15 @@ float lehtienYmpyra;
 int koko;
 boolean looppi;
 int x;
+int puu;
 
- LiikkuvaPuu(int x){
+ LiikkuvaPuu(int x, int puu){
    this.suunta = true;
    this.muuttuja = 0;
    this.lehtienYmpyra = 210;
    this.looppi = true;
    this.x = x;
+   this.puu = puu;
  }  
 
 
@@ -88,7 +90,7 @@ void piirraLehdet(){
 *koossa talllennettuna koko miksi haulutaan, muuttujassa minka kokoisia ollaan
 **/
 void muutaArvoa(){
-  koko = infonPalkka/20;
+  koko = palautaPalkka()/20;
   if(koko >= muuttuja){
     suunta = true;
   }else{
@@ -109,6 +111,15 @@ void muutaArvoa(){
   
 }  
 
+int palautaPalkka(){
+ switch (this.puu) {
+  case 1: return infonPalkka;
+  case 2: return tutanPalkka;
+  case 3: return tefynPalkka;
+  case 4: return tikinPalkka;
+  default: return kaikkienPalkka;
+ }
+}
 
 void testi(float kulma){
   // Let's pick an angle 0 to 90 degrees based on the mouse position
