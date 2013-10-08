@@ -2,8 +2,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
-Namiska nappula = new Namiska(600,50,25,25);
-Namiska nappula2 = new Namiska(700,50,25,25);
+Namiska nappula = new Namiska(400,50,25,25);
+Namiska nappula2 = new Namiska(500,50,25,25);
+Namiska nappula3 = new Namiska(600, 50,25,25);
+Namiska nappula4 = new Namiska(700, 50, 25, 25);
 BufferedReader reader;
 String line;
   String[] info;
@@ -12,7 +14,8 @@ String line;
   String[] tuta;
   String[] kaikki;
   
-Puu infoPuu = new Puu(200, 600, 400, 50);  
+Puu infoPuu = new Puu(500, 300, 100, 50);  
+LiikkuvaPuu puu = new LiikkuvaPuu();
 
 void setup(){
   size(800, 800);
@@ -23,11 +26,21 @@ void setup(){
 }
 
 void draw(){
+  background(255);
   piirraMaa(); 
   piirraValikko();
+    
   nappula.draw();
-  nappula2.draw(); 
-  infoPuu.draw();
+  nappula2.draw();
+  nappula3.draw();
+  nappula4.draw();
+  
+ puu.draw();
+loop(); 
+  //infoPuu.draw();
+  
+
+  
 }  
 
 /**
@@ -47,9 +60,6 @@ void piirraValikko(){
   fill(148);
   rect(0,0,width,100); 
 }  
-  
-  
-  
   
   
   /**
@@ -87,85 +97,21 @@ void piirraValikko(){
       System.out.println("nonne!!!!!!!");
     }  
     println(info.length);
-  println(tefy.length);
-println(tik.length);
-println(tuta.length);
-println(kaikki.length);
+    println(tefy.length);
+    println(tik.length);
+    println(tuta.length);
+    println(kaikki.length);
     
   }
   
-
-void testi(){
-  for(int i = 0; i < 8; i++){
-     println(kaikki[i]);
-  }  
-    
-}  
   
 void mouseClicked() {
    nappula.mouseClicked();  
    nappula2.mouseClicked();
+   nappula3.mouseClicked();
+   nappula4.mouseClicked();
+   puu.mouseClicked();
 }
   
   
-class Namiska {
-  int x;  
-  int y;
-  int leveys;
-  int korkeus;
-  boolean painettu; // false jos ei panettu, muuten true
 
-  Namiska (int x, int y, int korkeus, int leveys) {
-    this.x = x;
-    this.y = y;
-    this.leveys = leveys;
-    this.korkeus = korkeus;
-    this.painettu = false;
-  }
-
-  void draw() {
-    fill(255);  
-    ellipseMode(CENTER);  
-    ellipse(this.x, this.y, this.leveys, this.korkeus);
-    if(this.painettu){
-      fill(0);
-      ellipse(this.x, this.y, this.leveys/2, this.korkeus/2);
-    }      
-  }
-
-  void mouseClicked() {
-    
-    if(overCircle(this.x, this.y,this.leveys/2)){
-      if(this.painettu){
-        this.painettu = false;       
-      }else{
-        this.painettu = true;
-      }  
-    }  
-  }
-}    
-
-/**
-*Returns true, if the cursor is inside the rectangle described in the parameters.
-**/
-boolean overRect(int x, int y, int leveys, int korkeus)  {
-
-  if (mouseX >= x && mouseX <= x+leveys && 
-      mouseY >= y && mouseY <= y+korkeus) {
-    return true;
-  } else {
-    return false;
-  }
-}  
-
-/**
-*Returns true, if the cursor is inside the circle described in the parameters.
-*Otherwise returns false.
-**/
-boolean overCircle(int x, int y, int radius){
-  if(pow((x - mouseX),2) + pow((y - mouseY),2) <= pow(radius,2)){
-    return true;
-  }else{
-    return false;  
-  } 
-}
