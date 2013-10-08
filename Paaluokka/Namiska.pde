@@ -16,6 +16,8 @@ class Namiska {
   }
 
   void draw() {
+    strokeWeight(1);
+    stroke(0);
     fill(255);  
     ellipseMode(CENTER);  
     ellipse(this.x, this.y, this.leveys, this.korkeus);

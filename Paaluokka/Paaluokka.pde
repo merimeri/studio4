@@ -42,7 +42,7 @@ void draw(){
     piirraMaa(); 
     piirraValikko();
      
-    nappula.draw();
+  nappula.draw();
   nappula2.draw();
   nappula3.draw();
   nappula4.draw();
@@ -84,6 +84,8 @@ void piirraMaa(){
 }
   
 void piirraValikko(){  
+  strokeWeight(1);
+  stroke(0);
   fill(148);
   rect(0,0,width,100); 
 }  
