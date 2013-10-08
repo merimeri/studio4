@@ -26,17 +26,21 @@ void setup(){
 }
 
 void draw(){
-  background(255);
-  piirraMaa(); 
+  background(255); 
   piirraValikko();
+  piirraMaa();
     
   nappula.draw();
   nappula2.draw();
   nappula3.draw();
   nappula4.draw();
+  puu.draw();
   
- puu.draw();
+  
+
+ 
 loop(); 
+ 
   //infoPuu.draw();
   
 
@@ -49,6 +53,7 @@ loop();
 void piirraMaa(){
   float a = 0.0;
   float lisays = TWO_PI/560.0;
+   strokeWeight(2);
    stroke(11,189,82);
   for(int i=0; i<width; i++) {
     line(i, height, i, abs(700+sin(a)*10.0));
@@ -57,6 +62,8 @@ void piirraMaa(){
 }
   
 void piirraValikko(){  
+  strokeWeight(1);
+  stroke(0);
   fill(148);
   rect(0,0,width,100); 
 }  
