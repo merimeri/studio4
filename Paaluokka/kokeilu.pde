@@ -39,7 +39,7 @@ void piirraLehdet(){
    
   
   if(muuttuja > 125){ 
-  for(int i = 0; i < 12*muuttuja; i++){
+  for(int i = 0; i < 10*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
      if(overCircle(0, -100, 130-lehtienYmpyra/2, x, y)){
@@ -54,7 +54,7 @@ void piirraLehdet(){
   } 
  }
   else{
-     for(int i = 0; i < 10*muuttuja; i++){
+     for(int i = 0; i < 8*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
        if(overCircle(0, -120, 130-lehtienYmpyra/2, x, y)){
