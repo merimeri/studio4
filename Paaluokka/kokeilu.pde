@@ -37,22 +37,37 @@ void piirraRunko(){
 }
 
 void piirraLehdet(){
-    noStroke();
-    color varit[] = {color(55,220,116,80),
+   println("Muuttuja on:" + muuttuja);
+ 
+  noStroke();
+  color varit[] = {color(55,220,116,80),
                    color(99,220,144,80),
                    color(0,185,69,80),
                    color(35,139,73,80)};
-    int index;
-  for(int i = 0; i < 9*muuttuja; i++){
+  int index;
+   if(muuttuja == 5.0){
+      for(int i = 0; i < 250; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
-     if(overCircle(0, -100, 130-lehtienYmpyra/2, x, y)){     
+     if(overCircle(0, -125, 130-lehtienYmpyra/2, x, y)){     
         index = int(random(varit.length));
         fill(varit[index]); 
         ellipse(x, y, 30, 30);
       }
   }
-   
+    
+  }
+  else{
+  for(int i = 0; i < 9*muuttuja; i++){
+    float x = random(-muuttuja/2 -100, muuttuja/2+100);
+    float y = random(-muuttuja/2 -185, muuttuja/2);
+     if(overCircle(0, -110, 130-lehtienYmpyra/2, x, y)){     
+        index = int(random(varit.length));
+        fill(varit[index]); 
+        ellipse(x, y, 30, 30);
+      }
+  }
+ }  
 }
 
         
