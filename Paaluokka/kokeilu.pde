@@ -38,7 +38,6 @@ void piirraRunko(){
 
 void piirraLehdet(){
     noStroke();
-  if(muuttuja>125){
   for(int i = 0; i < 12*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
@@ -50,7 +49,6 @@ void piirraLehdet(){
         int index = int(random(varit.length));
         fill(varit[index]); 
         ellipse(x, y, 25, 25);
-    }
   }
   }   
 }
