@@ -25,6 +25,7 @@ PFont fontti3;
   int tefynPalkka = 2000;
   int tikinPalkka = 2000;
   int kaikkienPalkka = 2000;
+  color taivas, valk;
   
 LiikkuvaPuu infoPuu = new LiikkuvaPuu(150,1);
 LiikkuvaPuu tutaPuu = new LiikkuvaPuu(380,2);
@@ -37,6 +38,8 @@ int valittuNappula = 0;
 
 void setup(){
   size(1200, 700);
+  taivas = color(81,127,252);
+  valk = color(255);
   // Open the file from the createWriter() example
   reader = createReader("palkkatilastot.txt");    
   luoPalkkataulukot();
@@ -49,7 +52,7 @@ void setup(){
 void draw(){
   
   if(infoPuu.looppi){
-    background(107, 161, 203);
+    piirraGradientti(0, 0, width, height, taivas, valk);
    // piirraMaa(); 
     piirraValikko();
      
@@ -184,6 +187,20 @@ void nollaaKasvu(){
   tikPuu.onKasvanut = false;
   kaikkiPuu.onKasvanut = false;
 }
+
+void piirraGradientti(int x, 
+int y, float w, float h, 
+color yla, color ala) {
+
+  noFill();
+
+    for (int i = y; i <= y+h; i++) {
+      float inter = map(i, y, y+h, 0, 1);
+      color maalaus = lerpColor(yla, ala, inter);
+      stroke(maalaus);
+      line(x, i, x+w, i);
+    }
+  }
 
 
 
