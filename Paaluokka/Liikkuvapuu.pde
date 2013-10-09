@@ -23,6 +23,7 @@ boolean onKasvanut;
 
 
 void draw() {
+  
   testi(muuttuja);
   piirraRunko();
   piirraLehdet();
@@ -30,42 +31,24 @@ void draw() {
   
 }
 
-/**Metodi joka piirtää rungon, 
-*jonka pituus muuttuu muuttujan mukaan
-**/
 void piirraRunko(){
   line(0,0,0,muuttuja);
   noFill();
 }
 
-
-
-/**
-*Metodi, joka piirtää puulle lehdet
-**/
 void piirraLehdet(){
    
  
   noStroke();
-  //lehtien värit laitetaan taulukkoon
   color varit[] = {color(55,220,116,80),
                    color(99,220,144,80),
                    color(0,185,69,80),
                    color(35,139,73,80)};
   int index;
-  
-  //kun puu on pienemmillään piirretään pieni määrä lehtiä
    if(muuttuja == 5.0){
-    for(int i = 0; i < 300; i++){
-    
-      //arvotaan satunnainen piste neliöstä joka kasvaa muuttujan mukana
+      for(int i = 0; i < 300; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
-     
-     /**
-     *jos piste on muuttujaa vastaavassa ympyrässä, 
-     **ne näytetään ympyröinä eli lehtinä
-     **/
      if(overCircle(0, -125, 130-lehtienYmpyra/2, x, y)){     
         index = int(random(varit.length));
         fill(varit[index]); 
@@ -74,10 +57,6 @@ void piirraLehdet(){
   }
     
   }
-  /**
-  *kun muuttuja on tarpeeksi 
-  *iso voidaan lehtien määrä suhteuttaa siihen
-  **/
   else{
   for(int i = 0; i < 9*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
@@ -87,7 +66,7 @@ void piirraLehdet(){
           fill(varit[index]); 
           ellipse(x, y, 30, 30);
         }
-      }
+    }
    }  
 }
 

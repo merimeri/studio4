@@ -1,14 +1,17 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+//ukkojen hattujen logot
 PImage img1;
 PImage img2;
 PImage img3;
 PImage img4;
+//valikon napit
 Namiska nappula = new Namiska(750, 50,25,25,1);
 Namiska nappula2 = new Namiska(850,50,25,25,2);
 Namiska nappula3 = new Namiska(950, 50,25,25,3);
 Namiska nappula4 = new Namiska(1050, 50, 25, 25,4);
+int valittuNappula = 0;
 BufferedReader reader;
 String line;
 PFont fontti; //uusi!
@@ -29,14 +32,17 @@ boolean ekaKierros;//aluksi ei piirreta palkkoja
   int tefynPalkka = 2000;
   int tikinPalkka = 2000;
   int kaikkienPalkka = 2000;
+ //gradienttien värit
   color taivas, valk;
   
+//luodaan puut
 LiikkuvaPuu infoPuu = new LiikkuvaPuu(150,1);
 LiikkuvaPuu tutaPuu = new LiikkuvaPuu(380,2);
 LiikkuvaPuu tefyPuu = new LiikkuvaPuu(600,3);
 LiikkuvaPuu tikPuu = new LiikkuvaPuu(820,4);
 LiikkuvaPuu kaikkiPuu = new LiikkuvaPuu(1050,5);
-int valittuNappula = 0;
+
+//luodaan ukot
 Ukko u1 = new Ukko(120, 200, 1, -100);
 Ukko u2 = new Ukko(120, 430, 2, -100);
 Ukko u3 = new Ukko(120, 650, 3, -100);
@@ -62,14 +68,19 @@ void setup(){
 
 void draw(){
 
+  
  if(infoPuu.looppi){
+   //tausta taivaan värin piirto
    piirraGradientti(0, 0, width, height, taivas, valk);
    piirraValikko();
      
+  //piirretään nappulat
   nappula.draw();
   nappula2.draw();
   nappula3.draw();
   nappula4.draw();
+  
+  //piirretään puut
   resetMatrix();
   infoPuu.draw();
   resetMatrix();
@@ -81,11 +92,9 @@ void draw(){
   resetMatrix(); 
   tikPuu.draw();
   resetMatrix();  
- /**println("infon koko: " + infoPuu.koko);
-  println("infon muuttuja: " + infoPuu.muuttuja); 
-  println("tutan koko: " + tutaPuu.koko);
-  println("tutan muuttuja: " + tutaPuu.muuttuja); **/
   piirraMaa();
+  
+  //ukkojen itse piirto
   u1.kokoUkko();
   u2.kokoUkko();
   u3.kokoUkko();
@@ -130,6 +139,10 @@ void piirraMaa(){
   }
 }
   
+/**
+*Metodi, joka piirtää valikon 
+*eli tekstit selittämään käyttöä
+**/
 void piirraValikko(){  
   textFont(fontti,16);
   fill(0);
@@ -150,10 +163,6 @@ void piirraValikko(){
    */
   public void luoPalkkataulukot(){
     try {
-     /** FileInputStream fis = new FileInputStream("palkkatilastot.txt");
-      InputStreamReader in = new InputStreamReader(fis);
-      BufferedReader lukija = new BufferedReader(in);
-      String rivi;**/
       int i = 0;
       while ((line = reader.readLine()) != null) {
         i++;
@@ -167,11 +176,8 @@ void piirraValikko(){
           tuta = line.split(" ");
         }else{
           kaikki = line.split(" ");
-        }
-          
-      }
-
-    //lukija.close();    
+        }  
+      }   
     } catch (FileNotFoundException e) {
       System.out.println("File not found!");
     } catch (IOException e) {
@@ -180,7 +186,7 @@ void piirraValikko(){
     
   }
   
-  
+  //regoidaan nappuloiden painalluksiin 
 void mouseClicked() {
    nappula.mouseClicked(); 
    nappula2.mouseClicked();
@@ -195,6 +201,9 @@ void nollaaPainallukset(){
   nappula4.painettu = false;
 }
 
+/**
+*Palauttaa true jos puut ovat kasvaneet
+**/
 boolean onKasvettu(){
  if (infoPuu.onKasvanut && tutaPuu.onKasvanut && tefyPuu.onKasvanut
      && tikPuu.onKasvanut && kaikkiPuu.onKasvanut){
@@ -212,6 +221,9 @@ void nollaaKasvu(){
   kaikkiPuu.onKasvanut = false;
 }
 
+/**
+*Metodi joka piirtää taustana toimivan gradientin
+**/
 void piirraGradientti(int x, 
 int y, float w, float h, 
 color yla, color ala) {

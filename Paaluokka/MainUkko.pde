@@ -1,5 +1,6 @@
 int setX = 800;
 int setY = 800;
+
 class Ukko {
   int koko;
   int paikka;
