@@ -37,7 +37,7 @@ void piirraRunko(){
 }
 
 void piirraLehdet(){
-   println("Muuttuja on:" + muuttuja);
+   
  
   noStroke();
   color varit[] = {color(55,220,116,80),
@@ -149,14 +149,14 @@ void testi(float kulma){
   translate(this.x,height);
   
   // Move to the end of that line
-  translate(0,-muuttuja);
+  translate(0,-muuttuja*1.2);
   // Start the recursive branching!
   branch(80);
 }
 
 
 void branch(float h) {
-  strokeWeight(2+muuttuja/50);
+  strokeWeight(2+muuttuja/40);
   stroke(102,77,51);
   // Each branch will be 2/3rds the size of the previous one
   h *= 0.7;
@@ -207,11 +207,7 @@ void muutaLooppia(){
   }else{
    this.looppi = true;
   }
-}
-
-
-
- 
+ }
 }
 
 
