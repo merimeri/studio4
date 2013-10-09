@@ -27,7 +27,7 @@ class Namiska {
   }
 
   void mouseClicked() {
-    
+    ekaKierros = true;
     if(overCircle(this.x, this.y,this.leveys/2)){ //&& (valittuNappula == 0 || valittuNappula == this.tunniste)){
       
       if(this.painettu){

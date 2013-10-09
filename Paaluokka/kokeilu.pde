@@ -38,12 +38,12 @@ void piirraRunko(){
 
 void piirraLehdet(){
     noStroke();
-    color varit[] = {color(55,220,116,90),
-                   color(99,220,144,90),
-                   color(0,185,69,90),
-                   color(35,139,73,90)};
+    color varit[] = {color(55,220,116,80),
+                   color(99,220,144,80),
+                   color(0,185,69,80),
+                   color(35,139,73,80)};
     int index;
-  for(int i = 0; i < 8*muuttuja; i++){
+  for(int i = 0; i < 9*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
      if(overCircle(0, -100, 130-lehtienYmpyra/2, x, y)){     
@@ -101,7 +101,9 @@ void muutaArvoa(){
     this.onKasvanut = true;
     if(onKasvettu()){
       muutaLooppia();
-      piirraPalkka();
+      if(ekaKierros){
+        this.piirraPalkka();
+      }  
     }
     
   }  
@@ -183,7 +185,10 @@ boolean overCircle(int x, int y, float radius, float x2, float y2){
 void muutaLooppia(){
   if(this.looppi == true){
    this.looppi = false;
-   piirraPalkka();
+   if(ekaKierros){
+     this.piirraPalkka();
+   }
+   
   }else{
    this.looppi = true;
   }

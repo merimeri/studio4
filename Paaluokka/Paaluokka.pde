@@ -14,6 +14,7 @@ String line;
 PFont fontti; //uusi!
 PFont fontti2;
 PFont fontti3;
+boolean ekaKierros;//aluksi ei piirreta palkkoja
 
 /**
 *Tassa jarkassa aina kaikkialla: info, tuta, tefy, tik, kaikki!!!
@@ -56,14 +57,14 @@ void setup(){
   img2 = loadImage("tut.png");
   img3 = loadImage("fys.png");
   img4 = loadImage("tik.png");
+  ekaKierros = false;
 }
 
 void draw(){
-  
-  if(infoPuu.looppi){
-    piirraGradientti(0, 0, width, height, taivas, valk);
-   // piirraMaa(); 
-    piirraValikko();
+
+ if(infoPuu.looppi){
+   piirraGradientti(0, 0, width, height, taivas, valk);
+   piirraValikko();
      
   nappula.draw();
   nappula2.draw();
@@ -76,9 +77,9 @@ void draw(){
   infoPuu.draw();
   resetMatrix();
   tefyPuu.draw();
- resetMatrix(); 
- kaikkiPuu.draw();
- resetMatrix();   
+  resetMatrix(); 
+  kaikkiPuu.draw();
+  resetMatrix();   
  /**println("infon koko: " + infoPuu.koko);
   println("infon muuttuja: " + infoPuu.muuttuja); 
   println("tutan koko: " + tutaPuu.koko);
@@ -89,13 +90,17 @@ void draw(){
   u3.kokoUkko();
   u4.kokoUkko();
   u5.kokoUkko();
+  
  }else{
 
-  infoPuu.piirraPalkka();
-  tutaPuu.piirraPalkka();
-  tefyPuu.piirraPalkka();
-  tikPuu.piirraPalkka();
-  kaikkiPuu.piirraPalkka();
+   if(ekaKierros){
+    infoPuu.piirraPalkka();
+    tutaPuu.piirraPalkka();
+    tefyPuu.piirraPalkka();
+    tikPuu.piirraPalkka();
+    kaikkiPuu.piirraPalkka(); 
+   }
+ 
   nappula.draw();
   nappula2.draw();
   nappula3.draw();
