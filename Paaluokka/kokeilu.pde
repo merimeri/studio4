@@ -61,13 +61,13 @@ void piirraLehdet(){
   for(int i = 0; i < 9*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
-     if(overCircle(0, -110, 130-lehtienYmpyra/2, x, y)){     
-        index = int(random(varit.length));
-        fill(varit[index]); 
-        ellipse(x, y, 30, 30);
-      }
-  }
- }  
+       if(overCircle(0, -110, 130-lehtienYmpyra/2, x, y)){     
+          index = int(random(varit.length));
+          fill(varit[index]); 
+          ellipse(x, y, 30, 30);
+        }
+    }
+   }  
 }
 
         
@@ -84,7 +84,6 @@ void piirraPalkka(){
   }else if(this.puu == 3){
     text(str(tefynPalkka), -40, -100);
   }else if(this.puu == 4){
-    println(tikinPalkka);
     text(str(tikinPalkka), -40, -100);
   }else{
     text(str(kaikkienPalkka), -40, -100);
