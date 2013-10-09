@@ -50,8 +50,9 @@ void piirraLehdet(){
         index = int(random(varit.length));
         fill(varit[index]); 
         ellipse(x, y, 30, 30);
+      }
   }
-  }   
+   
 }
 
         
@@ -68,6 +69,7 @@ void piirraPalkka(){
   }else if(this.puu == 3){
     text(str(tefynPalkka), -40, -100);
   }else if(this.puu == 4){
+    println(tikinPalkka);
     text(str(tikinPalkka), -40, -100);
   }else{
     text(str(kaikkienPalkka), -40, -100);
@@ -105,17 +107,15 @@ void muutaArvoa(){
         this.piirraPalkka();
       }  
     }
-    
   }  
-  
 }  
 
 int palautaPalkka(){
-  println("info: " + infonPalkka);
+  /**println("info: " + infonPalkka);
   println("tuta: " + tutanPalkka);
   println("tefy: " + tefynPalkka);
   println("tik: " + tikinPalkka);
-  println("kaikki: " + kaikkienPalkka);
+  println("kaikki: " + kaikkienPalkka);**/
   switch (this.puu) {
   case 1: return infonPalkka;
   case 2: return tutanPalkka;
@@ -196,7 +196,7 @@ void muutaLooppia(){
 
 
 
-  
+ 
 }
 
 
