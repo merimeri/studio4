@@ -43,8 +43,8 @@ void setup(){
 void draw(){
 
   if(infoPuu.looppi){
-    background(255);
-    piirraMaa(); 
+    background(107, 161, 203);
+   // piirraMaa(); 
     piirraValikko();
      
   nappula.draw();
@@ -65,6 +65,7 @@ void draw(){
   println("infon muuttuja: " + infoPuu.muuttuja); 
   println("tutan koko: " + tutaPuu.koko);
   println("tutan muuttuja: " + tutaPuu.muuttuja); 
+  piirraMaa();
   
  }else{
   
