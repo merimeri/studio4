@@ -2,12 +2,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
-Namiska nappula = new Namiska(100, 50,25,25,1);
-Namiska nappula2 = new Namiska(200,50,25,25,2);
-Namiska nappula3 = new Namiska(300, 50,25,25,3);
-Namiska nappula4 = new Namiska(400, 50, 25, 25,4);
+Namiska nappula = new Namiska(750, 50,25,25,1);
+Namiska nappula2 = new Namiska(850,50,25,25,2);
+Namiska nappula3 = new Namiska(950, 50,25,25,3);
+Namiska nappula4 = new Namiska(1050, 50, 25, 25,4);
 BufferedReader reader;
 String line;
+PFont fontti; //uusi!
+PFont fontti2;
+PFont fontti3;
 
 /**
 *Tassa jarkassa aina kaikkialla: info, tuta, tefy, tik, kaikki!!!
@@ -37,6 +40,9 @@ void setup(){
   // Open the file from the createWriter() example
   reader = createReader("palkkatilastot.txt");    
   luoPalkkataulukot();
+  fontti = createFont("Futura-Medium",14); //uusi!
+  fontti2 = createFont("Calibri", 22);
+  fontti3 = loadFont("GungsuhChe-24.vlw");
 
 }
 
@@ -98,10 +104,17 @@ void piirraMaa(){
 }
   
 void piirraValikko(){  
-  strokeWeight(1);
-  stroke(0);
-  fill(148);
-  rect(0,0,width,100); 
+  textFont(fontti,16);
+  fill(0);
+  text("<1", 740, 30); //uusi!
+  text("1-2", 840, 30);
+  text("3-4", 940, 30);
+  text("5-9", 1040, 30);
+  textFont(fontti3, 22);
+  text("Perustieteiden korkeakoulun aloilta valmistuneiden palkat", 30, 40);
+  textFont(fontti3, 18);
+  text("työvuosien mukaan", 250, 70);
+  text("Työvuodet", 850, 90);
 }  
   
   
