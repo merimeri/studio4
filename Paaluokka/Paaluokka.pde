@@ -99,7 +99,7 @@ void draw(){
 void piirraMaa(){
   float a = 0.0;
   float lisays = TWO_PI/560.0;
-   stroke(11,189,82);
+   stroke(38,158, 58);
   for(int i=0; i<width; i++) {
     line(i, height, i, abs(650+sin(a)*10.0));
     a = a + lisays;
