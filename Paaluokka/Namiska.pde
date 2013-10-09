@@ -28,16 +28,17 @@ class Namiska {
 
   void mouseClicked() {
     
-    if(overCircle(this.x, this.y,this.leveys/2) && (valittuNappula == 0 || valittuNappula == this.tunniste)){
+    if(overCircle(this.x, this.y,this.leveys/2)){ //&& (valittuNappula == 0 || valittuNappula == this.tunniste)){
       
       if(this.painettu){
         this.painettu = false;
         valittuNappula = 0;       
       }else{    
+        nollaaPainallukset();
         this.painettu = true;
         valittuNappula = this.tunniste;
         lataaPalkkatiedot(this.tunniste);
-        println(infonPalkka);
+        
       }  
     }  
   }
@@ -69,12 +70,14 @@ boolean overCircle(int x, int y, int radius){
 }
 
 void lataaPalkkatiedot(int tunniste){
-  puu.muutaLooppia();
+  nollaaKasvu();
+  infoPuu.muutaLooppia();
   infonPalkka = int(info[2*tunniste-1]);
   tutanPalkka = int(tuta[2*tunniste-1]);
   tefynPalkka = int(tefy[2*tunniste-1]);
   tikinPalkka = int(tik[2*tunniste-1]);
   kaikkienPalkka = int(kaikki[2*tunniste-1]);
+  
 } 
   
   

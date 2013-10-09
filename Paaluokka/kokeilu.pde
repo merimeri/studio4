@@ -9,6 +9,7 @@ int koko;
 boolean looppi;
 int x;
 int puu;
+boolean onKasvanut;
 
  LiikkuvaPuu(int x, int puu){
    this.suunta = true;
@@ -17,6 +18,7 @@ int puu;
    this.looppi = true;
    this.x = x;
    this.puu = puu;
+   this.onKasvanut = false;
  }  
 
 
@@ -39,7 +41,7 @@ void piirraLehdet(){
    
   
   if(muuttuja > 125){ 
-  for(int i = 0; i < 10*muuttuja; i++){
+  for(int i = 0; i < 12*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
      if(overCircle(0, -100, 130-lehtienYmpyra/2, x, y)){
@@ -54,7 +56,7 @@ void piirraLehdet(){
   } 
  }
   else{
-     for(int i = 0; i < 8*muuttuja; i++){
+     for(int i = 0; i < 10*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
        if(overCircle(0, -120, 130-lehtienYmpyra/2, x, y)){
@@ -90,29 +92,41 @@ void piirraLehdet(){
 *koossa talllennettuna koko miksi haulutaan, muuttujassa minka kokoisia ollaan
 **/
 void muutaArvoa(){
-  koko = palautaPalkka()/20;
+  
+  koko = palautaPalkka()/25;
   if(koko >= muuttuja){
     suunta = true;
   }else{
     suunta = false; 
   }
-  
-  if(suunta){
-    muuttuja = muuttuja + 1;
-    lehtienYmpyra = lehtienYmpyra - 1;
-  }else{
-   muuttuja = muuttuja - 1;
-   lehtienYmpyra = lehtienYmpyra + 1;
+  if(!this.onKasvanut){
+    if(suunta){
+      muuttuja = muuttuja + 1;
+      lehtienYmpyra = lehtienYmpyra - 1;
+    }else{
+       muuttuja = muuttuja - 1;
+      lehtienYmpyra = lehtienYmpyra + 1;
+    }
   }
   
-  if(muuttuja == koko){
-   muutaLooppia();
+  
+  if(this.muuttuja == this.koko){
+    this.onKasvanut = true;
+    if(onKasvettu()){
+      muutaLooppia();
+    }
+    
   }  
   
 }  
 
 int palautaPalkka(){
- switch (this.puu) {
+ /** println("info: " + infonPalkka);
+  println("tuta: " + tutanPalkka);
+  println("tefy: " + tefynPalkka);
+  println("tik: " + tikinPalkka);
+  println("kaikki: " + kaikkienPalkka);**/
+  switch (this.puu) {
   case 1: return infonPalkka;
   case 2: return tutanPalkka;
   case 3: return tefynPalkka;

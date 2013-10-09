@@ -8,10 +8,14 @@ Namiska nappula3 = new Namiska(300, 50,25,25,3);
 Namiska nappula4 = new Namiska(400, 50, 25, 25,4);
 BufferedReader reader;
 String line;
+
+/**
+*Tassa jarkassa aina kaikkialla: info, tuta, tefy, tik, kaikki!!!
+**/
   String[] info;
+  String[] tuta;
   String[] tefy;
   String[] tik;
-  String[] tuta;
   String[] kaikki;
   int infonPalkka = 2000;
   int tutanPalkka = 2000;
@@ -19,11 +23,11 @@ String line;
   int tikinPalkka = 2000;
   int kaikkienPalkka = 2000;
   
-LiikkuvaPuu puu = new LiikkuvaPuu(100,1);
-LiikkuvaPuu puu2 = new LiikkuvaPuu(300,2);
-LiikkuvaPuu puu3 = new LiikkuvaPuu(500,3);
-LiikkuvaPuu puu4 = new LiikkuvaPuu(650,4);
-LiikkuvaPuu puu5 = new LiikkuvaPuu(800,5);
+LiikkuvaPuu infoPuu = new LiikkuvaPuu(100,1);
+LiikkuvaPuu tutaPuu = new LiikkuvaPuu(300,2);
+LiikkuvaPuu tefyPuu = new LiikkuvaPuu(500,3);
+LiikkuvaPuu tikPuu = new LiikkuvaPuu(650,4);
+LiikkuvaPuu kaikkiPuu = new LiikkuvaPuu(800,5);
 int valittuNappula = 0;
 
 
@@ -38,7 +42,7 @@ void setup(){
 
 void draw(){
 
-  if(puu.looppi){
+  if(infoPuu.looppi){
     background(255);
     piirraMaa(); 
     piirraValikko();
@@ -47,16 +51,20 @@ void draw(){
   nappula2.draw();
   nappula3.draw();
   nappula4.draw();
-  puu4.draw();
+  tikPuu.draw();
   resetMatrix(); 
-  puu2.draw();
+  tutaPuu.draw();
   resetMatrix();
-  puu.draw();
+  infoPuu.draw();
   resetMatrix();
-  puu3.draw();
+  tefyPuu.draw();
  resetMatrix(); 
- puu5.draw();
+ kaikkiPuu.draw();
  resetMatrix();   
+ println("infon koko: " + infoPuu.koko);
+  println("infon muuttuja: " + infoPuu.muuttuja); 
+  println("tutan koko: " + tutaPuu.koko);
+  println("tutan muuttuja: " + tutaPuu.muuttuja); 
   
  }else{
   
@@ -68,6 +76,7 @@ void draw(){
 
   
 }  
+
 
 /**
 *Metodi, joka piirtää maan sinikäyrän avulla
@@ -105,11 +114,11 @@ void piirraValikko(){
         if(i==1){
           info = line.split(" ");
         }else if(i==2){
-          tefy = line.split(" ");
-        }else if(i==4){
-          tik = line.split(" ");
-        }else if(i == 6){
           tuta = line.split(" ");
+        }else if(i==4){
+          tefy = line.split(" ");
+        }else if(i == 6){
+          tik = line.split(" ");
         }else{
           kaikki = line.split(" ");
         }
@@ -133,10 +142,29 @@ void mouseClicked() {
    nappula4.mouseClicked();
 }
   
+void nollaaPainallukset(){
+  nappula.painettu = false;
+  nappula2.painettu = false;
+  nappula3.painettu = false;
+  nappula4.painettu = false;
+}
 
+boolean onKasvettu(){
+ if (infoPuu.onKasvanut && tutaPuu.onKasvanut && tefyPuu.onKasvanut
+     && tikPuu.onKasvanut && kaikkiPuu.onKasvanut){
+    return true;
+ }else{
+    return false;
+ }   
+}
 
-
-
+void nollaaKasvu(){
+  infoPuu.onKasvanut = false;
+  tutaPuu.onKasvanut = false;
+  tefyPuu.onKasvanut = false;
+  tikPuu.onKasvanut = false;
+  kaikkiPuu.onKasvanut = false;
+}
 
 
 
