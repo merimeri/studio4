@@ -23,17 +23,17 @@ String line;
   int tikinPalkka = 2000;
   int kaikkienPalkka = 2000;
   
-LiikkuvaPuu infoPuu = new LiikkuvaPuu(100,1);
-LiikkuvaPuu tutaPuu = new LiikkuvaPuu(300,2);
-LiikkuvaPuu tefyPuu = new LiikkuvaPuu(500,3);
-LiikkuvaPuu tikPuu = new LiikkuvaPuu(650,4);
-LiikkuvaPuu kaikkiPuu = new LiikkuvaPuu(800,5);
+LiikkuvaPuu infoPuu = new LiikkuvaPuu(150,1);
+LiikkuvaPuu tutaPuu = new LiikkuvaPuu(380,2);
+LiikkuvaPuu tefyPuu = new LiikkuvaPuu(600,3);
+LiikkuvaPuu tikPuu = new LiikkuvaPuu(820,4);
+LiikkuvaPuu kaikkiPuu = new LiikkuvaPuu(1050,5);
 int valittuNappula = 0;
 
 
 
 void setup(){
-  size(1100, 700);
+  size(1200, 700);
   // Open the file from the createWriter() example
   reader = createReader("palkkatilastot.txt");    
   luoPalkkataulukot();
@@ -41,7 +41,7 @@ void setup(){
 }
 
 void draw(){
-
+  
   if(infoPuu.looppi){
     background(107, 161, 203);
    // piirraMaa(); 
@@ -61,14 +61,19 @@ void draw(){
  resetMatrix(); 
  kaikkiPuu.draw();
  resetMatrix();   
- println("infon koko: " + infoPuu.koko);
+ /**println("infon koko: " + infoPuu.koko);
   println("infon muuttuja: " + infoPuu.muuttuja); 
   println("tutan koko: " + tutaPuu.koko);
-  println("tutan muuttuja: " + tutaPuu.muuttuja); 
+  println("tutan muuttuja: " + tutaPuu.muuttuja); **/
   piirraMaa();
   
  }else{
-  
+
+  infoPuu.piirraPalkka();
+  tutaPuu.piirraPalkka();
+  tefyPuu.piirraPalkka();
+  tikPuu.piirraPalkka();
+  kaikkiPuu.piirraPalkka();
   nappula.draw();
   nappula2.draw();
   nappula3.draw();
@@ -87,7 +92,7 @@ void piirraMaa(){
   float lisays = TWO_PI/560.0;
    stroke(11,189,82);
   for(int i=0; i<width; i++) {
-    line(i, height, i, abs(700+sin(a)*10.0));
+    line(i, height, i, abs(650+sin(a)*10.0));
     a = a + lisays;
   }
 }
@@ -115,11 +120,11 @@ void piirraValikko(){
         if(i==1){
           info = line.split(" ");
         }else if(i==2){
-          tuta = line.split(" ");
-        }else if(i==4){
           tefy = line.split(" ");
-        }else if(i == 6){
+        }else if(i==4){
           tik = line.split(" ");
+        }else if(i == 6){
+          tuta = line.split(" ");
         }else{
           kaikki = line.split(" ");
         }

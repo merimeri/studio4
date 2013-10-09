@@ -39,8 +39,6 @@ void piirraRunko(){
 void piirraLehdet(){
     noStroke();
    
-  
-  if(muuttuja > 125){ 
   for(int i = 0; i < 12*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
@@ -54,46 +52,34 @@ void piirraLehdet(){
         ellipse(x, y, 25, 25);
     } 
   } 
- }
-  else{
-     for(int i = 0; i < 10*muuttuja; i++){
-    float x = random(-muuttuja/2 -100, muuttuja/2+100);
-    float y = random(-muuttuja/2 -185, muuttuja/2);
-       if(overCircle(0, -120, 130-lehtienYmpyra/2, x, y)){
-        color varit[] = {color(55,220,116,90),
-                   color(99,220,144,90),
-                   color(0,185,69,90),
-                   color(35,139,73,90)};
-        int index = int(random(varit.length));
-        fill(varit[index]); 
-        ellipse(x, y, 25, 25);
-      } 
-    }
-  }
+}
 
         
-}  
-
-
-/**void piirraLehdet(){
   
-    
-    for(int i = 0; i < 100; i++){
-      float x = random(-100, 100);
-      float y = random(-150, 0);
-      if(overCircle(0, -100, 100-lehtienYmpyra/2, x, y)){
-        ellipse(x, y, 5, 5);
-      } 
-    } 
-    
-}  **/
+
+
+void piirraPalkka(){
+  textSize(32);
+  fill(255);
+  if(this.puu == 1){   
+    text(str(infonPalkka), -40, -100);
+  }else if(this.puu == 2){
+    text(str(tutanPalkka), -40, -100);
+  }else if(this.puu == 3){
+    text(str(tefynPalkka), -40, -100);
+  }else if(this.puu == 4){
+    text(str(tikinPalkka), -40, -100);
+  }else{
+    text(str(kaikkienPalkka), -40, -100);
+  } 
+} 
 
 /**
 *koossa talllennettuna koko miksi haulutaan, muuttujassa minka kokoisia ollaan
 **/
 void muutaArvoa(){
-  
-  koko = palautaPalkka()/25;
+ 
+  koko = (palautaPalkka()-2000)/15;
   if(koko >= muuttuja){
     suunta = true;
   }else{
@@ -114,6 +100,7 @@ void muutaArvoa(){
     this.onKasvanut = true;
     if(onKasvettu()){
       muutaLooppia();
+      piirraPalkka();
     }
     
   }  
@@ -121,11 +108,11 @@ void muutaArvoa(){
 }  
 
 int palautaPalkka(){
- /** println("info: " + infonPalkka);
+  println("info: " + infonPalkka);
   println("tuta: " + tutanPalkka);
   println("tefy: " + tefynPalkka);
   println("tik: " + tikinPalkka);
-  println("kaikki: " + kaikkienPalkka);**/
+  println("kaikki: " + kaikkienPalkka);
   switch (this.puu) {
   case 1: return infonPalkka;
   case 2: return tutanPalkka;
@@ -141,7 +128,7 @@ void testi(float kulma){
   // Convert it to radians
   theta = radians(a);
   // Start the tree from the bottom of the screen
-  translate(x,height);
+  translate(this.x,height);
   
   // Move to the end of that line
   translate(0,-muuttuja);
@@ -195,6 +182,7 @@ boolean overCircle(int x, int y, float radius, float x2, float y2){
 void muutaLooppia(){
   if(this.looppi == true){
    this.looppi = false;
+   piirraPalkka();
   }else{
    this.looppi = true;
   }
@@ -203,6 +191,6 @@ void muutaLooppia(){
 
 
   
-} 
+}
 
 
