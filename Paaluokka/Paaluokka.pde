@@ -1,7 +1,10 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-
+PImage img1;
+PImage img2;
+PImage img3;
+PImage img4;
 Namiska nappula = new Namiska(750, 50,25,25,1);
 Namiska nappula2 = new Namiska(850,50,25,25,2);
 Namiska nappula3 = new Namiska(950, 50,25,25,3);
@@ -33,20 +36,26 @@ LiikkuvaPuu tefyPuu = new LiikkuvaPuu(600,3);
 LiikkuvaPuu tikPuu = new LiikkuvaPuu(820,4);
 LiikkuvaPuu kaikkiPuu = new LiikkuvaPuu(1050,5);
 int valittuNappula = 0;
-
-
+Ukko u1 = new Ukko(120, 200, 1, -100);
+Ukko u2 = new Ukko(120, 430, 2, -100);
+Ukko u3 = new Ukko(120, 650, 3, -100);
+Ukko u4 = new Ukko(120, 870, 4, -100);
+Ukko u5 = new Ukko(120, 1100, 5, -100);
 
 void setup(){
   size(1200, 700);
+  frameRate(10);
   taivas = color(81,127,252);
   valk = color(255);
   // Open the file from the createWriter() example
   reader = createReader("palkkatilastot.txt");    
   luoPalkkataulukot();
   fontti = createFont("Futura-Medium",14); //uusi!
-  fontti2 = createFont("Calibri", 22);
   fontti3 = loadFont("GungsuhChe-24.vlw");
-
+  img1 = loadImage("inf.png");
+  img2 = loadImage("tut.png");
+  img3 = loadImage("fys.png");
+  img4 = loadImage("tik.png");
 }
 
 void draw(){
@@ -75,7 +84,11 @@ void draw(){
   println("tutan koko: " + tutaPuu.koko);
   println("tutan muuttuja: " + tutaPuu.muuttuja); **/
   piirraMaa();
-  
+  u1.kokoUkko();
+  u2.kokoUkko();
+  u3.kokoUkko();
+  u4.kokoUkko();
+  u5.kokoUkko();
  }else{
 
   infoPuu.piirraPalkka();
@@ -87,6 +100,11 @@ void draw(){
   nappula2.draw();
   nappula3.draw();
   nappula4.draw();
+  u1.kokoUkko();
+  u2.kokoUkko();
+  u3.kokoUkko();
+  u4.kokoUkko();
+  u5.kokoUkko();
   }
 
   

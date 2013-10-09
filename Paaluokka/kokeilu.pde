@@ -38,17 +38,18 @@ void piirraRunko(){
 
 void piirraLehdet(){
     noStroke();
-  for(int i = 0; i < 12*muuttuja; i++){
+    color varit[] = {color(55,220,116,90),
+                   color(99,220,144,90),
+                   color(0,185,69,90),
+                   color(35,139,73,90)};
+    int index;
+  for(int i = 0; i < 8*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
-     if(overCircle(0, -100, 130-lehtienYmpyra/2, x, y)){
-        color varit[] = {color(55,220,116,70),
-                   color(99,220,144,70),
-                   color(0,185,69,70),
-                   color(35,139,73,70)};
-        int index = int(random(varit.length));
+     if(overCircle(0, -100, 130-lehtienYmpyra/2, x, y)){     
+        index = int(random(varit.length));
         fill(varit[index]); 
-        ellipse(x, y, 25, 25);
+        ellipse(x, y, 30, 30);
   }
   }   
 }
@@ -78,7 +79,7 @@ void piirraPalkka(){
 **/
 void muutaArvoa(){
  
-  koko = (palautaPalkka()-2000)/15;
+  koko = (palautaPalkka()-2000)/14;
   if(koko >= muuttuja){
     suunta = true;
   }else{
@@ -86,16 +87,17 @@ void muutaArvoa(){
   }
   if(!this.onKasvanut){
     if(suunta){
-      muuttuja = muuttuja + 1;
-      lehtienYmpyra = lehtienYmpyra - 1;
+      muuttuja = muuttuja + 5;
+      lehtienYmpyra = lehtienYmpyra - 5;
     }else{
-       muuttuja = muuttuja - 1;
-      lehtienYmpyra = lehtienYmpyra + 1;
+       muuttuja = muuttuja - 5;
+      lehtienYmpyra = lehtienYmpyra + 5;
     }
   }
   
   
-  if(this.muuttuja == this.koko){
+  if(this.muuttuja == this.koko || this.muuttuja == this.koko+5 || this.muuttuja == this.koko+4 ||
+    this.muuttuja == this.koko+3 || this.muuttuja == this.koko+2 || this.muuttuja == this.koko+1){
     this.onKasvanut = true;
     if(onKasvettu()){
       muutaLooppia();
