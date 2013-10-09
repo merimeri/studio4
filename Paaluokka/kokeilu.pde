@@ -46,7 +46,7 @@ void piirraLehdet(){
                    color(35,139,73,80)};
   int index;
    if(muuttuja == 5.0){
-      for(int i = 0; i < 250; i++){
+      for(int i = 0; i < 300; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
      if(overCircle(0, -125, 130-lehtienYmpyra/2, x, y)){     
