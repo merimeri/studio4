@@ -1,4 +1,5 @@
-
+/* Luokka, joka vastaa puiden piirrosta ja kasvattamisesta
+*/
 class LiikkuvaPuu{
   
 float theta; 
@@ -30,16 +31,15 @@ void draw() {
   muutaArvoa();
   
 }
-
+// Piirtaa puun rungon
 void piirraRunko(){
   line(0,0,0,muuttuja);
   noFill();
 }
-
+// Piirtaa puun lehdet satunnaiseen paikkaan maaritellyn alueen sisalla
 void piirraLehdet(){
-   
- 
   noStroke();
+  //luodaan varitaulukko, josta varit arvotaan
   color varit[] = {color(55,220,116,80),
                    color(99,220,144,80),
                    color(0,185,69,80),
@@ -49,6 +49,7 @@ void piirraLehdet(){
       for(int i = 0; i < 300; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
+    // tarkastetaan onko arvottu halutun ympyran sisalle
      if(overCircle(0, -125, 130-lehtienYmpyra/2, x, y)){     
         index = int(random(varit.length));
         fill(varit[index]); 
@@ -61,6 +62,7 @@ void piirraLehdet(){
   for(int i = 0; i < 9*muuttuja; i++){
     float x = random(-muuttuja/2 -100, muuttuja/2+100);
     float y = random(-muuttuja/2 -185, muuttuja/2);
+      // tarkastetaan onko arvottu halutun ympyran sisalla
        if(overCircle(0, -110, 130-lehtienYmpyra/2, x, y)){     
           index = int(random(varit.length));
           fill(varit[index]); 
@@ -73,7 +75,9 @@ void piirraLehdet(){
         
   
 
-
+/**
+*Kirjoitetaan puihin nakyviin palkka
+**/
 void piirraPalkka(){
   textSize(32);
   fill(255);
@@ -91,7 +95,7 @@ void piirraPalkka(){
 } 
 
 /**
-*koossa talllennettuna koko miksi haulutaan, muuttujassa minka kokoisia ollaan
+*koossa talllennettuna koko miksi halutaan, muuttujassa minka kokoisia ollaan
 **/
 void muutaArvoa(){
  
@@ -138,36 +142,37 @@ int palautaPalkka(){
   default: return kaikkienPalkka;
  }
 }
-
+/**
+* Piirretaan puut, jotka kuvaavat palkan suuruutta. Puiden piirrossa on otettu mallia processingin esimerkeista: http://processing.org/examples/tree.html
+**/
 void testi(float kulma){
-  // Let's pick an angle 0 to 90 degrees based on the mouse position
   float a = (0.2+(kulma / (float) width)) * 40f;
-  // Convert it to radians
+  // radiaaneiksi
   theta = radians(a);
-  // Start the tree from the bottom of the screen
   translate(this.x,height);
   
-  // Move to the end of that line
+  // Maaritetaan uuden viivan alku
   translate(0,-muuttuja*1.2);
   // Start the recursive branching!
   branch(80);
 }
 
-
+/**
+* Metodissa luodaan rekursiivisesti puun oksia
+**/
 void branch(float h) {
   strokeWeight(2+muuttuja/40);
   stroke(102,77,51);
-  // Each branch will be 2/3rds the size of the previous one
+  // Seuraavan pituus 0.7*edellisen pituus
   h *= 0.7;
   
-  // All recursive functions must have an exit condition!!!!
-  // Here, ours is when the length of the branch is 2 pixels or less
+  // Piirretaan oksia kunnes niiden pituus on alle 10
   if (h > 10) {
     pushMatrix();    // Save the current state of transformation (i.e. where are we now)
     rotate(theta);   // Rotate by theta
     line(0, 0, 0, -h);  // Draw the branch
     translate(0, -h); // Move to the end of the branch
-    branch(h);       // Ok, now call myself to draw two new branches!!
+    branch(h);       // Kutsutaan itseaan piirtaakseen lisaa
     popMatrix();     // Whenever we get back here, we "pop" in order to restore the previous matrix state
     
     // Repeat the same thing, only branch off to the "left" this time!
