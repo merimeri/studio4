@@ -40,8 +40,9 @@ class Ukko {
 
     //nenä
     stroke(1);
+    strokeWeight(1);
     fill(228, 187, 94);
-    noFill();
+    //noFill();
     beginShape();
     vertex(paikka, setY-0.97*koko+Y);
     vertex(paikka+0.02*koko, setY-0.93*koko+Y);
