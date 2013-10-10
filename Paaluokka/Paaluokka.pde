@@ -14,7 +14,8 @@ Namiska nappula4 = new Namiska(1050, 50, 25, 25,4);
 int valittuNappula = 0;
 BufferedReader reader;
 String line;
-PFont fontti;
+PFont fontti; //uusi!
+PFont fontti2;
 PFont fontti3;
 boolean ekaKierros;//aluksi ei piirreta palkkoja
 
@@ -53,10 +54,10 @@ void setup(){
   frameRate(10);
   taivas = color(81,127,252);
   valk = color(255);
-  // Luetaan palkkataulukot
+  // Open the file from the createWriter() example
   reader = createReader("palkkatilastot.txt");    
   luoPalkkataulukot();
-  fontti = createFont("Futura-Medium",14);
+  fontti = createFont("Futura-Medium",14); //uusi!
   fontti3 = loadFont("GungsuhChe-24.vlw");
   img1 = loadImage("inf.png");
   img2 = loadImage("tut.png");
@@ -101,7 +102,7 @@ void draw(){
   u5.kokoUkko();
   
  }else{
-// jos ei olla loopissa, ei kasvateta puita eika piirreta uudelleen
+
    if(ekaKierros){
     infoPuu.piirraPalkka();
     tutaPuu.piirraPalkka();
@@ -192,7 +193,7 @@ void mouseClicked() {
    nappula3.mouseClicked();
    nappula4.mouseClicked();
 }
-  // nollataan aikaisemmat painallukset
+  
 void nollaaPainallukset(){
   nappula.painettu = false;
   nappula2.painettu = false;
