@@ -1,3 +1,5 @@
+
+//Luokka, luo napin ja pitaa huolta sen toiminnoista
 class Namiska {
   int x;  
   int y;
@@ -69,6 +71,7 @@ boolean overCircle(int x, int y, int radius){
   } 
 }
 
+//Metodi, joka asettaa tiedon siita, mihin palkkaan asti puiden pitaa kasvaa
 void lataaPalkkatiedot(int tunniste){
   nollaaKasvu();
   infoPuu.muutaLooppia();

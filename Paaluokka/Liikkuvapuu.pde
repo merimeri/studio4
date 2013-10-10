@@ -129,11 +129,6 @@ void muutaArvoa(){
 }  
 
 int palautaPalkka(){
-  /**println("info: " + infonPalkka);
-  println("tuta: " + tutanPalkka);
-  println("tefy: " + tefynPalkka);
-  println("tik: " + tikinPalkka);
-  println("kaikki: " + kaikkienPalkka);**/
   switch (this.puu) {
   case 1: return infonPalkka;
   case 2: return tutanPalkka;
@@ -142,6 +137,7 @@ int palautaPalkka(){
   default: return kaikkienPalkka;
  }
 }
+
 /**
 * Piirretaan puut, jotka kuvaavat palkan suuruutta. Puiden piirrossa on otettu mallia processingin esimerkeista: http://processing.org/examples/tree.html
 **/
@@ -200,7 +196,7 @@ boolean overCircle(int x, int y, float radius, float x2, float y2){
   } 
 } 
 
-
+//Metodi, joka muuttaa puiden tilaa, eli piirretaanko niita vai ei
 void muutaLooppia(){
   if(this.looppi == true){
    this.looppi = false;

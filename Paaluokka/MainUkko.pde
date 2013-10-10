@@ -1,6 +1,7 @@
 int setX = 800;
 int setY = 800;
 
+//Luokka, joka piirtaa puiden vierella seisovat ukkelit
 class Ukko {
   int koko;
   int paikka;

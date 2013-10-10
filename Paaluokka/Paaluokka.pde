@@ -1,20 +1,23 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-//ukkojen hattujen logot
+/**
+*Kiltojen logot
+**/
 PImage img1;
 PImage img2;
 PImage img3;
 PImage img4;
-//valikon napit
+
+//ylareunaan piirrettavat napi
 Namiska nappula = new Namiska(750, 50,25,25,1);
 Namiska nappula2 = new Namiska(850,50,25,25,2);
 Namiska nappula3 = new Namiska(950, 50,25,25,3);
 Namiska nappula4 = new Namiska(1050, 50, 25, 25,4);
-int valittuNappula = 0;
+
 BufferedReader reader;
 String line;
-PFont fontti; //uusi!
+PFont fontti;
 PFont fontti2;
 PFont fontti3;
 boolean ekaKierros;//aluksi ei piirreta palkkoja
@@ -27,22 +30,22 @@ boolean ekaKierros;//aluksi ei piirreta palkkoja
   String[] tefy;
   String[] tik;
   String[] kaikki;
-  int infonPalkka = 2000;
+  int infonPalkka = 2000;//aluksi palkat ovat kaikilla 2000
   int tutanPalkka = 2000;
   int tefynPalkka = 2000;
   int tikinPalkka = 2000;
   int kaikkienPalkka = 2000;
- //gradienttien värit
   color taivas, valk;
   
-//luodaan puut
+//liikkuvat puut  
 LiikkuvaPuu infoPuu = new LiikkuvaPuu(150,1);
 LiikkuvaPuu tutaPuu = new LiikkuvaPuu(380,2);
 LiikkuvaPuu tefyPuu = new LiikkuvaPuu(600,3);
 LiikkuvaPuu tikPuu = new LiikkuvaPuu(820,4);
 LiikkuvaPuu kaikkiPuu = new LiikkuvaPuu(1050,5);
+int valittuNappula = 0;//mika nappi on painettuna
 
-//luodaan ukot
+//puiden vieressa olevat ukkelit
 Ukko u1 = new Ukko(120, 200, 1, -100);
 Ukko u2 = new Ukko(120, 430, 2, -100);
 Ukko u3 = new Ukko(120, 650, 3, -100);
@@ -54,7 +57,6 @@ void setup(){
   frameRate(10);
   taivas = color(81,127,252);
   valk = color(255);
-  // Open the file from the createWriter() example
   reader = createReader("palkkatilastot.txt");    
   luoPalkkataulukot();
   fontti = createFont("Futura-Medium",14); //uusi!
@@ -63,24 +65,23 @@ void setup(){
   img2 = loadImage("tut.png");
   img3 = loadImage("fys.png");
   img4 = loadImage("tik.png");
-  ekaKierros = false;
+  ekaKierros = false; //kun puut pysahtyvat aluksi palkkoja ei piireta
 }
 
 void draw(){
 
-  
+ //puut pysaytetaan kun ne ovat kasvaneet haluttuun pituuteen
  if(infoPuu.looppi){
-   //tausta taivaan värin piirto
    piirraGradientti(0, 0, width, height, taivas, valk);
    piirraValikko();
-     
-  //piirretään nappulat
+  
+  //piirretaan napi
   nappula.draw();
   nappula2.draw();
   nappula3.draw();
   nappula4.draw();
   
-  //piirretään puut
+  //puita piirrettaessa tyhjennetaan matrixit
   resetMatrix();
   infoPuu.draw();
   resetMatrix();
@@ -92,9 +93,9 @@ void draw(){
   resetMatrix(); 
   tikPuu.draw();
   resetMatrix();  
+
+  //piirretaan maa j aukkelit
   piirraMaa();
-  
-  //ukkojen itse piirto
   u1.kokoUkko();
   u2.kokoUkko();
   u3.kokoUkko();
@@ -102,7 +103,8 @@ void draw(){
   u5.kokoUkko();
   
  }else{
-
+  
+   //ekalla kierroksella ei piirreta palkkoja
    if(ekaKierros){
     infoPuu.piirraPalkka();
     tutaPuu.piirraPalkka();
@@ -139,10 +141,8 @@ void piirraMaa(){
   }
 }
   
-/**
-*Metodi, joka piirtää valikon 
-*eli tekstit selittämään käyttöä
-**/
+  
+//Metodi, joka piirtaa valikon  
 void piirraValikko(){  
   textFont(fontti,16);
   fill(0);
@@ -176,8 +176,9 @@ void piirraValikko(){
           tuta = line.split(" ");
         }else{
           kaikki = line.split(" ");
-        }  
-      }   
+        }
+          
+      }
     } catch (FileNotFoundException e) {
       System.out.println("File not found!");
     } catch (IOException e) {
@@ -186,7 +187,7 @@ void piirraValikko(){
     
   }
   
-  //regoidaan nappuloiden painalluksiin 
+  
 void mouseClicked() {
    nappula.mouseClicked(); 
    nappula2.mouseClicked();
@@ -201,9 +202,7 @@ void nollaaPainallukset(){
   nappula4.painettu = false;
 }
 
-/**
-*Palauttaa true jos puut ovat kasvaneet
-**/
+//Metodi, joka kertoo ovatko kaikki puut kasvaneet haluttuun pituuteen
 boolean onKasvettu(){
  if (infoPuu.onKasvanut && tutaPuu.onKasvanut && tefyPuu.onKasvanut
      && tikPuu.onKasvanut && kaikkiPuu.onKasvanut){
@@ -213,6 +212,7 @@ boolean onKasvettu(){
  }   
 }
 
+//Metodi, joka asettaa kaikille puille tiedon siita, etta niiden pitaa kasvaa
 void nollaaKasvu(){
   infoPuu.onKasvanut = false;
   tutaPuu.onKasvanut = false;
@@ -221,9 +221,6 @@ void nollaaKasvu(){
   kaikkiPuu.onKasvanut = false;
 }
 
-/**
-*Metodi joka piirtää taustana toimivan gradientin
-**/
 void piirraGradientti(int x, 
 int y, float w, float h, 
 color yla, color ala) {
@@ -236,7 +233,7 @@ color yla, color ala) {
       stroke(maalaus);
       line(x, i, x+w, i);
     }
-  }
+}
 
 
 
