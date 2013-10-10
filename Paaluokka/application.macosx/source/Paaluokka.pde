@@ -8,6 +8,7 @@ PImage img1;
 PImage img2;
 PImage img3;
 PImage img4;
+PImage img5;
 
 //ylareunaan piirrettavat napi
 Namiska nappula = new Namiska(750, 50,25,25,1);
@@ -65,6 +66,7 @@ void setup(){
   img2 = loadImage("tut.png");
   img3 = loadImage("fys.png");
   img4 = loadImage("tik.png");
+  img5 = loadImage("kaikki.png");
   ekaKierros = false; //kun puut pysahtyvat aluksi palkkoja ei piireta
 }
 

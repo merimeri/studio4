@@ -27,6 +27,7 @@ PImage img1;
 PImage img2;
 PImage img3;
 PImage img4;
+PImage img5;
 
 //ylareunaan piirrettavat napi
 Namiska nappula = new Namiska(750, 50,25,25,1);
@@ -84,6 +85,7 @@ public void setup(){
   img2 = loadImage("tut.png");
   img3 = loadImage("fys.png");
   img4 = loadImage("tik.png");
+  img5 = loadImage("kaikki.png");
   ekaKierros = false; //kun puut pysahtyvat aluksi palkkoja ei piireta
 }
 
@@ -553,6 +555,9 @@ class Ukko {
     }
     if(this.kilta==4){
      image(img4, paikka-0.1f*koko, setY-1.25f*koko+Y, 0.2f*koko, 0.2f*koko); 
+    }
+     if(this.kilta==5){
+     image(img5, paikka-0.1f*koko, setY-1.25f*koko+Y, 0.2f*koko, 0.2f*koko); 
     }
   }
 

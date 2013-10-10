@@ -83,6 +83,9 @@ class Ukko {
     if(this.kilta==4){
      image(img4, paikka-0.1*koko, setY-1.25*koko+Y, 0.2*koko, 0.2*koko); 
     }
+     if(this.kilta==5){
+     image(img5, paikka-0.1*koko, setY-1.25*koko+Y, 0.2*koko, 0.2*koko); 
+    }
   }
 
   void ruumis() {
