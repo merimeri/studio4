@@ -26,12 +26,14 @@ void fileSelected(File selection) {
     println("User selected " + selection.getAbsolutePath());
     kuva = loadImage(selection.getAbsolutePath());
     
+    
   }
 }
 void draw() {
   
   if (kuva != null) {
   image(kuva, 0, 0, width, height);
+  piirraValikko();
   }
 }
   void piirraValikko(){  
