@@ -6,6 +6,8 @@ class Nappula {
   int leveys;
   int korkeus;
   int tunniste;
+  int vari = 255;
+  int vari2 = 255;
  
 
   Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
@@ -20,12 +22,30 @@ class Nappula {
 
   void draw() {
     stroke(0);
-    fill(255);  
-    //rectMode(CENTER);  
+    fill(vari);  
     rect(this.x, this.y, this.leveys, this.korkeus);  
   }
   
-  
+  void mouseMoved() {
+  if (ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)) {
+    println("jee");
+    this.vari2 = vari;
+    this.vari = 134;
+    if (vari2 != vari) {
+    this.draw();
+    println("piirto");
+    }
+  }
+  else{
+    vari2 = vari;
+    vari = 255;
+    if (vari2 != vari) {
+    this.draw();
+    println("piirto");
+    println("2" + vari2);
+    }
+  }
+}  
     void mouseClicked() {
     if(ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)){   
         if(this.tunniste == 1){
@@ -39,7 +59,8 @@ class Nappula {
           println("VIKAA KLIKATTIIN!!");
         }   
       }  
-    }      
+    } 
+  
 
 boolean ruudussa(int x, int y, int leveys, int korkeus, int tunniste)  {
     if (mouseX >= x && mouseX <= x+leveys && 

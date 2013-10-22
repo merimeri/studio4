@@ -32,7 +32,7 @@ void fileSelected(File selection) {
 void draw() {
   
   if (kuva != null) {
-  image(kuva, 0, 0, width, height);
+  image(kuva, 0, height/7, width, height-height/7);
   piirraValikko();
   }
 }
@@ -54,6 +54,8 @@ void mouseClicked() {
    nappula3.mouseClicked();
 
 }
-
+void mouseMoved() {
+  nappula1.mouseMoved();
+}
 
 
