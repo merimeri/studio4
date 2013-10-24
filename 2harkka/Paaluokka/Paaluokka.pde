@@ -1,8 +1,9 @@
 PImage kuva;
 
-Nappula nappula1 = new Nappula(100,25, 50, 150, 1);
-Nappula nappula2 = new Nappula(325,25, 50, 150, 2);
-Nappula nappula3 = new Nappula(550,25, 50, 150, 3);
+Nappula nappula1 = new Nappula(40,25, 50, 150, 1);
+Nappula nappula2 = new Nappula(230,25, 50, 150, 2);
+Nappula nappula3 = new Nappula(420,25, 50, 150, 3);
+Nappula nappula4 = new Nappula(610, 25, 50, 150, 4);
 
 
 //String osoite;
@@ -38,24 +39,29 @@ void draw() {
 }
   void piirraValikko(){  
   fill(190);
-   strokeWeight(1);
-   stroke(0,0,0);
+  strokeWeight(1);
+  stroke(0,0,0);
   rect(0, 0, width, height/7);
   nappula1.draw();
   nappula2.draw();
   nappula3.draw();
+  nappula4.draw();
 }
 
 
 
 void mouseClicked() {
-   nappula1.mouseClicked(); 
+   nappula1.mouseClicked();
    nappula2.mouseClicked();
    nappula3.mouseClicked();
+   nappula4.mouseClicked();
 
 }
 void mouseMoved() {
   nappula1.mouseMoved();
+  nappula2.mouseMoved();
+  nappula3.mouseMoved();
+  nappula4.mouseMoved();
 }
 
 
