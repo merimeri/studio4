@@ -8,6 +8,15 @@ class Nappula {
   int tunniste;
   int vari = 255;
   int vari2 = 255;
+  PImage 5kuva;
+  PImage 6kuva;
+  PImage 7kuva;
+  PImage 8kuva;
+  PImage 9kuva;
+  PImage 10kuva;
+  PImage 11kuva;
+  PImage 12kuva;
+  PImage 13kuva;
  
 
 Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
@@ -16,6 +25,16 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
     this.leveys = leveys;
     this.korkeus = korkeus;
     this.tunniste = tunniste; //arvo jonka mukaan määritellään mikä nappula
+    5kuva = loadImage("5.jpg");
+    6kuva = loadImage("6.jpg");
+    7kuva = loadImage("7.jpg");
+    8kuva = loadImage("8.jpg");
+    9kuva = loadImage("9.jpg");
+    10kuva = loadImage("10.jpg");
+    11kuva = loadImage("11.jpg");
+    12kuva = loadImage("12.jpg");
+    13kuva = loadImage("13.jpg");
+    
     
     
   }
