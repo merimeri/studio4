@@ -1,5 +1,6 @@
 PImage kuva;
 
+
 Nappula nappula1 = new Nappula(40,25, 50, 150, 1);
 Nappula nappula2 = new Nappula(230,25, 50, 150, 2);
 Nappula nappula3 = new Nappula(420,25, 50, 150, 3);
@@ -13,30 +14,37 @@ void setup() {
   background(255);
   piirraValikko();
   
- 
- 
- 
-
 }
+
 
 void fileSelected(File selection) {
-  println("moi");
   if (selection == null) {
-    println("Window was closed or the user hit cancel.");
+    println("Ei valittu kuvaa, käyttäjä painoi cancel.");
   } else {
-    println("User selected " + selection.getAbsolutePath());
+    println("Käyttäjä valitsi kuvan " + selection.getAbsolutePath());
+    println(selection.getAbsolutePath());
     kuva = loadImage(selection.getAbsolutePath());
-    
-    
   }
 }
-void draw() {
-  
+
+
+void folderSelected(File selection) {
+  if (selection == null) {
+    println("Ei valittu kansiota, käyttäjä painoi cancel");
+  } else {
+    int x = int(random(0,2000));
+    println("Käyttäjä valitsi kansion " + selection.getAbsolutePath());
+    kuva.save(selection.getAbsolutePath()+ "/kuva"+ x +".jpg");
+  }
+}
+
+void draw() {  
   if (kuva != null) {
   image(kuva, 0, height/7, width, height-height/7);
   piirraValikko();
   }
 }
+
   void piirraValikko(){  
   fill(190);
   strokeWeight(1);
@@ -57,6 +65,7 @@ void mouseClicked() {
    nappula4.mouseClicked();
 
 }
+
 void mouseMoved() {
   nappula1.mouseMoved();
   nappula2.mouseMoved();

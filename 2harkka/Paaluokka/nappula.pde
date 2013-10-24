@@ -10,12 +10,12 @@ class Nappula {
   int vari2 = 255;
  
 
-  Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
+Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
     this.x = x;
     this.y = y;
     this.leveys = leveys;
     this.korkeus = korkeus;
-    this.tunniste = tunniste;
+    this.tunniste = tunniste; //arvo jonka mukaan määritellään mikä nappula
     
     
   }
@@ -50,14 +50,18 @@ class Nappula {
     if(ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)){   
         if(this.tunniste == 1){
           println("EKAA KLIKATTIIN!!");
-          selectInput("Select a file to process:", "fileSelected");
+          selectInput("Valitse kuva jonka muokkaat", "fileSelected");
         } 
         if(this.tunniste == 2){
           println("TOKAA KLIKATTIIN!!");
         }
          if(this.tunniste == 3){
-          println("VIKAA KLIKATTIIN!!");
-        }   
+          println("KOLMATTA KLIKATTIIN!!");
+        } 
+          if(this.tunniste == 4){
+          println("VIKAA KLIKATTIIN");
+          selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
+        }  
       }  
     } 
   
@@ -67,11 +71,10 @@ boolean ruudussa(int x, int y, int leveys, int korkeus, int tunniste)  {
       mouseY >= y && mouseY <= y+korkeus) {
         println("ruudussa:" + this.tunniste);
         return true;
-
     } 
     else{
         return false;
-     }
+    }
   } 
 }
 
