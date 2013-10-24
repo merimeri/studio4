@@ -22,8 +22,8 @@ class Muokkaus {
     muokattavaKuva.loadPixels();
 
     // aloitetaan x = 1, koska verrataan vasempaan naapuriin
-    for (int x = 1; x < width; x++ ) {
-      for (int y = 0; y < height; y++ ) {
+    for (int x = 1; x < img.width; x++ ) {
+      for (int y = 0; y < img.height; y++ ) {
 
         // selvitetään pikselin sijainti ja väli
         int loc = x + y*img.width;
@@ -53,8 +53,8 @@ class Muokkaus {
     /* Käydään läpi uuden kuvan pikselit ja pyritään korostamaan eroja siten, että
      harmaasävyt jaetaan 3 osaan. Mustaan, vaalean harmaaseen ja valkoiseen.
      */
-    for (int x = 0; x < width; x++) {
-      for (int y = 0; y < height; y++) {
+    for (int x = 0; x < muokattavaKuva.width; x++) {
+      for (int y = 0; y < muokattavaKuva.height; y++) {
         // pikselin sijainti
         int loc = x + y*img.width;
 

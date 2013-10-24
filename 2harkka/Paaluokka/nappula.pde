@@ -50,7 +50,7 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
       image(kuva12, x,y, leveys, korkeus);
      }
       if(this.tunniste == 13){
-      image(kuva13, x,y, leveys, korkeus);
+        image(kuva13, x,y, leveys, korkeus);
      }     
     }
     noFill();
@@ -77,7 +77,8 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
     println("2" + vari2);
     }
   }
-}  
+}
+
     void mouseClicked() {
     if(ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)){   
         if(this.tunniste == 1){
@@ -90,49 +91,67 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
         }
          if(this.tunniste == 3){
           println("KOLMATTA KLIKATTIIN!!");
+          //palautaKuva();
+          
         } 
           if(this.tunniste == 4){
           println("VIKAA KLIKATTIIN");
           selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
           
         }  
-         if(this.tunniste == 5){
+         
+         if(kuva == null){
+           switch(kuva){
+             case 1 : kuva = kuva5;
+             case 2 : kuva = kuva6;
+             case 3 : kuva = kuva7;
+             case 4 : kuva = kuva8;
+             case 5 : kuva = kuva9;
+             case 6 : kuva = kuva10;
+             case 7 : kuva = kuva11;
+             case 8 : kuva = kuva12;
+             case 9 : kuva = kuva13;
+         /*if(this.tunniste == 5){
           println("1. ruutua KLIKATTIIN");
-          
+          kuva = kuva5;
          }
          if(this.tunniste == 6){
           println("2. ruutua KLIKATTIIN");
-          
+          kuva = kuva6;     
          }
          if(this.tunniste == 7){
           println("3. ruutua KLIKATTIIN");
-         
+          kuva = kuva7;
          }
          if(this.tunniste == 8){
           println("4. ruutua KLIKATTIIN");
-         
+          kuva = kuva8;
          }
          if(this.tunniste == 9){
           println("5. ruutua KLIKATTIIN");
-          
+          kuva = kuva9;          
          }
          if(this.tunniste == 10){
           println("6. ruutua KLIKATTIIN");
-          
-         }
+          kuva = kuva10;
+           }
+       
          if(this.tunniste == 11){
           println("7. ruutua KLIKATTIIN");
-          
-         }
+          kuva = kuva11;
+           }
+         
          if(this.tunniste == 12){
           println("8. ruutua KLIKATTIIN");
+          kuva = kuva12;
+          }
          
-         }
          if(this.tunniste == 13){
           println("9.ruutua KLIKATTIIN");
-          
+          kuva = kuva13;
+          }
          }
-      }  
+      }*/
     } 
   
 
@@ -146,8 +165,8 @@ boolean ruudussa(int x, int y, int leveys, int korkeus, int tunniste)  {
         return false;
     }
   } 
-} 
-
+ }
+  
 
 
 

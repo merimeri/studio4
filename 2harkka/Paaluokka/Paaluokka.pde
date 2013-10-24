@@ -66,8 +66,8 @@ void folderSelected(File selection) {
 
 void draw() {  
   if (kuva != null) {
-  image(kuva, 0, height/7, width, height-height/7);
-  piirraValikko();
+    image(kuva, 0, height/7, width, height-height/7);    
+    piirraValikko();
   }
 }
 
