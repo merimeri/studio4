@@ -5,7 +5,15 @@ Nappula nappula1 = new Nappula(40,25, 50, 150, 1);
 Nappula nappula2 = new Nappula(230,25, 50, 150, 2);
 Nappula nappula3 = new Nappula(420,25, 50, 150, 3);
 Nappula nappula4 = new Nappula(610, 25, 50, 150, 4);
-
+Nappula nappula5 = new Nappula (0, 100, 200, (800/3), 5);
+Nappula nappula6 = new Nappula (800/3, 100, 200, (800/3), 6);
+Nappula nappula7 = new Nappula (798-(800/3), 100, 200, (800/3), 7);
+Nappula nappula8 = new Nappula (0, 300, 200,(800/3), 8);
+Nappula nappula9 = new Nappula (800/3, 300, 200,(800/3), 9);
+Nappula nappula10 = new Nappula (798-(800/3), 300, 200,(800/3), 10);
+Nappula nappula11 = new Nappula (0, 500, 200,(800/3), 11);
+Nappula nappula12 = new Nappula (800/3, 500, 200,(800/3),12);
+Nappula nappula13 = new Nappula (798-(800/3), 500, 200,(800/3), 13);
 
 //String osoite;
 
@@ -54,7 +62,23 @@ void draw() {
   nappula2.draw();
   nappula3.draw();
   nappula4.draw();
-}
+  
+  }
+
+
+  void piirraTaulukko() {
+  nappula5.draw();
+  nappula6.draw();
+  nappula7.draw();
+  nappula8.draw();
+  nappula9.draw();
+  nappula10.draw();
+  nappula11.draw();
+  nappula12.draw();
+  nappula13.draw();
+  }
+
+   
 
 
 
@@ -63,7 +87,14 @@ void mouseClicked() {
    nappula2.mouseClicked();
    nappula3.mouseClicked();
    nappula4.mouseClicked();
-
+   nappula5.mouseClicked();
+   nappula6.mouseClicked();
+   nappula7.mouseClicked();
+   nappula8.mouseClicked();
+   nappula9.mouseClicked();
+   nappula10.mouseClicked();
+   nappula11.mouseClicked();
+   nappula12.mouseClicked();
 }
 
 void mouseMoved() {
