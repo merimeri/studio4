@@ -66,39 +66,39 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
         }  
          if(this.tunniste == 5){
           println("1. ruutua KLIKATTIIN");
-          selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
+          
          }
          if(this.tunniste == 6){
           println("2. ruutua KLIKATTIIN");
-          selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
+          
          }
          if(this.tunniste == 7){
           println("3. ruutua KLIKATTIIN");
-          selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
+         
          }
          if(this.tunniste == 8){
           println("4. ruutua KLIKATTIIN");
-          selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
+         
          }
          if(this.tunniste == 9){
           println("5. ruutua KLIKATTIIN");
-          selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
+          
          }
          if(this.tunniste == 10){
           println("6. ruutua KLIKATTIIN");
-          selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
+          
          }
          if(this.tunniste == 11){
           println("7. ruutua KLIKATTIIN");
-          selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
+          
          }
          if(this.tunniste == 12){
           println("8. ruutua KLIKATTIIN");
-          selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
+         
          }
          if(this.tunniste == 13){
           println("9.ruutua KLIKATTIIN");
-          selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
+          
          }
       }  
     } 

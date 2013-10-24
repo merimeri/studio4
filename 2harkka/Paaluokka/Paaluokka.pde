@@ -13,7 +13,7 @@ Nappula nappula9 = new Nappula (800/3, 300, 200,(800/3), 9);
 Nappula nappula10 = new Nappula (798-(800/3), 300, 200,(800/3), 10);
 Nappula nappula11 = new Nappula (0, 500, 200,(800/3), 11);
 Nappula nappula12 = new Nappula (800/3, 500, 200,(800/3),12);
-Nappula nappula13 = new Nappula (798-(800/3), 500, 200,(800/3), 13);
+Nappula nappula13 = new Nappula (798-(800/3), 500, 200,(800/3),13);
 
 //String osoite;
 
@@ -67,6 +67,7 @@ void draw() {
 
 
   void piirraTaulukko() {
+  kuva = null;
   nappula5.draw();
   nappula6.draw();
   nappula7.draw();
@@ -95,6 +96,7 @@ void mouseClicked() {
    nappula10.mouseClicked();
    nappula11.mouseClicked();
    nappula12.mouseClicked();
+   nappula13.mouseClicked();
 }
 
 void mouseMoved() {
