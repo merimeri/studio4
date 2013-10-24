@@ -1,4 +1,13 @@
 PImage kuva;
+PImage kuva5;
+PImage kuva6;
+PImage kuva7;
+PImage kuva8;
+PImage kuva9;
+PImage kuva10;
+PImage kuva11;
+PImage kuva12;
+PImage kuva13;
 
 
 Nappula nappula1 = new Nappula(40,25, 50, 150, 1);
@@ -22,7 +31,15 @@ void setup() {
   size(800,700);
   background(255);
   piirraValikko();
-  
+  kuva5 = loadImage("kuva5.jpg");
+  kuva6 = loadImage("kuva6.jpg");
+  kuva7 = loadImage("kuva7.jpg");
+  kuva8 = loadImage("kuva8.jpg");
+  kuva9 = loadImage("kuva9.jpg");
+  kuva10 = loadImage("kuva10.jpg");
+  kuva11 = loadImage("kuva11.jpg");
+  kuva12 = loadImage("kuva12.jpg");
+  kuva13 = loadImage("kuva13.jpg"); 
 }
 
 
@@ -66,16 +83,16 @@ void draw() {
 }
 
 void piirraTaulukko() {
-kuva = null;
-nappula5.draw();
-nappula6.draw();
-nappula7.draw();
-nappula8.draw();
-nappula9.draw();
-nappula10.draw();
-nappula11.draw();
-nappula12.draw();
-nappula13.draw();
+  kuva = null;
+  nappula5.draw();
+  nappula6.draw();
+  nappula7.draw();
+  nappula8.draw();
+  nappula9.draw();
+  nappula10.draw();
+  nappula11.draw();
+  nappula12.draw();
+  nappula13.draw();
   }
 
 void mouseClicked() {
@@ -101,5 +118,7 @@ void mouseMoved() {
   nappula3.mouseMoved();
   nappula4.mouseMoved();
 }
+
+
 
 

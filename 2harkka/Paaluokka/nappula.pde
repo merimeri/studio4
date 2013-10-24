@@ -8,9 +8,9 @@ class Nappula {
   int tunniste;
   int vari = 255;
   int vari2 = 255;
-  PImage taulukkokuva;
+  
  
- 
+
 
 Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
     this.x = x;
@@ -18,43 +18,45 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
     this.leveys = leveys;
     this.korkeus = korkeus;
     this.tunniste = tunniste; //arvo jonka mukaan määritellään mikä nappula
-   if (this.tunniste == 5) {
-    taulukkokuva = loadImage("5.jpg");
-   }
-   if (this.tunniste == 6) {
-    taulukkokuva = loadImage("6.jpg");
-   }
-   if (this.tunniste == 7) {
-    taulukkokuva = loadImage("7.jpg");
-   }
-   if (this.tunniste == 8) {
-    taulukkokuva = loadImage("8.jpg");
-   }
-   if (this.tunniste == 9) {
-    taulukkokuva = loadImage("9.jpg");
-   }
-   if (this.tunniste == 10) {
-    taulukkokuva = loadImage("10.jpg");
-   }
-   if (this.tunniste == 11) {
-    taulukkokuva = loadImage("11.jpg");
-   }
-   if (this.tunniste == 12) {
-    taulukkokuva = loadImage("12.jpg");
-   }
-   if (this.tunniste == 13) {
-    taulukkokuva = loadImage("13.jpg");
-   }
-   
-    
+    println(this.tunniste);    
   }
 
   void draw() {
     stroke(0);
     fill(vari);  
+    if(this.tunniste >4){
+     if(this.tunniste == 5){
+      image(kuva5, x,y, leveys, korkeus);
+     }
+      if(this.tunniste == 6){
+      image(kuva6, x,y, leveys, korkeus);
+     } 
+    if(this.tunniste == 7){
+      image(kuva7, x,y, leveys, korkeus);
+     } 
+    if(this.tunniste == 8){
+      image(kuva8, x,y, leveys, korkeus);
+     }
+     if(this.tunniste == 9){
+      image(kuva9, x,y, leveys, korkeus);
+     }
+    if(this.tunniste == 10){
+      image(kuva10, x,y, leveys, korkeus);
+     }
+     if(this.tunniste == 11){
+      image(kuva11, x,y, leveys, korkeus);
+     }
+    if(this.tunniste == 12){
+      image(kuva12, x,y, leveys, korkeus);
+     }
+      if(this.tunniste == 13){
+      image(kuva13, x,y, leveys, korkeus);
+     }     
+    }
+    noFill();
     rect(this.x, this.y, this.leveys, this.korkeus);
-    image(taulukkokuva, x, y);
   }
+ 
   
   void mouseMoved() {
   if (ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)) {
@@ -144,7 +146,10 @@ boolean ruudussa(int x, int y, int leveys, int korkeus, int tunniste)  {
         return false;
     }
   } 
-}
+} 
+
+
+
 
 
 
