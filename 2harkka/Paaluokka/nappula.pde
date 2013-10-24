@@ -8,15 +8,8 @@ class Nappula {
   int tunniste;
   int vari = 255;
   int vari2 = 255;
-  PImage 5kuva;
-  PImage 6kuva;
-  PImage 7kuva;
-  PImage 8kuva;
-  PImage 9kuva;
-  PImage 10kuva;
-  PImage 11kuva;
-  PImage 12kuva;
-  PImage 13kuva;
+  PImage taulukkokuva;
+ 
  
 
 Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
@@ -25,24 +18,42 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
     this.leveys = leveys;
     this.korkeus = korkeus;
     this.tunniste = tunniste; //arvo jonka mukaan määritellään mikä nappula
-    5kuva = loadImage("5.jpg");
-    6kuva = loadImage("6.jpg");
-    7kuva = loadImage("7.jpg");
-    8kuva = loadImage("8.jpg");
-    9kuva = loadImage("9.jpg");
-    10kuva = loadImage("10.jpg");
-    11kuva = loadImage("11.jpg");
-    12kuva = loadImage("12.jpg");
-    13kuva = loadImage("13.jpg");
-    
-    
+   if (this.tunniste == 5) {
+    taulukkokuva = loadImage("5.jpg");
+   }
+   if (this.tunniste == 6) {
+    taulukkokuva = loadImage("6.jpg");
+   }
+   if (this.tunniste == 7) {
+    taulukkokuva = loadImage("7.jpg");
+   }
+   if (this.tunniste == 8) {
+    taulukkokuva = loadImage("8.jpg");
+   }
+   if (this.tunniste == 9) {
+    taulukkokuva = loadImage("9.jpg");
+   }
+   if (this.tunniste == 10) {
+    taulukkokuva = loadImage("10.jpg");
+   }
+   if (this.tunniste == 11) {
+    taulukkokuva = loadImage("11.jpg");
+   }
+   if (this.tunniste == 12) {
+    taulukkokuva = loadImage("12.jpg");
+   }
+   if (this.tunniste == 13) {
+    taulukkokuva = loadImage("13.jpg");
+   }
+   
     
   }
 
   void draw() {
     stroke(0);
     fill(vari);  
-    rect(this.x, this.y, this.leveys, this.korkeus);  
+    rect(this.x, this.y, this.leveys, this.korkeus);
+    image(taulukkokuva, x, y);
   }
   
   void mouseMoved() {
