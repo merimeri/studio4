@@ -101,17 +101,7 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
         }  
          
          if(kuva == null){
-           switch(kuva){
-             case 1 : kuva = kuva5;
-             case 2 : kuva = kuva6;
-             case 3 : kuva = kuva7;
-             case 4 : kuva = kuva8;
-             case 5 : kuva = kuva9;
-             case 6 : kuva = kuva10;
-             case 7 : kuva = kuva11;
-             case 8 : kuva = kuva12;
-             case 9 : kuva = kuva13;
-         /*if(this.tunniste == 5){
+         if(this.tunniste == 5){
           println("1. ruutua KLIKATTIIN");
           kuva = kuva5;
          }
@@ -151,9 +141,8 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
           kuva = kuva13;
           }
          }
-      }*/
-    } 
-  
+      }
+    }
 
 boolean ruudussa(int x, int y, int leveys, int korkeus, int tunniste)  {
     if (mouseX >= x && mouseX <= x+leveys && 
