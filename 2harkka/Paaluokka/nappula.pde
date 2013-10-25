@@ -23,7 +23,7 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
 
   void draw() {
     stroke(0);
-    fill(vari);  
+    
     if(this.tunniste >4){
      if(this.tunniste == 5){
       image(kuva5, x,y, leveys, korkeus);
@@ -53,8 +53,15 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
         image(kuva13, x,y, leveys, korkeus);
      }     
     }
+    if (tunniste>4) {
+      
     noFill();
+    }
+    else {
+      fill(vari);  
+    }
     rect(this.x, this.y, this.leveys, this.korkeus);
+   
   }
  
   
