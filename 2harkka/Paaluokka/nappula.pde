@@ -98,7 +98,8 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
         }
          if(this.tunniste == 3){
           println("KOLMATTA KLIKATTIIN!!");
-          //palautaKuva();
+          Muokkaus muokkaus = new Muokkaus (kuva);
+          kuva = muokkaus.teeMuokkaus();
           
         } 
           if(this.tunniste == 4){
