@@ -118,7 +118,20 @@ void mouseMoved() {
   nappula3.mouseMoved();
   nappula4.mouseMoved();
 }
+/*void piirraGradientti(int x, 
+int y, float w, float h, 
+color yla, color ala) {
 
+  noFill();
+
+    for (int i = y; i <= y+h; i++) {
+      float inter = map(i, y, y+h, 0, 1);
+      color maalaus = lerpColor(yla, ala, inter);
+      stroke(maalaus);
+      line(x, i, x+w, i);
+    }
+}
+*/
 
 
 

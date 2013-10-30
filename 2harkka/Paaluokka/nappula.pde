@@ -51,16 +51,18 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
      }
       if(this.tunniste == 13){
         image(kuva13, x,y, leveys, korkeus);
-     }     
+     }  
+   noFill(); 
+   rect(this.x, this.y, this.leveys, this.korkeus);
+  
     }
-    if (tunniste>4) {
-      
-    noFill();
-    }
+    
     else {
-      fill(vari);  
+      fill(vari); 
+      rect(this.x, this.y, this.leveys, this.korkeus, 10);
+    text("jee", this.x, this.y); 
     }
-    rect(this.x, this.y, this.leveys, this.korkeus);
+   
    
   }
  
