@@ -11,6 +11,8 @@ PImage kuva13;
 color harmaa;
 color harmaa2;
 boolean klikkaukset;
+PFont fontti1;
+PFont fontti2;
 
 
 
@@ -37,9 +39,12 @@ void setup() {
   size(800,700);
   background(255);
   klikkaukset = false;
+  fontti1 = loadFont("CourierNewPS-BoldMT-48.vlw");
+  fontti2 = createFont("Futura-Medium",14);
   harmaa = color(255);
   harmaa2 = color(150);
   piirraValikko();
+  
   
   kuva5 = loadImage("kuva5.jpg");
   kuva6 = loadImage("kuva6.jpg");
@@ -89,11 +94,14 @@ void draw() {
    stroke(0,0,0);
    rect(0, 0, width, height/5);
   piirraGradientti(0, 0, width, height/5, harmaa, harmaa2);
+  fill(1);
+  textFont(fontti1, 48);
+  text("Pieniä hetkiä...", 75, 50);
   nappula1.draw();
   nappula2.draw();
   nappula3.draw();
   nappula4.draw();
-    nappula14.draw();
+  nappula14.draw();
 }
 
 void piirraTaulukko() {

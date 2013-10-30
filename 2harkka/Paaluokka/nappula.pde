@@ -62,28 +62,29 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
       fill(vari);
       rect(this.x, this.y, this.leveys, this.korkeus, 50);
       fill(1);
-      text("?", this.x+10, this.y+15);
+      text("?", this.x+8, this.y+17);
     }
     
     else {
    fill(vari);
+   textFont(fontti2, 17);
       rect(this.x, this.y, this.leveys, this.korkeus, 10);
        if (this.tunniste == 1) {
            fill(1);
-         text("Valitse oma kuva", this.x+10, this.y+20);
+         text("Valitse oma kuva", this.x+10, this.y+30);
        }
        if (this.tunniste == 2) {
            fill(1);
-         text("Kuvagalleria", this.x+10, this.y+20);
+         text("Kuvagalleria", this.x+17, this.y+30);
        }
        if (this.tunniste == 3) {
            fill(1);
-         text("Muokkaa", this.x+10, this.y+20);
+         text("Muokkaa", this.x+17, this.y+30);
        }
        if (this.tunniste == 4) {
            fill(1);
         
-         text("Tallenna kuva", this.x+10, this.y+20);
+         text("Tallenna kuva", this.x+17, this.y+30);
        }
     }
    
