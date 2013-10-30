@@ -83,8 +83,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
        }
        if (this.tunniste == 4) {
            fill(1);
-        
-         text("Tallenna kuva", this.x+17, this.y+30);
+        text("Tallenna kuva", this.x+17, this.y+30);
        }
     }
    
@@ -93,6 +92,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
  
   
   void mouseMoved() {
+    if (infonakyvilla == false) {
   if (ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)) {
     println("jee");
     this.vari2 = vari;
@@ -111,10 +111,13 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     println("2" + vari2);
     }
   }
+    }
 }
 
     void mouseClicked() {
-    if(ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)){   
+     
+    if(ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)){ 
+     if (infonakyvilla == false) {  
         if(this.tunniste == 1){
           println("EKAA KLIKATTIIN!!");
           selectInput("Valitse kuva jonka muokkaat", "fileSelected");
@@ -179,13 +182,22 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
           println("9.ruutua KLIKATTIIN");
           kuva = kuva13;
           } 
-          
+         }
          }
          if (this.tunniste == 14) {
-            
+          if (infonakyvilla == false) {
+           infonakyvilla = true;
+          info.draw();
           }
+          else{
+            infonakyvilla = false;
+             
+          }
+          println(infonakyvilla);
       }
     }
+    }
+
 
 boolean ruudussa(int x, int y, int leveys, int korkeus, int tunniste)  {
     if (mouseX >= x && mouseX <= x+leveys && 

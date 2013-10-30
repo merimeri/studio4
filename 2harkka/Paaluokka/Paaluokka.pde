@@ -13,6 +13,8 @@ color harmaa2;
 boolean klikkaukset;
 PFont fontti1;
 PFont fontti2;
+boolean infonakyvilla;
+Inforuutu info;
 
 
 
@@ -32,13 +34,14 @@ Nappula nappula13 = new Nappula (798-(800/3), 141+2*(560/3), (560/3),(800/3), 13
 Nappula nappula14 = new Nappula(750, 10, 25, 25, 14);
 
 
-
 //String osoite;
 
 void setup() {
   size(800,700);
   background(255);
+  info = new Inforuutu();
   klikkaukset = false;
+  infonakyvilla = false;
   fontti1 = loadFont("CourierNewPS-BoldMT-48.vlw");
   fontti2 = createFont("Futura-Medium",14);
   harmaa = color(255);
@@ -86,6 +89,9 @@ void draw() {
     piirraValikko();
      
   }
+  if(infonakyvilla) {
+    info.draw
+   } 
 }
 
   void piirraValikko(){  
@@ -124,7 +130,7 @@ void mouseClicked() {
    nappula2.mouseClicked();
    nappula3.mouseClicked();
    nappula4.mouseClicked();
-    nappula5.mouseClicked();
+   nappula5.mouseClicked();
    nappula6.mouseClicked();
    nappula7.mouseClicked();
    nappula8.mouseClicked();
@@ -142,8 +148,6 @@ void mouseMoved() {
   nappula2.mouseMoved();
   nappula3.mouseMoved();
   nappula4.mouseMoved();
-
-
   nappula14.mouseMoved();
 }
 
