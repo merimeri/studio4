@@ -8,21 +8,27 @@ PImage kuva10;
 PImage kuva11;
 PImage kuva12;
 PImage kuva13;
+color harmaa;
+color harmaa2;
+boolean klikkaukset;
 
 
-Nappula nappula1 = new Nappula(40,25, 50, 150, 1);
-Nappula nappula2 = new Nappula(230,25, 50, 150, 2);
-Nappula nappula3 = new Nappula(420,25, 50, 150, 3);
-Nappula nappula4 = new Nappula(610, 25, 50, 150, 4);
-Nappula nappula5 = new Nappula (0, 100, 200, (800/3), 5);
-Nappula nappula6 = new Nappula (800/3, 100, 200, (800/3), 6);
-Nappula nappula7 = new Nappula (798-(800/3), 100, 200, (800/3), 7);
-Nappula nappula8 = new Nappula (0, 300, 200,(800/3), 8);
-Nappula nappula9 = new Nappula (800/3, 300, 200,(800/3), 9);
-Nappula nappula10 = new Nappula (798-(800/3), 300, 200,(800/3), 10);
-Nappula nappula11 = new Nappula (0, 500, 200,(800/3), 11);
-Nappula nappula12 = new Nappula (800/3, 500, 200,(800/3),12);
-Nappula nappula13 = new Nappula (798-(800/3), 500, 200,(800/3),13);
+
+Nappula nappula1 = new Nappula(40,70, 50, 150, 1);
+Nappula nappula2 = new Nappula(230,70, 50, 150, 2);
+Nappula nappula3 = new Nappula(420,70, 50, 150, 3);
+Nappula nappula4 = new Nappula(610, 70, 50, 150, 4);
+Nappula nappula5 = new Nappula (0, 141, (560/3), (800/3),  5);
+Nappula nappula6 = new Nappula (800/3, 141, (560/3),(800/3),  6);
+Nappula nappula7 = new Nappula (798-(800/3), 141,(560/3), (800/3), 7);
+Nappula nappula8 = new Nappula (0, 141+(560/3), (560/3),(800/3),  8);
+Nappula nappula9 = new Nappula (800/3, 141+(560/3), (560/3), (800/3), 9);
+Nappula nappula10 = new Nappula (798-(800/3), 141+(560/3), (560/3), (800/3), 10);
+Nappula nappula11 = new Nappula (0, 141+2*(560/3),(560/3), (800/3), 11);
+Nappula nappula12 = new Nappula (800/3, 141+2*(560/3), (560/3), (800/3), 12);
+Nappula nappula13 = new Nappula (798-(800/3), 141+2*(560/3), (560/3),(800/3), 13);
+Nappula nappula14 = new Nappula(750, 10, 25, 25, 14);
+
 
 
 //String osoite;
@@ -30,7 +36,11 @@ Nappula nappula13 = new Nappula (798-(800/3), 500, 200,(800/3),13);
 void setup() {
   size(800,700);
   background(255);
+  klikkaukset = false;
+  harmaa = color(255);
+  harmaa2 = color(150);
   piirraValikko();
+  
   kuva5 = loadImage("kuva5.jpg");
   kuva6 = loadImage("kuva6.jpg");
   kuva7 = loadImage("kuva7.jpg");
@@ -40,6 +50,7 @@ void setup() {
   kuva11 = loadImage("kuva11.jpg");
   kuva12 = loadImage("kuva12.jpg");
   kuva13 = loadImage("kuva13.jpg"); 
+  
 }
 
 
@@ -66,23 +77,27 @@ void folderSelected(File selection) {
 
 void draw() {  
   if (kuva != null) {
-    image(kuva, 0, height/7, width, height-height/7);    
+    image(kuva, 0, height/5, width, height-height/5);    
     piirraValikko();
+     
   }
 }
 
   void piirraValikko(){  
-  fill(190);
-  strokeWeight(1);
-  stroke(0,0,0);
-  rect(0, 0, width, height/7);
+  //fill(190);
+   strokeWeight(1);
+   stroke(0,0,0);
+   rect(0, 0, width, height/5);
+  piirraGradientti(0, 0, width, height/5, harmaa, harmaa2);
   nappula1.draw();
   nappula2.draw();
   nappula3.draw();
   nappula4.draw();
+    nappula14.draw();
 }
 
 void piirraTaulukko() {
+  klikkaukset = true;
   kuva = null;
   nappula5.draw();
   nappula6.draw();
@@ -93,6 +108,7 @@ void piirraTaulukko() {
   nappula11.draw();
   nappula12.draw();
   nappula13.draw();
+   
   }
 
 void mouseClicked() {
@@ -100,7 +116,7 @@ void mouseClicked() {
    nappula2.mouseClicked();
    nappula3.mouseClicked();
    nappula4.mouseClicked();
-   nappula5.mouseClicked();
+    nappula5.mouseClicked();
    nappula6.mouseClicked();
    nappula7.mouseClicked();
    nappula8.mouseClicked();
@@ -109,6 +125,7 @@ void mouseClicked() {
    nappula11.mouseClicked();
    nappula12.mouseClicked();
    nappula13.mouseClicked();
+   nappula14.mouseClicked();
 
 }
 
@@ -117,10 +134,16 @@ void mouseMoved() {
   nappula2.mouseMoved();
   nappula3.mouseMoved();
   nappula4.mouseMoved();
+
+
+  nappula14.mouseMoved();
 }
-/*void piirraGradientti(int x, 
+
+void piirraGradientti(int x, 
 int y, float w, float h, 
 color yla, color ala) {
+  println("gradientti");
+  println("y" + y + "x" + x +"w"+ w + "h" + h + "yla" + yla + "ala" + ala);
 
   noFill();
 
@@ -131,7 +154,7 @@ color yla, color ala) {
       line(x, i, x+w, i);
     }
 }
-*/
+
 
 
 

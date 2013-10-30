@@ -8,23 +8,25 @@ class Nappula {
   int tunniste;
   int vari = 255;
   int vari2 = 255;
+ // boolean klikkaukset;
   
  
 
 
-Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
+Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     this.x = x;
     this.y = y;
     this.leveys = leveys;
     this.korkeus = korkeus;
     this.tunniste = tunniste; //arvo jonka mukaan määritellään mikä nappula
+   // klikkaukset = false;
     println(this.tunniste);    
   }
 
   void draw() {
     stroke(0);
     
-    if(this.tunniste >4){
+    if(this.tunniste >4 && this.tunniste != 14){
      if(this.tunniste == 5){
       image(kuva5, x,y, leveys, korkeus);
      }
@@ -55,6 +57,12 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
    noFill(); 
    rect(this.x, this.y, this.leveys, this.korkeus);
   
+    }
+    else if (this.tunniste==14) {
+      fill(vari);
+      rect(this.x, this.y, this.leveys, this.korkeus, 50);
+      fill(1);
+      text("?", this.x+10, this.y+15);
     }
     
     else {
@@ -112,7 +120,9 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
         } 
         if(this.tunniste == 2){
           println("TOKAA KLIKATTIIN!!");
+          //klikkaukset = true;
           piirraTaulukko();
+          
         }
          if(this.tunniste == 3){
           println("KOLMATTA KLIKATTIIN!!");
@@ -127,8 +137,8 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
           selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
           
         }  
-         
-         if(kuva == null){
+     
+         if(kuva == null && klikkaukset == true){
          if(this.tunniste == 5){
           println("1. ruutua KLIKATTIIN");
           kuva = kuva5;
@@ -167,8 +177,12 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
          if(this.tunniste == 13){
           println("9.ruutua KLIKATTIIN");
           kuva = kuva13;
-          }
+          } 
+          
          }
+         if (this.tunniste == 14) {
+            
+          }
       }
     }
 
