@@ -169,7 +169,7 @@ color yla, color ala) {
 }
 
 void nollaus(){
-   background(255);
+   //background(255);
    piirraValikko();
   
 }
