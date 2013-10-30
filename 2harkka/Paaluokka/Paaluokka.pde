@@ -89,8 +89,8 @@ void draw() {
     piirraValikko();
      
   }
-  if(infonakyvilla) {
-    info.draw
+  if(infonakyvilla){
+    info.draw();
    } 
 }
 

@@ -185,15 +185,17 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
          }
          }
          if (this.tunniste == 14) {
-          if (infonakyvilla == false) {
+          
+           if (infonakyvilla == false) {
            infonakyvilla = true;
-          info.draw();
+           println(infonakyvilla);
           }
           else{
             infonakyvilla = false;
-             
+            println(infonakyvilla);
+     
           }
-          println(infonakyvilla);
+          
       }
     }
     }
