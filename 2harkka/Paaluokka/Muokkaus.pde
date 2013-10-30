@@ -148,12 +148,14 @@ class Muokkaus {
         for (int kx = -1; kx <= 1; kx++) {
           // viereinen pikseli kernel summalle
           int viereinen = (y + ky)*kuva.width + (x + kx);
-
-          float punanen = red(kuva.pixels[viereinen]);
-          float vihrea = green(kuva.pixels[viereinen]);
-          float sininen = blue(kuva.pixels[viereinen]);
-
-
+          
+          color vali_vari = kuva.pixels[viereinen];
+          
+          float punanen = (vali_vari >> 16) & 0xFF;
+          float vihrea = (vali_vari >> 8) & 0xFF;
+          float sininen = vali_vari & 0xFF;
+          
+          
           ker_pun += kernel[ky+1][kx+1] * punanen;
           ker_vih += kernel[ky+1][kx+1] * vihrea;
           ker_sin += kernel[ky+1][kx+1] * sininen;
