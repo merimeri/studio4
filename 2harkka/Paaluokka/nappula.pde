@@ -8,7 +8,7 @@ class Nappula {
   int tunniste;
   int vari = 255;
   int vari2 = 255;
-  
+ 
  
 
 
@@ -107,20 +107,27 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
     void mouseClicked() {
     if(ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)){   
         if(this.tunniste == 1){
+        
+         
           println("EKAA KLIKATTIIN!!");
           selectInput("Valitse kuva jonka muokkaat", "fileSelected");
         } 
         if(this.tunniste == 2){
+          
+          
           println("TOKAA KLIKATTIIN!!");
           piirraTaulukko();
+          
         }
          if(this.tunniste == 3){
-          println("KOLMATTA KLIKATTIIN!!");
+          
+           
+           println("KOLMATTA KLIKATTIIN!!");
           if (kuva !=null) {
           Muokkaus muokkaus = new Muokkaus (kuva);
           kuva = muokkaus.teeMuokkaus();
+         
           }
-          
         } 
           if(this.tunniste == 4){
           println("VIKAA KLIKATTIIN");

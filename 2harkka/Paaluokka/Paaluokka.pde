@@ -10,6 +10,7 @@ PImage kuva12;
 PImage kuva13;
 
 
+
 Nappula nappula1 = new Nappula(40,25, 50, 150, 1);
 Nappula nappula2 = new Nappula(230,25, 50, 150, 2);
 Nappula nappula3 = new Nappula(420,25, 50, 150, 3);
@@ -40,6 +41,7 @@ void setup() {
   kuva11 = loadImage("kuva11.jpg");
   kuva12 = loadImage("kuva12.jpg");
   kuva13 = loadImage("kuva13.jpg"); 
+  
 }
 
 
@@ -66,7 +68,7 @@ void folderSelected(File selection) {
 
 void draw() {  
   if (kuva != null) {
-    image(kuva, 0, height/7, width, height-height/7);    
+    image(kuva, -1, height/7, width, height-height/7);
     piirraValikko();
   }
 }

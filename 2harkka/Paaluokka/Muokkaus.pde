@@ -16,12 +16,15 @@ class Muokkaus {
   }
 
   PImage teeMuokkaus() {
-
+    
     PImage blurrattu_kuva = tee_blur(muokattavaKuva);
+    // kuvasta kaksi sävyä
+    color[] varit = tutki_paletti(img);
+    
     muokattavaKuva = blurrattu_kuva;
     // ladataan muokattavan kuvan pikselit käyttöön
     muokattavaKuva.loadPixels();
-
+    
     // aloitetaan x = 1, koska verrataan vasempaan naapuriin
     for (int x = 1; x < img.width; x++ ) {
       for (int y = 0; y < img.height; y++ ) {
@@ -45,8 +48,7 @@ class Muokkaus {
 
     // päivitetään muokattavan kuvan pikselit ennen uutta vertailua
     muokattavaKuva.updatePixels();
-    // TESTI, VOIDAAN POISTAA LOPULLLISESSA
-    //image(destination,0,0);
+   
 
     // avataan uudet pikselit
     muokattavaKuva.loadPixels();
@@ -61,23 +63,63 @@ class Muokkaus {
 
         // pikselin kirkkaus asetettuna välille 0 - > 255
         float bright = constrain(brightness(muokattavaKuva.pixels[loc]), 0, 255);
+        
         if (bright < 50) {
           muokattavaKuva.pixels[loc] = color(10);
         }
         else if (bright < 180 && bright > 50) {
 
-          muokattavaKuva.pixels[loc] = color(100);
-        }else if (bright < 230 && bright > 180){
-          muokattavaKuva.pixels[loc] = color(210);
+          muokattavaKuva.pixels[loc] = color(120);
         }
-        else if (bright > 230) {
+        else if (bright > 180) {
           muokattavaKuva.pixels[loc] = color(255);
         }
       }
     }
 
     muokattavaKuva.updatePixels();
-
+    
+     /* Piirretään värit kuvaan*/
+    
+   for(int i = 0; i < varit.length; i++){
+    
+    color vari = varit[i];
+   
+    float vari_red = (vari >> 16) & 0xFF;
+    float vari_green = (vari >> 8) & 0xFF;
+    float vari_blue = vari & 0xFF;
+    
+   for (int x = 1; x < img.width-1; x++) {
+    for (int y = 1; y < img.height-1; y++) {
+      
+      int loc = x + y*img.width;
+      color ap_vari = color(img.pixels[loc]);
+      
+      float red = (ap_vari >> 16) & 0xFF;
+      float green = (ap_vari >> 8) & 0xFF;
+      float blue = ap_vari & 0xFF;
+      
+      if((abs(red-vari_red) < 22) && (abs(green - vari_green) < 22) &&
+        (abs(blue - vari_blue) < 22)){
+        if(muokattavaKuva.pixels[loc] != color(10)&&
+          muokattavaKuva.pixels[loc-1] != color(10)&&
+          muokattavaKuva.pixels[loc+1] != color(10)&&
+          muokattavaKuva.pixels[loc+img.width] != color(10)&&
+          muokattavaKuva.pixels[loc-img.width] != color(10)
+        ){
+          muokattavaKuva.pixels[loc] = color(vari);
+          muokattavaKuva.pixels[loc-1] = color(vari);
+          muokattavaKuva.pixels[loc+1] = color(vari);
+          muokattavaKuva.pixels[loc+img.width] = color(vari);
+          muokattavaKuva.pixels[loc-img.width] = color(vari);
+        }
+        }
+      
+    }
+   }
+   }
+   
+   muokattavaKuva.updatePixels();
     return muokattavaKuva;
   }
   
@@ -123,11 +165,100 @@ class Muokkaus {
   blurrattu_kuva.updatePixels();
   return blurrattu_kuva;
 }
-/*
-  /*Tutkii kuvan väripaletin ja palauttaa yleisimmät värit
-  color[] tutki_paletti(PImage kuva){
+
+  /*Tutkii kuvan väripaletin ja palauttaa yleisimmät värit, käydään
+  pikselit läpi samalla ideologialla kuin aikasemmin*/
+  
+  color[] tutki_paletti(PImage imgC){
+    color[] varit = new color[3];
+    imgC.loadPixels();
+    for(int i=0; i < 3; i++){
+      int rand = int(random(imgC.width * imgC.height));
+      color rgb = imgC.pixels[rand];
+      varit[i] = rgb;
+    }
+   return varit;
+   
+   /*
+    ALLA VANHA YRITYS JOSSA YRITIN TUTKIA HISTOGRAMMIEN AVULLA
+    KUVAN VÄRITYSTÄ JA LÖYTÄÄ SIELTÄ YLEISINTÄ SÄVYÄ...
     
-    return [];
-  }
-  */
+    LOPULLINEN LOPPUTULOS EI KUITENKAAN OLLUT TAITEELLISESTI 
+    MIELLYTTÄVÄ.
+   
+   */
+   
+   
+   
+    /*// lista toimii rgb 0-255 arvojen kvantisoituina arvoina 255/15 = 17
+    // 255 luvun tekijät ovat 3, 5, 17, siksi pelataan luvuilla 15 ja 17
+    
+    float[] kvant_varit = {7,23,39,55,71,87,103,119,135,151,
+                                  167,183,199,215,231,247,255};
+    
+    // histogrammit punaisesta, vihreästä ja sinisestä
+    int[] pun_histo = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    int[] vih_histo = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    int[] sin_histo = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    
+   
+    
+    imgC.loadPixels();
+    
+    
+    for(int x = 0; x < imgC.width; x++){
+      for(int y = 0; y < imgC.height; y++){
+        
+        int loc = x + y * imgC.width;
+        
+        color rgb = imgC.pixels[loc];
+        
+        int red = (rgb >> 16) & 0xFF;
+        int green = (rgb >> 8) & 0xFF;
+        int blue = rgb & 0xFF;
+        
+        
+        pun_histo[int(red/15)] += 1;
+        vih_histo[int(green/15)] += 1;
+        sin_histo[int(blue/15)] += 1;
+      }
+    }
+    
+    int pun_yleisin = 0;
+    int vih_yleisin = 0;
+    int sin_yleisin = 0;
+    
+    int pun_arvo = 0;
+    int vih_arvo = 0;
+    int sin_arvo = 0;
+    // käydään läpi histogrammit ja katsotaan yleisimmät värit
+    // voidaan käyttää pituutena 18, koska kaikilla sama pituus
+    println(pun_histo);
+    println(sin_histo);
+    println(vih_histo);
+    for(int i = 0; i < 17; i++){
+      float rand = random(2);
+ 
+      if(pun_histo[i] > pun_arvo){
+        pun_yleisin = i;
+        pun_arvo = pun_histo[i];
+      }
+     if(vih_histo[i] > vih_arvo){
+        vih_yleisin = i;
+        vih_arvo = vih_histo[i];
+      }
+      
+      if(sin_histo[i] > sin_arvo){
+        sin_yleisin = i;
+        sin_arvo = sin_histo[i];
+      }
+    }
+    println(pun_yleisin);
+    println(sin_yleisin);
+    println(vih_yleisin);
+    /*palauttaa värin, histogrammin yleisimmän värin kukinta väriä kohti
+    ja sen jälkeen katsomalla kvant_varit listasta sitä vastaavan rgb arvon väliltä 0-255*/
+    /*return color(kvant_varit[pun_yleisin],kvant_varit[vih_yleisin],kvant_varit[sin_yleisin]); 
+  */} 
+ 
 }
