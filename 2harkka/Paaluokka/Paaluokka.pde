@@ -8,24 +8,6 @@ PImage kuva10;
 PImage kuva11;
 PImage kuva12;
 PImage kuva13;
-<<<<<<< HEAD
-
-
-
-Nappula nappula1 = new Nappula(40,25, 50, 150, 1);
-Nappula nappula2 = new Nappula(230,25, 50, 150, 2);
-Nappula nappula3 = new Nappula(420,25, 50, 150, 3);
-Nappula nappula4 = new Nappula(610, 25, 50, 150, 4);
-Nappula nappula5 = new Nappula (0, 100, 200, (800/3), 5);
-Nappula nappula6 = new Nappula (800/3, 100, 200, (800/3), 6);
-Nappula nappula7 = new Nappula (798-(800/3), 100, 200, (800/3), 7);
-Nappula nappula8 = new Nappula (0, 300, 200,(800/3), 8);
-Nappula nappula9 = new Nappula (800/3, 300, 200,(800/3), 9);
-Nappula nappula10 = new Nappula (798-(800/3), 300, 200,(800/3), 10);
-Nappula nappula11 = new Nappula (0, 500, 200,(800/3), 11);
-Nappula nappula12 = new Nappula (800/3, 500, 200,(800/3),12);
-Nappula nappula13 = new Nappula (798-(800/3), 500, 200,(800/3),13);
-=======
 color harmaa;
 color harmaa2;
 boolean klikkaukset;
@@ -50,7 +32,6 @@ Nappula nappula11 = new Nappula (0, 141+2*(560/3),(560/3), (800/3), 11);
 Nappula nappula12 = new Nappula (800/3, 141+2*(560/3), (560/3), (800/3), 12);
 Nappula nappula13 = new Nappula (798-(800/3), 141+2*(560/3), (560/3),(800/3), 13);
 Nappula nappula14 = new Nappula(750, 10, 25, 25, 14);
->>>>>>> 0d73c614f2737c07aedf3d8719a613065597b760
 
 
 //String osoite;
@@ -104,11 +85,7 @@ void folderSelected(File selection) {
 
 void draw() {  
   if (kuva != null) {
-<<<<<<< HEAD
-    image(kuva, -1, height/7, width, height-height/7);
-=======
     image(kuva, 0, height/5, width, height-height/5);    
->>>>>>> 0d73c614f2737c07aedf3d8719a613065597b760
     piirraValikko();
      
   }
@@ -194,7 +171,5 @@ void nollaus(){
    piirraValikko();
   
 }
-
-
 
 

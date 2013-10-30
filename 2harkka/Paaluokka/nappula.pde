@@ -8,12 +8,8 @@ class Nappula {
   int tunniste;
   int vari = 255;
   int vari2 = 255;
-<<<<<<< HEAD
- 
-=======
  // boolean klikkaukset;
   
->>>>>>> 0d73c614f2737c07aedf3d8719a613065597b760
  
 
 
@@ -103,6 +99,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     this.vari = 134;
     if (vari2 != vari) {
     this.draw();
+    println("piirto");
     }
   }
   else{
@@ -110,7 +107,8 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     vari = 255;
     if (vari2 != vari) {
     this.draw();
-  
+    println("piirto");
+    println("2" + vari2);
     }
   }
     }
@@ -121,42 +119,25 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     if(ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)){ 
      if (infonakyvilla == false) {  
         if(this.tunniste == 1){
-<<<<<<< HEAD
-        
-         
           println("EKAA KLIKATTIIN!!");
-=======
-         
->>>>>>> 0d73c614f2737c07aedf3d8719a613065597b760
           selectInput("Valitse kuva jonka muokkaat", "fileSelected");
         } 
         if(this.tunniste == 2){
-          
-<<<<<<< HEAD
-          
           println("TOKAA KLIKATTIIN!!");
-=======
           //klikkaukset = true;
->>>>>>> 0d73c614f2737c07aedf3d8719a613065597b760
           piirraTaulukko();
           
         }
          if(this.tunniste == 3){
-<<<<<<< HEAD
-          
-           
-           println("KOLMATTA KLIKATTIIN!!");
-=======
-        
->>>>>>> 0d73c614f2737c07aedf3d8719a613065597b760
+          println("KOLMATTA KLIKATTIIN!!");
           if (kuva !=null) {
           Muokkaus muokkaus = new Muokkaus (kuva);
           kuva = muokkaus.teeMuokkaus();
-         
           }
+          
         } 
           if(this.tunniste == 4){
-         
+          println("VIKAA KLIKATTIIN");
           selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
           
         }  
@@ -211,7 +192,6 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
           }
           else{
             infonakyvilla = false;
-            nollaus();
             println(infonakyvilla);
      
           }
@@ -233,8 +213,4 @@ boolean ruudussa(int x, int y, int leveys, int korkeus, int tunniste)  {
   } 
  }
   
-
-
-
-
 
