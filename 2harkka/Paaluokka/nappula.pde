@@ -8,23 +8,29 @@ class Nappula {
   int tunniste;
   int vari = 255;
   int vari2 = 255;
+<<<<<<< HEAD
  
+=======
+ // boolean klikkaukset;
+  
+>>>>>>> 0d73c614f2737c07aedf3d8719a613065597b760
  
 
 
-Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
+Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     this.x = x;
     this.y = y;
     this.leveys = leveys;
     this.korkeus = korkeus;
     this.tunniste = tunniste; //arvo jonka mukaan määritellään mikä nappula
+   // klikkaukset = false;
     println(this.tunniste);    
   }
 
   void draw() {
     stroke(0);
     
-    if(this.tunniste >4){
+    if(this.tunniste >4 && this.tunniste != 14){
      if(this.tunniste == 5){
       image(kuva5, x,y, leveys, korkeus);
      }
@@ -56,26 +62,32 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
    rect(this.x, this.y, this.leveys, this.korkeus);
   
     }
+    else if (this.tunniste==14) {
+      fill(vari);
+      rect(this.x, this.y, this.leveys, this.korkeus, 50);
+      fill(1);
+      text("?", this.x+8, this.y+17);
+    }
     
     else {
    fill(vari);
+   textFont(fontti2, 17);
       rect(this.x, this.y, this.leveys, this.korkeus, 10);
        if (this.tunniste == 1) {
            fill(1);
-         text("Valitse oma kuva", this.x+10, this.y+20);
+         text("Valitse oma kuva", this.x+10, this.y+30);
        }
        if (this.tunniste == 2) {
            fill(1);
-         text("Kuvagalleria", this.x+10, this.y+20);
+         text("Kuvagalleria", this.x+17, this.y+30);
        }
        if (this.tunniste == 3) {
            fill(1);
-         text("Muokkaa", this.x+10, this.y+20);
+         text("Muokkaa", this.x+17, this.y+30);
        }
        if (this.tunniste == 4) {
            fill(1);
-        
-         text("Tallenna kuva", this.x+10, this.y+20);
+        text("Tallenna kuva", this.x+17, this.y+30);
        }
     }
    
@@ -84,13 +96,13 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
  
   
   void mouseMoved() {
+    if (infonakyvilla == false) {
   if (ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)) {
     println("jee");
     this.vari2 = vari;
     this.vari = 134;
     if (vari2 != vari) {
     this.draw();
-    println("piirto");
     }
   }
   else{
@@ -98,31 +110,45 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
     vari = 255;
     if (vari2 != vari) {
     this.draw();
-    println("piirto");
-    println("2" + vari2);
+  
     }
   }
+    }
 }
 
     void mouseClicked() {
-    if(ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)){   
+     
+    if(ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)){ 
+     if (infonakyvilla == false) {  
         if(this.tunniste == 1){
+<<<<<<< HEAD
         
          
           println("EKAA KLIKATTIIN!!");
+=======
+         
+>>>>>>> 0d73c614f2737c07aedf3d8719a613065597b760
           selectInput("Valitse kuva jonka muokkaat", "fileSelected");
         } 
         if(this.tunniste == 2){
           
+<<<<<<< HEAD
           
           println("TOKAA KLIKATTIIN!!");
+=======
+          //klikkaukset = true;
+>>>>>>> 0d73c614f2737c07aedf3d8719a613065597b760
           piirraTaulukko();
           
         }
          if(this.tunniste == 3){
+<<<<<<< HEAD
           
            
            println("KOLMATTA KLIKATTIIN!!");
+=======
+        
+>>>>>>> 0d73c614f2737c07aedf3d8719a613065597b760
           if (kuva !=null) {
           Muokkaus muokkaus = new Muokkaus (kuva);
           kuva = muokkaus.teeMuokkaus();
@@ -130,12 +156,12 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
           }
         } 
           if(this.tunniste == 4){
-          println("VIKAA KLIKATTIIN");
+         
           selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
           
         }  
-         
-         if(kuva == null){
+     
+         if(kuva == null && klikkaukset == true){
          if(this.tunniste == 5){
           println("1. ruutua KLIKATTIIN");
           kuva = kuva5;
@@ -174,10 +200,26 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
          if(this.tunniste == 13){
           println("9.ruutua KLIKATTIIN");
           kuva = kuva13;
-          }
+          } 
          }
+         }
+         if (this.tunniste == 14) {
+          
+           if (infonakyvilla == false) {
+           infonakyvilla = true;
+           println(infonakyvilla);
+          }
+          else{
+            infonakyvilla = false;
+            nollaus();
+            println(infonakyvilla);
+     
+          }
+          
       }
     }
+    }
+
 
 boolean ruudussa(int x, int y, int leveys, int korkeus, int tunniste)  {
     if (mouseX >= x && mouseX <= x+leveys && 
