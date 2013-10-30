@@ -58,9 +58,25 @@ Nappula (int x, int y, int korkeus, int leveys,int tunniste) {
     }
     
     else {
-      fill(vari); 
+   fill(vari);
       rect(this.x, this.y, this.leveys, this.korkeus, 10);
-    text("jee", this.x, this.y); 
+       if (this.tunniste == 1) {
+           fill(1);
+         text("Valitse oma kuva", this.x+10, this.y+20);
+       }
+       if (this.tunniste == 2) {
+           fill(1);
+         text("Kuvagalleria", this.x+10, this.y+20);
+       }
+       if (this.tunniste == 3) {
+           fill(1);
+         text("Muokkaa", this.x+10, this.y+20);
+       }
+       if (this.tunniste == 4) {
+           fill(1);
+        
+         text("Tallenna kuva", this.x+10, this.y+20);
+       }
     }
    
    
