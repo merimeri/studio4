@@ -91,7 +91,8 @@ void draw() {
   }
   if(infonakyvilla){
     info.draw();
-   } 
+   }
+  
 }
 
   void piirraValikko(){  
@@ -154,9 +155,7 @@ void mouseMoved() {
 void piirraGradientti(int x, 
 int y, float w, float h, 
 color yla, color ala) {
-  println("gradientti");
-  println("y" + y + "x" + x +"w"+ w + "h" + h + "yla" + yla + "ala" + ala);
-
+  
   noFill();
 
     for (int i = y; i <= y+h; i++) {
@@ -165,6 +164,12 @@ color yla, color ala) {
       stroke(maalaus);
       line(x, i, x+w, i);
     }
+}
+
+void nollaus(){
+   background(255);
+   piirraValikko();
+  
 }
 
 

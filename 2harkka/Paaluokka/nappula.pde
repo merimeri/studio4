@@ -99,7 +99,6 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     this.vari = 134;
     if (vari2 != vari) {
     this.draw();
-    println("piirto");
     }
   }
   else{
@@ -107,8 +106,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     vari = 255;
     if (vari2 != vari) {
     this.draw();
-    println("piirto");
-    println("2" + vari2);
+  
     }
   }
     }
@@ -119,17 +117,17 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     if(ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)){ 
      if (infonakyvilla == false) {  
         if(this.tunniste == 1){
-          println("EKAA KLIKATTIIN!!");
+         
           selectInput("Valitse kuva jonka muokkaat", "fileSelected");
         } 
         if(this.tunniste == 2){
-          println("TOKAA KLIKATTIIN!!");
+          
           //klikkaukset = true;
           piirraTaulukko();
           
         }
          if(this.tunniste == 3){
-          println("KOLMATTA KLIKATTIIN!!");
+        
           if (kuva !=null) {
           Muokkaus muokkaus = new Muokkaus (kuva);
           kuva = muokkaus.teeMuokkaus();
@@ -137,7 +135,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
           
         } 
           if(this.tunniste == 4){
-          println("VIKAA KLIKATTIIN");
+         
           selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
           
         }  
@@ -192,6 +190,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
           }
           else{
             infonakyvilla = false;
+            nollaus();
             println(infonakyvilla);
      
           }
