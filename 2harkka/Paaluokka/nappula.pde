@@ -193,6 +193,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
           else{
             infonakyvilla = false;
             println(infonakyvilla);
+            nollaus();
      
           }
           

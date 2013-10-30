@@ -85,10 +85,12 @@ void folderSelected(File selection) {
 
 void draw() {  
   if (kuva != null) {
-    image(kuva, 0, height/5, width, height-height/5);    
-    piirraValikko();
+    image(kuva, 0, height/5, width, height-height/5); 
+      piirraValikko();  
+  } 
+
      
-  }
+  
   if(infonakyvilla){
     info.draw();
    }
