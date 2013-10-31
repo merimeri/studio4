@@ -3,6 +3,7 @@ class Inforuutu {
   
   void draw() {
     fill(224);
+    strokeWeight(1);
     rect(540,35, 255, 370, 7); 
     fill(1);
     textSize(10);

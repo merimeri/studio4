@@ -60,6 +60,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
   
     }
     else if (this.tunniste==14) {
+      strokeWeight(1);
       fill(vari);
       rect(this.x, this.y, this.leveys, this.korkeus, 50);
       fill(1);
@@ -69,6 +70,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     else {
    fill(vari);
    textFont(fontti2, 17);
+   strokeWeight(1);
       rect(this.x, this.y, this.leveys, this.korkeus, 10);
        if (this.tunniste == 1) {
            fill(1);
