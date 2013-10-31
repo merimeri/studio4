@@ -1,11 +1,11 @@
 /* Koko luokan rakenne pohjautuu osittain http://processing.org/tutorials/pixels/ 
- löytyvään esimerkkiin
+ löytyviin esimerkkiin
  */
 
 
 class Muokkaus {
 
-  PImage img;            // parametrina annettu kuva   
+  PImage img;              // parametrina annettu kuva   
   PImage muokattavaKuva;   // muokattuKuva
 
     Muokkaus(PImage kuva) {
@@ -17,19 +17,24 @@ class Muokkaus {
 
   PImage teeMuokkaus() {
     
-    PImage blurrattu_kuva = tee_blur(muokattavaKuva);
-    // kuvasta kaksi sävyä
+    /*Blurrataan kuva, jotta viereisten pikseleiden "ero pienenee", jolloin rajojen
+    tunnistaminen tehostuu*/
+    PImage blurrattu_kuva = tee_blur(muokattavaKuva); 
+    
+    //poimitaan kuvasta värisävyjä
     color[] varit = tutki_paletti(img);
     
+    //asetetaan blurrattu kuva, muokatuksi kuvaksi
     muokattavaKuva = blurrattu_kuva;
+    
     // ladataan muokattavan kuvan pikselit käyttöön
     muokattavaKuva.loadPixels();
     
-    // aloitetaan x = 1, koska verrataan vasempaan naapuriin
+    // aloitetaan x = 1, koska verrataan vasempaan naapuripikseliin
     for (int x = 1; x < img.width; x++ ) {
       for (int y = 0; y < img.height; y++ ) {
 
-        // selvitetään pikselin sijainti ja väli
+        // selvitetään pikselin sijainti ja väri
         int loc = x + y*img.width;
         color pix = img.pixels[loc];
 
@@ -38,7 +43,7 @@ class Muokkaus {
         color leftPix = img.pixels[leftLoc];
 
         // uusi väri on kahden pikselin kirkkauden vertauksien itseisarvo, ja tämä 
-        // kerrotaan 8lla jotta saataisiin eroja enemmän esiin...
+        // kerrotaan 8(itse haettu arvo)lla jotta saataisiin eroja enemmän esiin...
         float diff = 8*abs(brightness(pix) - brightness(leftPix));
 
         // tallennetaan väri muokattavan kuvan pikseliin
@@ -64,8 +69,9 @@ class Muokkaus {
         // pikselin kirkkaus asetettuna välille 0 - > 255
         float bright = constrain(brightness(muokattavaKuva.pixels[loc]), 0, 255);
         
+        /*Kvantisoidaan eri brightnessit 3 harmaansävylle*/
         if (bright < 50) {
-          muokattavaKuva.pixels[loc] = color(10);
+          muokattavaKuva.pixels[loc] = color(10); 
         }
         else if (bright < 180 && bright > 50) {
 
@@ -80,25 +86,33 @@ class Muokkaus {
     muokattavaKuva.updatePixels();
     
      /* Piirretään värit kuvaan*/
-    
+    /* Käydään varit lista läpi, ja väritetään kukinta väriä mikäli tutkittavan
+    pikselin väri on tarpeeksi lähellä listasta poimittua väriä*/
    for(int i = 0; i < varit.length; i++){
     
     color vari = varit[i];
    
+     /*Haetaan rgb arvot erikseen, tämä on tehokkaampi ja nopeampi tapa saada arvot, kuin
+     esim red() tai blue() jne. http://processing.org/reference/rightshift.html*/
     float vari_red = (vari >> 16) & 0xFF;
     float vari_green = (vari >> 8) & 0xFF;
     float vari_blue = vari & 0xFF;
     
+    /* Käydään kaikki pikselit läpi, sama logiikka värien poiminnassa kuin edellä*/
    for (int x = 1; x < img.width-1; x++) {
     for (int y = 1; y < img.height-1; y++) {
       
-      int loc = x + y*img.width;
+      // sijainti loc on seuraavanlainen, koska pikselit ovat yksiulotteisessa listassa
+      int loc = x + y*img.width; 
       color ap_vari = color(img.pixels[loc]);
       
       float red = (ap_vari >> 16) & 0xFF;
       float green = (ap_vari >> 8) & 0xFF;
       float blue = ap_vari & 0xFF;
       
+      /*Katsotaan onko tutkittavan pikselin väri tarpeeksi lähellä, varit listasta
+      poimittua väriä. Tämän lisäksi pidetään huoli, ettei piirettä mustien ääriviivojen
+      päälle, jotta ne näkyvät kuvassa selkeästi*/
       if((abs(red-vari_red) < 22) && (abs(green - vari_green) < 22) &&
         (abs(blue - vari_blue) < 22)){
         if(muokattavaKuva.pixels[loc] != color(10)&&
@@ -107,6 +121,8 @@ class Muokkaus {
           muokattavaKuva.pixels[loc+img.width] != color(10)&&
           muokattavaKuva.pixels[loc-img.width] != color(10)
         ){
+          /*Väritetään pikselit risti muodossa, jotta piirto jälki olisi kivempi ja
+          taiteellisempi*/
           muokattavaKuva.pixels[loc] = color(vari);
           muokattavaKuva.pixels[loc-1] = color(vari);
           muokattavaKuva.pixels[loc+1] = color(vari);
@@ -118,9 +134,9 @@ class Muokkaus {
     }
    }
    }
-   
+ 
    muokattavaKuva.updatePixels();
-    return muokattavaKuva;
+   return muokattavaKuva; // palautetaan valmis kuva
   }
   
   /*Koko blurrauksen idea on yhdistellä pikselien väriarvoja helpottamaan reunojen tunnistamista, sekä väripaletin
@@ -140,7 +156,9 @@ class Muokkaus {
   // ohjetta: http://processing.org/examples/blur.html
   for (int y = 1; y < kuva.height-1; y++) {   
     for (int x = 1; x < kuva.width-1; x++) {  
-      float ker_pun = 0; // kernel summa
+       
+      // kernel summat kaikille värikanaville
+      float ker_pun = 0;
       float ker_vih = 0;
       float ker_sin = 0;
 
@@ -150,7 +168,7 @@ class Muokkaus {
           int viereinen = (y + ky)*kuva.width + (x + kx);
           
           color vali_vari = kuva.pixels[viereinen];
-          
+          // jälleen tehokkaampi tapa poimia eri värikanavien arvot
           float punanen = (vali_vari >> 16) & 0xFF;
           float vihrea = (vali_vari >> 8) & 0xFF;
           float sininen = vali_vari & 0xFF;
@@ -161,15 +179,18 @@ class Muokkaus {
           ker_sin += kernel[ky+1][kx+1] * sininen;
         }
       }
+      // kernelin arvojen sijoittaminen pikseliin
       blurrattu_kuva.pixels[y*kuva.width + x] = color(ker_pun, ker_vih, ker_sin);
     }
   }
   blurrattu_kuva.updatePixels();
-  return blurrattu_kuva;
+  return blurrattu_kuva; 
 }
 
-  /*Tutkii kuvan väripaletin ja palauttaa yleisimmät värit, käydään
-  pikselit läpi samalla ideologialla kuin aikasemmin*/
+  /*Metodi poimii kuvasta 3 random pikseliä, joiden väriä käytetään väritykseen. Alle
+  olen jättänyt vanhan yritelmän, jossa koitin tutkia kuvan väriarvoja kolmen (rgb jokaista
+  kanavaa kohden yksi) histogrammin avulla, mutta joka kuitenkin antoi "huonomman"
+  taiteellisen lopputuloksen*/
   
   color[] tutki_paletti(PImage imgC){
     color[] varit = new color[3];
@@ -180,7 +201,8 @@ class Muokkaus {
       varit[i] = rgb;
     }
    return varit;
-   
+  }
+  
    /*
     ALLA VANHA YRITYS JOSSA YRITIN TUTKIA HISTOGRAMMIEN AVULLA
     KUVAN VÄRITYSTÄ JA LÖYTÄÄ SIELTÄ YLEISINTÄ SÄVYÄ...
@@ -188,12 +210,12 @@ class Muokkaus {
     LOPULLINEN LOPPUTULOS EI KUITENKAAN OLLUT TAITEELLISESTI 
     MIELLYTTÄVÄ.
    
-   */
    
    
    
-    /*// lista toimii rgb 0-255 arvojen kvantisoituina arvoina 255/15 = 17
-    // 255 luvun tekijät ovat 3, 5, 17, siksi pelataan luvuilla 15 ja 17
+   
+   // lista toimii rgb 0-255 arvojen kvantisoituina arvoina 255/15 = 17
+    //255 luvun tekijät ovat 3, 5, 17, siksi pelataan luvuilla 15 ja 17
     
     float[] kvant_varit = {7,23,39,55,71,87,103,119,135,151,
                                   167,183,199,215,231,247,255};
@@ -255,12 +277,13 @@ class Muokkaus {
         sin_arvo = sin_histo[i];
       }
     }
+    //testailua....
     println(pun_yleisin);
     println(sin_yleisin);
     println(vih_yleisin);
-    /*palauttaa värin, histogrammin yleisimmän värin kukinta väriä kohti
-    ja sen jälkeen katsomalla kvant_varit listasta sitä vastaavan rgb arvon väliltä 0-255*/
-    /*return color(kvant_varit[pun_yleisin],kvant_varit[vih_yleisin],kvant_varit[sin_yleisin]); 
-  */} 
+    palauttaa värin, histogrammin yleisimmän värin kukinta väriä kohti
+    ja sen jälkeen katsomalla kvant_varit listasta sitä vastaavan rgb arvon väliltä 0-255
+    return color(kvant_varit[pun_yleisin],kvant_varit[vih_yleisin],kvant_varit[sin_yleisin]); 
+  */
  
 }
