@@ -240,4 +240,3 @@ boolean ruudussa(int x, int y, int leveys, int korkeus, int tunniste)  {
   } 
  }
   
-
