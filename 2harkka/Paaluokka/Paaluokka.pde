@@ -18,7 +18,7 @@ boolean gallerianakyvilla;
 Inforuutu info;
 
 
-//Luodaan ylareunan nappulat ja kuvataulukon nappulat
+
 Nappula nappula1 = new Nappula(40,70, 50, 150, 1);
 Nappula nappula2 = new Nappula(230,70, 50, 150, 2);
 Nappula nappula3 = new Nappula(420,70, 50, 150, 3);
