@@ -119,6 +119,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     if(ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)){ 
      if (infonakyvilla == false) {  
         if(this.tunniste == 1){
+          gallerianakyvilla = false;
           println("EKAA KLIKATTIIN!!");
           selectInput("Valitse kuva jonka muokkaat", "fileSelected");
         } 
@@ -149,41 +150,50 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
          if(this.tunniste == 5){
           println("1. ruutua KLIKATTIIN");
           kuva = kuva5;
+          gallerianakyvilla = false;
          }
          if(this.tunniste == 6){
           println("2. ruutua KLIKATTIIN");
-          kuva = kuva6;     
+          kuva = kuva6;   
+          gallerianakyvilla = false;
          }
          if(this.tunniste == 7){
           println("3. ruutua KLIKATTIIN");
           kuva = kuva7;
+          gallerianakyvilla = false;
          }
          if(this.tunniste == 8){
           println("4. ruutua KLIKATTIIN");
           kuva = kuva8;
+          gallerianakyvilla = false;
          }
          if(this.tunniste == 9){
           println("5. ruutua KLIKATTIIN");
-          kuva = kuva9;          
+          kuva = kuva9; 
+          gallerianakyvilla = false;         
          }
          if(this.tunniste == 10){
           println("6. ruutua KLIKATTIIN");
           kuva = kuva10;
+          gallerianakyvilla = false;
            }
        
          if(this.tunniste == 11){
           println("7. ruutua KLIKATTIIN");
           kuva = kuva11;
+          gallerianakyvilla = false;
            }
          
          if(this.tunniste == 12){
           println("8. ruutua KLIKATTIIN");
           kuva = kuva12;
+          gallerianakyvilla = false;
           }
          
          if(this.tunniste == 13){
           println("9.ruutua KLIKATTIIN");
           kuva = kuva13;
+          gallerianakyvilla = false;
           } 
          }
          }

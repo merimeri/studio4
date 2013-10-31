@@ -179,7 +179,6 @@ void nollaus(){
      piirraValikko();
      piirraTaulukko();
    }
-   
 }
 
 
