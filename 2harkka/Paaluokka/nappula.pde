@@ -54,7 +54,8 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
       if(this.tunniste == 13){
         image(kuva13, x,y, leveys, korkeus);
      }  
-   noFill(); 
+   noFill();
+  strokeWeight(2); 
    rect(this.x, this.y, this.leveys, this.korkeus);
   
     }
