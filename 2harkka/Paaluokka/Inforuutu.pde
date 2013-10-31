@@ -1,3 +1,6 @@
+/*
+Luokka vastaa inforuudun toteutuksesta
+*/
 class Inforuutu {
   Nappula nappula;
   

@@ -8,7 +8,7 @@ class Nappula {
   int tunniste;
   int vari = 255;
   int vari2 = 255;
- // boolean klikkaukset;
+
   
  
 
@@ -19,13 +19,14 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     this.leveys = leveys;
     this.korkeus = korkeus;
     this.tunniste = tunniste; //arvo jonka mukaan määritellään mikä nappula
-   // klikkaukset = false;
     println(this.tunniste);    
   }
 
+  /*Maaritetaan nappulan piirto
+*/
   void draw() {
     stroke(0);
-    
+    // Piiretaan gallerian kuvat nappuloina ja piirretaan ne tietylla tavalla
     if(this.tunniste >4 && this.tunniste != 14){
      if(this.tunniste == 5){
       image(kuva5, x,y, leveys, korkeus);
@@ -59,6 +60,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
    rect(this.x, this.y, this.leveys, this.korkeus);
   
     }
+    // Kysymysmekkinapin ulkonako
     else if (this.tunniste==14) {
       strokeWeight(1);
       fill(vari);
@@ -67,6 +69,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
       text("?", this.x+8, this.y+17);
     }
     
+      // Piirretaan valikkonapit
     else {
    fill(vari);
    textFont(fontti2, 17);
@@ -117,18 +120,21 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     }
 }
 
+    /* Tutkitaan onko klikattu nappuloiden sisaan. Maaritetaan tapahtuman nappulan maarittama asia.
+*/
     void mouseClicked() {
      
     if(ruudussa(this.x, this.y,this.leveys, this.korkeus, this.tunniste)){ 
      if (infonakyvilla == false) {  
         if(this.tunniste == 1){
+           // Annetaan kayttajan tehda kuvavalinta
           gallerianakyvilla = false;
           println("EKAA KLIKATTIIN!!");
           selectInput("Valitse kuva jonka muokkaat", "fileSelected");
         } 
         if(this.tunniste == 2){
           println("TOKAA KLIKATTIIN!!");
-          //klikkaukset = true;
+        // Piirretaan gallerikuvat nakyviin valittavaksi
           piirraTaulukko();
           gallerianakyvilla = true;
           
@@ -136,6 +142,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
          if(this.tunniste == 3){
           println("KOLMATTA KLIKATTIIN!!");
           if (kuva !=null) {
+           // Muokataan kuva
           Muokkaus muokkaus = new Muokkaus (kuva);
           kuva = muokkaus.teeMuokkaus();
           gallerianakyvilla = false;
@@ -143,14 +150,15 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
           
         } 
           if(this.tunniste == 4){
+           // Tallennetaan kuva kayttajan valitsemaan kansioon
           println("VIKAA KLIKATTIIN");
-          
           selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
           
         }  
      
          if(kuva == null && klikkaukset == true){
-         if(this.tunniste == 5){
+          // Gallerian kuvanappulat, klikkaus avaa valitun kuvan
+          if(this.tunniste == 5){
           println("1. ruutua KLIKATTIIN");
           kuva = kuva5;
           gallerianakyvilla = false;
@@ -201,12 +209,13 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
          }
          }
          if (this.tunniste == 14) {
-   
+           // kysymysmerkkinappi, avaa infon
            if (infonakyvilla == false) {
            infonakyvilla = true;
            println(infonakyvilla);
           }
           else{
+            //tai sulkee sen
             infonakyvilla = false;
             println(infonakyvilla);
             nollaus();
@@ -217,7 +226,8 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
     }
     }
 
-
+/* Metodi, joka tutkii onko klikkauksen koordinaatit jonkin nappulan alueella
+*/
 boolean ruudussa(int x, int y, int leveys, int korkeus, int tunniste)  {
     if (mouseX >= x && mouseX <= x+leveys && 
       mouseY >= y && mouseY <= y+korkeus) {

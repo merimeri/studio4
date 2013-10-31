@@ -18,7 +18,7 @@ boolean gallerianakyvilla;
 Inforuutu info;
 
 
-
+//Luodaan ylareunan nappulat ja kuvataulukon nappulat
 Nappula nappula1 = new Nappula(40,70, 50, 150, 1);
 Nappula nappula2 = new Nappula(230,70, 50, 150, 2);
 Nappula nappula3 = new Nappula(420,70, 50, 150, 3);
@@ -34,10 +34,8 @@ Nappula nappula12 = new Nappula (800/3, 141+2*(560/3), (560/3), (800/3), 12);
 Nappula nappula13 = new Nappula (798-(800/3), 141+2*(560/3), (560/3),(800/3), 13);
 Nappula nappula14 = new Nappula(750, 10, 25, 25, 14);
 
-
 /* Alustetaan kaikki
-
-
+tarvittavat
 */
 void setup() {
   size(800,700);
@@ -53,7 +51,7 @@ void setup() {
   harmaa2 = color(150);
   piirraValikko();
   
-  
+   // Ladataan kuvat
   kuva5 = loadImage("kuva5.jpg");
   kuva6 = loadImage("kuva6.jpg");
   kuva7 = loadImage("kuva7.jpg");
@@ -66,7 +64,8 @@ void setup() {
   
 }
 
-
+/*Maaritetaan kayttajan valinta tiedostosta
+*/
 void fileSelected(File selection) {
   if (selection == null) {
     println("Ei valittu kuvaa, käyttäjä painoi cancel.");
@@ -78,6 +77,8 @@ void fileSelected(File selection) {
 }
 
 
+/* Maaritetaan kayttajan valitsema kansio
+*/
 void folderSelected(File selection) {
   if (selection == null) {
     println("Ei valittu kansiota, käyttäjä painoi cancel");
@@ -88,20 +89,21 @@ void folderSelected(File selection) {
   }
 }
 
+/* Maaritetaan piirto
+*/
 void draw() {  
   if (kuva != null) {
     image(kuva, 0, height/5, width, height-height/5); 
       piirraValikko();  
   } 
-
-     
   
+  // Jos inforuutu on nakyvilla, se piirretaan  
   if(infonakyvilla){
     info.draw();
    }
   
 }
-
+  //Piirretaan ylavalikko
   void piirraValikko(){  
   //fill(190);
    strokeWeight(1);
@@ -118,6 +120,7 @@ void draw() {
   nappula14.draw();
 }
 
+// Piirretaan kuvagalleria
 void piirraTaulukko() {
   klikkaukset = true;
   kuva = null;
@@ -133,6 +136,8 @@ void piirraTaulukko() {
    
   }
 
+/* Maaritetaan hiirenklikkaukset
+*/
 void mouseClicked() {
    nappula1.mouseClicked();
    nappula2.mouseClicked();
@@ -151,6 +156,8 @@ void mouseClicked() {
 
 }
 
+/* Maaritetaan hiiren vienti nappulan paalle
+*/
 void mouseMoved() {
   nappula1.mouseMoved();
   nappula2.mouseMoved();
@@ -159,6 +166,8 @@ void mouseMoved() {
   nappula14.mouseMoved();
 }
 
+/* Piirretaan gradientti valikkoon
+*/
 void piirraGradientti(int x, 
 int y, float w, float h, 
 color yla, color ala) {
@@ -173,6 +182,7 @@ color yla, color ala) {
     }
 }
 
+// Nollataan tausta ja valikko ja piirretaan uudet
 void nollaus(){
    if(gallerianakyvilla == false){
      if(kuva == null){
