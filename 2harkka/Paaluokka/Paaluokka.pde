@@ -14,6 +14,7 @@ boolean klikkaukset;
 PFont fontti1;
 PFont fontti2;
 boolean infonakyvilla;
+boolean gallerianakyvilla;
 Inforuutu info;
 
 
@@ -42,6 +43,7 @@ void setup() {
   info = new Inforuutu();
   klikkaukset = false;
   infonakyvilla = false;
+  gallerianakyvilla = false;
   fontti1 = loadFont("CourierNewPS-BoldMT-48.vlw");
   fontti2 = createFont("Futura-Medium",14);
   harmaa = color(255);
@@ -170,8 +172,14 @@ color yla, color ala) {
 
 void nollaus(){
    //background(255);
+   if(gallerianakyvilla == false){
    piirraValikko();
-  
+   }
+   else{
+     piirraValikko();
+     piirraTaulukko();
+   }
+   
 }
 
 

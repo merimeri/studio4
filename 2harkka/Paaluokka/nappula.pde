@@ -126,6 +126,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
           println("TOKAA KLIKATTIIN!!");
           //klikkaukset = true;
           piirraTaulukko();
+          gallerianakyvilla = true;
           
         }
          if(this.tunniste == 3){
@@ -133,11 +134,13 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
           if (kuva !=null) {
           Muokkaus muokkaus = new Muokkaus (kuva);
           kuva = muokkaus.teeMuokkaus();
+          gallerianakyvilla = false;
           }
           
         } 
           if(this.tunniste == 4){
           println("VIKAA KLIKATTIIN");
+          
           selectFolder("Valitse kansio johon tallenetaan", "folderSelected");
           
         }  
@@ -185,7 +188,7 @@ Nappula (int x, int y, int korkeus, int leveys, int tunniste) {
          }
          }
          if (this.tunniste == 14) {
-          
+   
            if (infonakyvilla == false) {
            infonakyvilla = true;
            println(infonakyvilla);
