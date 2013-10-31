@@ -35,8 +35,10 @@ Nappula nappula13 = new Nappula (798-(800/3), 141+2*(560/3), (560/3),(800/3), 13
 Nappula nappula14 = new Nappula(750, 10, 25, 25, 14);
 
 
-//String osoite;
+/* Alustetaan kaikki
 
+
+*/
 void setup() {
   size(800,700);
   frame.setTitle("Marivalli-design");
