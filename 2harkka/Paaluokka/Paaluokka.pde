@@ -39,6 +39,7 @@ Nappula nappula14 = new Nappula(750, 10, 25, 25, 14);
 
 void setup() {
   size(800,700);
+  frame.setTitle("Marivalli-design");
   background(255);
   info = new Inforuutu();
   klikkaukset = false;
@@ -107,7 +108,7 @@ void draw() {
   piirraGradientti(0, 0, width, height/5, harmaa, harmaa2);
   fill(1);
   textFont(fontti1, 48);
-  text("Pieniä hetkiä...", 75, 50);
+  text("Marivalli-design", 75, 50);
   nappula1.draw();
   nappula2.draw();
   nappula3.draw();
@@ -171,10 +172,13 @@ color yla, color ala) {
 }
 
 void nollaus(){
-   //background(255);
    if(gallerianakyvilla == false){
-   piirraValikko();
+     if(kuva == null){
+       background(255);
+     }
+     piirraValikko();
    }
+   
    else{
      piirraValikko();
      piirraTaulukko();
