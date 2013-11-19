@@ -1,26 +1,34 @@
 class Time {
 
-int begin;
+int begin = millis();
+
+
 
 
 Time() {
- begin = millis();
- println("alku" + begin);
- 
+ println(begin);
+
 
 }
+ 
+
+/*void draw() {
+  time = millis();
+  println(time);
+  point = time/1000;
+  println(point);
+
+ 
+}*/
+
 
 int points() {
-  println(begin);
   int timenow = millis();
-  println("nyt ennen: " + timenow);
-  int time = timenow-begin;
-  println("aika" + time);
-  int point = timenow/1000;
+  println(timenow);
+  int point = time/1000;
   println(point);
   
   return point;
   
 }
-
 }
