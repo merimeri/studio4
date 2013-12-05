@@ -7,6 +7,7 @@ import javax.vecmath.Vector3f;
 import processing.core.PApplet;
 import peasy.*;
 import bRigid.*;
+import saito.objloader.*;
 
 //cam-object, that moves the camera
 PeasyCam cam;
@@ -17,10 +18,16 @@ BPhysics physics;
 BObject rigid;
 BTerrain terrain;
 
+OBJModel model;
+
 public void setup() {
   size(1280, 720, P3D);
   fill(213, 56, 74);
   frameRate(60);
+
+  model = new OBJModel(this);
+  //model.debugMode();
+  model.load("map_ground_empty.obj");
 
   cam = new PeasyCam(this, 200);
   cam.pan(0, 50);
@@ -55,7 +62,7 @@ public void setup() {
 public void draw() {
   background(255);
   lights();
-  
+  model.draw();
   //changes the gravity acording to the camera angele ***NOT WORKING***
   float[] rotations = cam.getRotations();
   this.physics.world.setGravity(new Vector3f(rotations[0]*100, rotations[1]*100, rotations[2]*100));
