@@ -8,8 +8,10 @@ import processing.core.PApplet;
 import peasy.*;
 import bRigid.*;
 
+//cam-object, that moves the camera
 PeasyCam cam;
 
+//physic-object that holds the physical rules
 BPhysics physics;
 
 BObject rigid;
@@ -23,12 +25,15 @@ public void setup() {
   cam = new PeasyCam(this, 200);
   cam.pan(0, 50);
 
+  //size of th world
   Vector3f min = new Vector3f(-120, -250, -120);
   Vector3f max = new Vector3f(120, 250, 120);
   //create a rigid physics engine with a bounding box
   physics = new BPhysics(min, max);
   physics.world.setGravity(new Vector3f(0, 40, 0));
 
+
+  //the ground of the world
   float height = 0f;
   //BTerrain(PApplet p, int tesselation, float height, int seed, Vector3f position, Vector3f scale) 
   terrain = new BTerrain(this, 100, height, 10, new Vector3f(), new Vector3f(10,10,10));
@@ -37,6 +42,7 @@ public void setup() {
   //create the first rigidBody as Sphere
   rigid = new BBox(this, 1,15, 60, 15);
   
+  //generates 10 objects into the world
   for (int i = 0; i < 10; i++) {
     Vector3f pos = new Vector3f(random(-90, 90), -30, random(-90, 90));
     //reuse the rigidBody of the sphere for performance resons
@@ -50,15 +56,20 @@ public void draw() {
   background(255);
   lights();
   
+  //changes the gravity acording to the camera angele ***NOT WORKING***
   float[] rotations = cam.getRotations();
   this.physics.world.setGravity(new Vector3f(rotations[0]*100, rotations[1]*100, rotations[2]*100));
-  
-
-  physics.update();
-  terrain.display();
+ 
+  //moves the objects in the world
   for (int i =1;i<physics.rigidBodies.size();i++) {
     BObject b = (BObject) physics.rigidBodies.get(i);
     b.display(50, 50, 50);
   }
+
+  physics.update();
+  terrain.display();
+  
+  
+
 }
 
