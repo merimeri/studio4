@@ -17,8 +17,9 @@ BPhysics physics;
 BoundingBox bbox;
 BObject rigid;
 BTerrain terrain;
-
+int g = 1;
 OBJModel model;
+BObject t;
 
 public void setup() {
   size(1280, 720, P3D);
@@ -40,8 +41,8 @@ public void setup() {
   cam.pan(0, 50);
 
   //size of the world
-  Vector3f min = new Vector3f(-120, -250, -120);
-  Vector3f max = new Vector3f(120, 250, 120);
+  Vector3f min = new Vector3f(-100, -100, -100);
+  Vector3f max = new Vector3f(-500, -500, -500);
   //create a rigid physics engine with a bounding box
   physics = new BPhysics(min, max);
   physics.world.setGravity(new Vector3f(0, 40, 0));
@@ -55,10 +56,11 @@ public void setup() {
   //fill(255);
   //create the first rigidBody as Sphere
   rigid = new BBox(this, 1,15, 60, 15);
+  t = new BObject(this, 5, rigid, new Vector3f(-300, -300, -300), true);
   
   //generates 10 objects into the world
   for (int i = 0; i < 10; i++) {
-    Vector3f pos = new Vector3f(random(-90, 90), -30, random(-90, 90));
+    Vector3f pos = new Vector3f(random(-150, 300), -300, random(-150, -300));
     //reuse the rigidBody of the sphere for performance resons
     BObject r = new BObject(this, 5, rigid, pos, true);
     physics.addBody(r);
@@ -76,19 +78,7 @@ public void draw() {
   //bbox.draw();
   model.draw();
   
-  //changes the gravity acording to the camera angele ***NOT WORKING***
-  float[] rotations = cam.getRotations();
-  this.physics.world.setGravity(new Vector3f(rotations[0]*100, rotations[1]*100, rotations[2]*100));
- 
-  physics.update();
-  //terrain.display();
-  for (int i =1;i<physics.rigidBodies.size();i++) {
-    BObject b = (BObject) physics.rigidBodies.get(i);
-    b.display();
-    
-  }
-
-stroke(255,0,0);
+  stroke(255,0,0);
 arrow(); // red x-axis
 text("x-akseli!", 0, 0, 0);
 rotateZ (radians(90));
@@ -99,10 +89,50 @@ rotateY(radians(90));
 stroke(0,0,255);
 arrow();
 text("z-akseli!", 0, 0, 0);
+  
+  //changes the gravity acording to the camera angele ***NOT WORKING***
+  float[] rotations = cam.getRotations();
+  //rotateX(rotations[0]);
+  //rotateY(rotations[1]);
+  //rotateZ(rotations[2]);
+  println(rotations[0]);
+  println(rotations[1]);
+  println(rotations[2]);
+  //this.physics.world.setGravity(new Vector3f(0, 0, 40));
+  //this.physics.world.setGravity(new Vector3f(rotations[1]*40, rotations[2]*40, rotations[0]*40));
+ 
+  t.display();
+  //terrain.display();
+  for (int i =1;i<physics.rigidBodies.size();i++) {
+    BObject b = (BObject) physics.rigidBodies.get(i);
+    b.display();
+    
+  }
+  physics.update();
+  println(this.g);
 
 }
 
+public void keyPressed(){
+  if(key == 'b'){
+    if(this.g == 1){
+    this.physics.world.setGravity(new Vector3f(0, 0, 40)); 
+    this.g = 2;
+    println("tadaa");
+  }else if (this.g == 2){
+    this.physics.world.setGravity(new Vector3f(40, 0, 0)); 
+    this.g = 3;
+    println("tada");
+  }else{
+    this.physics.world.setGravity(new Vector3f(40, 0, 0));
+    this.g = 1;
+    println("tadaa");
+  }
+  }
+}
+
+
 public void arrow() {
 line(0,0, 100,0);
-triangle(100,0, 80,10, 80,-10);
+triangle(1000,0, 800,100, 800,-100);
 }
