@@ -11,8 +11,10 @@ void setup()
 size(800, 600, P3D);
 frameRate(30);
 model = new OBJModel(this);
+model.setDrawMode(POLYGON);
 //model.debugMode();
 model.load("talo.obj");
+
 }
 void draw()
 {
