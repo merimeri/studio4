@@ -23,16 +23,18 @@ BObject t;
 
 public void setup() {
   size(1280, 720, P3D);
-  fill(213, 56, 74);
+  //fill(213, 56, 74);
   frameRate(60);
 
   background(0);
 
-  model = new OBJModel(this, "map_ground_path_s.obj", "relative", QUADS);
+  model = new OBJModel(this);
+  model.enableTexture();
+  model.setDrawMode(POLYGON);
   //model.debugMode();
-  model.load("map_ground_path_s.obj");
+  model.load("ready_world2.obj");
 
-  model.scale(100);
+  model.scale(50);
   model.translateToCenter();
   bbox = new BoundingBox(this, model);
   
@@ -41,8 +43,8 @@ public void setup() {
   cam.pan(0, 50);
 
   //size of the world
-  Vector3f min = new Vector3f(-100, -100, -100);
-  Vector3f max = new Vector3f(-500, -500, -500);
+  Vector3f min = new Vector3f(-120, 250, -120);
+  Vector3f max = new Vector3f(120, 250, 120);
   //create a rigid physics engine with a bounding box
   physics = new BPhysics(min, max);
   physics.world.setGravity(new Vector3f(0, 40, 0));
@@ -56,11 +58,11 @@ public void setup() {
   //fill(255);
   //create the first rigidBody as Sphere
   rigid = new BBox(this, 1,15, 60, 15);
-  t = new BObject(this, 5, rigid, new Vector3f(-300, -300, -300), true);
+  //t = new BObject(this, 5, rigid, new Vector3f(-300, -300, -300), true);
   
   //generates 10 objects into the world
   for (int i = 0; i < 10; i++) {
-    Vector3f pos = new Vector3f(random(-150, 300), -300, random(-150, -300));
+    Vector3f pos = new Vector3f(random(-90, 90), 100, random(-90, 90));
     //reuse the rigidBody of the sphere for performance resons
     BObject r = new BObject(this, 5, rigid, pos, true);
     physics.addBody(r);
@@ -70,11 +72,15 @@ public void setup() {
 
 public void draw() {
   background(255);
-  lights();
-  noFill();
+  //lights();
+  //noFill();
   stroke(0);
-  sphere(500);
+  fill(255, 0, 0);
+  sphere(5000);
   //spotLight(255, 0, 0, width/2, height/2, 400, 0, 0, -1, PI/4, 2);
+  directionalLight(51, 102, 126, -1, 0, 0);
+  spotLight(51, 102, 126, 80, 20, 40, -1, 0, 0, PI/2, 2);
+  ambientLight(50, 50, 50);
   //bbox.draw();
   model.draw();
   
@@ -95,13 +101,13 @@ text("z-akseli!", 0, 0, 0);
   //rotateX(rotations[0]);
   //rotateY(rotations[1]);
   //rotateZ(rotations[2]);
-  println(rotations[0]);
-  println(rotations[1]);
-  println(rotations[2]);
+ // println(rotations[0]);
+  //println(rotations[1]);
+  //println(rotations[2]);
   //this.physics.world.setGravity(new Vector3f(0, 0, 40));
   //this.physics.world.setGravity(new Vector3f(rotations[1]*40, rotations[2]*40, rotations[0]*40));
  
-  t.display();
+  //t.display();
   //terrain.display();
   for (int i =1;i<physics.rigidBodies.size();i++) {
     BObject b = (BObject) physics.rigidBodies.get(i);
@@ -109,7 +115,7 @@ text("z-akseli!", 0, 0, 0);
     
   }
   physics.update();
-  println(this.g);
+  //println(this.g);
 
 }
 
@@ -124,7 +130,7 @@ public void keyPressed(){
     this.g = 3;
     println("tada");
   }else{
-    this.physics.world.setGravity(new Vector3f(40, 0, 0));
+    this.physics.world.setGravity(new Vector3f(0, 40, 0));
     this.g = 1;
     println("tadaa");
   }
