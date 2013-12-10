@@ -1,7 +1,9 @@
 import processing.opengl.*;
 import saito.objloader.*;
+import peasy.*;
 
 OBJModel model;
+PeasyCam cam;
 float rotX;
 float rotY;
 float changeSize = 30;
@@ -11,9 +13,12 @@ void setup()
 size(800, 600, P3D);
 frameRate(30);
 model = new OBJModel(this);
+model.enableTexture();
 model.setDrawMode(POLYGON);
 //model.debugMode();
-model.load("talo.obj");
+model.load("ready_world2.obj");
+cam = new PeasyCam(this, 500);
+cam.pan(200, -400);
 
 }
 void draw()
@@ -21,10 +26,8 @@ void draw()
 background(255);
 lights();
 pushMatrix();
-translate(mouseX, mouseY);
-rotateX(rotY);
-rotateY(rotX);
-//scale(changeSize);
+scale(changeSize);
+model.enableTexture();
 model.draw();
 popMatrix();
 
