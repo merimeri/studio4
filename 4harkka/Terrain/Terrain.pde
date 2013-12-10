@@ -3,6 +3,7 @@
 
 //here: build a TriangleMesh and use it as "Terrain"
 
+import gifAnimation.*;
 import javax.vecmath.Vector3f;
 import processing.core.PApplet;
 import peasy.*;
@@ -11,7 +12,7 @@ import saito.objloader.*;
 
 //cam-object, that moves the camera
 PeasyCam cam;
-
+Gif gif;
 //physic-object that holds the physical rules
 BPhysics physics;
 BoundingBox bbox;
@@ -25,7 +26,7 @@ public void setup() {
   size(1280, 720, P3D);
   //fill(213, 56, 74);
   frameRate(60);
-
+  
   background(0);
 
   model = new OBJModel(this);
@@ -37,7 +38,8 @@ public void setup() {
   model.scale(50);
   model.translateToCenter();
   bbox = new BoundingBox(this, model);
-  
+  gif = new Gif(this, "fire.gif");
+  gif.loop();
 
   cam = new PeasyCam(this, 200);
   cam.pan(0, 50);
@@ -72,6 +74,22 @@ public void setup() {
 
 public void draw() {
   background(255);
+  background(0,0,0,0);
+  beginShape();
+  texture(gif);
+  vertex(-20, -20, 0, 0,   0);
+  vertex( 20, -20, 0, 400, 0);
+  vertex( 20,  20, 0, 400, 400);
+  vertex(-20,  20, 0, 0,   400);
+  endShape();
+  background(0,0,0,0);
+  beginShape();
+  texture(gif);
+  vertex(-20, -20, 0, 0,   0);
+  vertex( 20, -20, 0, 400, 0);
+  vertex( 20,  20, 0, 400, 400);
+  vertex(-20,  20, 0, 0,   400);
+  endShape();
   //lights();
   //noFill();
   stroke(0);
