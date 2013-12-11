@@ -2,8 +2,8 @@ import peasy.*;
 
 
 // Stars parameters
-int           depth = 8;
-int           numberSnowMax = 10000;
+int           depth = 10;
+int           numberSnowMax = 15000;
 Snow[]       tableSnow = new Snow[numberSnowMax];
 int[]       tableSnowSize = new int[numberSnowMax];
 int           maxSnowSpeed = 5;
@@ -26,7 +26,7 @@ void setup() {
   
   
   for(int i=0; i<numberSnowMax; i++) {
-     diameter = int(random(1,5));
+     diameter = int(random(1,4));
     tableSnowSize[i] = diameter;
     tableSnow[i] = new Snow(random(-2*sizeX,2*sizeX),random(-2*sizeY,2*sizeY),
                                -random(depth*255),random(1,maxSnowSpeed));
@@ -60,7 +60,7 @@ class Snow {
    
   void create() {
     
-    stroke(250+z/depth,transparency);
+    stroke(255+z/depth,transparency);
     point(x,y,z);
   }
    
