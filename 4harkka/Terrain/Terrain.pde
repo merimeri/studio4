@@ -3,6 +3,7 @@
 
 //here: build a TriangleMesh and use it as "Terrain"
 
+import gifAnimation.*;
 import javax.vecmath.Vector3f;
 import processing.core.PApplet;
 import peasy.*;
@@ -11,7 +12,7 @@ import saito.objloader.*;
 
 //cam-object, that moves the camera
 PeasyCam cam;
-
+Gif gif;
 //physic-object that holds the physical rules
 BPhysics physics;
 BoundingBox bbox;
@@ -20,24 +21,27 @@ BTerrain terrain;
 int g = 1;
 OBJModel model;
 BObject t;
+int state;
 
 public void setup() {
+  //moimoi 
   size(1280, 720, P3D);
   //fill(213, 56, 74);
   frameRate(60);
-
+  state =1;
   background(0);
 
   model = new OBJModel(this);
   model.enableTexture();
   model.setDrawMode(POLYGON);
   //model.debugMode();
-  model.load("ready_world2.obj");
+  model.load("ready_world.obj");
 
   model.scale(50);
   model.translateToCenter();
   bbox = new BoundingBox(this, model);
-  
+  gif = new Gif(this, "fire.gif");
+  gif.loop();
 
   cam = new PeasyCam(this, 200);
   cam.pan(0, 50);
@@ -71,49 +75,17 @@ public void setup() {
 }
 
 public void draw() {
-  background(0,0,80);
-  //lights();
-  //noFill();
-  stroke(0);
-  //fill(255, 0, 0);
-  //sphere(5000);
-  //spotLight(255, 0, 0, width/2, height/2, 400, 0, 0, -1, PI/4, 2);
-  directionalLight(51, 102, 126, -1, 0, 0);
-  spotLight(51, 102, 126, 80, 20, 40, -1, 0, 0, PI/2, 2);
-  ambientLight(50, 50, 50);
-  //bbox.draw();
-  model.draw();
-  
-  stroke(255,0,0);
-arrow(); // red x-axis
-text("x-akseli!", 0, 0, 0);
-rotateZ (radians(90));
-stroke(0,255,0);
-arrow(); // green y-axis
-text("y-akseli!", 0, 0, 0);
-rotateY(radians(90));
-stroke(0,0,255);
-arrow();
-text("z-akseli!", 0, 0, 0);
-  
-  //changes the gravity acording to the camera angele ***NOT WORKING***
-  float[] rotations = cam.getRotations();
-  //rotateX(rotations[0]);
-  //rotateY(rotations[1]);
-  //rotateZ(rotations[2]);
- // println(rotations[0]);
-  //println(rotations[1]);
-  //println(rotations[2]);
-  //this.physics.world.setGravity(new Vector3f(0, 0, 40));
-  //this.physics.world.setGravity(new Vector3f(rotations[1]*40, rotations[2]*40, rotations[0]*40));
- 
-  //t.display();
-  //terrain.display();
-  for (int i =1;i<physics.rigidBodies.size();i++) {
-    BObject b = (BObject) physics.rigidBodies.get(i);
-    b.display();
+  switch(state){
+    case 1: 
+        background(255);
+        fill(0);
+        stroke(3);
+        text("Paina mitä vaan näppäintä ääliö",10,10);
+        if(keyPressed){
+          state = 2 ;
+        }
+        break;
     
-<<<<<<< HEAD
     case 2:
       background(255);
       background(0,0,0,0);
@@ -179,12 +151,7 @@ text("z-akseli!", 0, 0, 0);
       break;
     default:
         break;
-=======
->>>>>>> c69c5baf31bbe964d1885549edecac384a67977e
   }
-  physics.update();
-  //println(this.g);
-
 }
 
 public void keyPressed(){
