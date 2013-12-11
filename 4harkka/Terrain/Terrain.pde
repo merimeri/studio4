@@ -3,7 +3,7 @@
 
 //here: build a TriangleMesh and use it as "Terrain"
 
-import gifAnimation.*;
+
 import javax.vecmath.Vector3f;
 import processing.core.PApplet;
 import peasy.*;
@@ -12,7 +12,7 @@ import saito.objloader.*;
 
 //cam-object, that moves the camera
 PeasyCam cam;
-Gif gif;
+
 //physic-object that holds the physical rules
 BPhysics physics;
 BoundingBox bbox;
@@ -22,6 +22,10 @@ int g = 1;
 OBJModel model;
 BObject t;
 int state;
+
+Snowing snowing;
+int depth = 10;
+int transparency = 255;
 
 public void setup() {
   //moimoi 
@@ -40,8 +44,8 @@ public void setup() {
   model.scale(50);
   model.translateToCenter();
   bbox = new BoundingBox(this, model);
-  gif = new Gif(this, "fire.gif");
-  gif.loop();
+  //gif = new Gif(this, "fire.gif");
+  //gif.loop();
 
   cam = new PeasyCam(this, 200);
   cam.pan(0, 50);
@@ -52,6 +56,7 @@ public void setup() {
   //create a rigid physics engine with a bounding box
   physics = new BPhysics(min, max);
   physics.world.setGravity(new Vector3f(0, 40, 0));
+  snowing = new Snowing();
 
 
   float height = 0f;
@@ -75,6 +80,7 @@ public void setup() {
 }
 
 public void draw() {
+  
   switch(state){
     case 1: 
         background(255);
@@ -90,7 +96,7 @@ public void draw() {
       background(255);
       background(0,0,0,0);
       beginShape();
-      texture(gif);
+      //texture(gif);
       vertex(-20, -20, 0, 0,   0);
       vertex( 20, -20, 0, 400, 0);
       vertex( 20,  20, 0, 400, 400);
@@ -98,7 +104,7 @@ public void draw() {
       endShape();
       background(0,0,0,0);
       beginShape();
-      texture(gif);
+      //texture(gif);
       vertex(-20, -20, 0, 0,   0);
       vertex( 20, -20, 0, 400, 0);
       vertex( 20,  20, 0, 400, 400);
@@ -127,6 +133,7 @@ public void draw() {
     stroke(0,0,255);
     arrow();
     text("z-akseli!", 0, 0, 0);
+    snowing.draw();
       
       //changes the gravity acording to the camera angele ***NOT WORKING***
       float[] rotations = cam.getRotations();
