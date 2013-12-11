@@ -23,17 +23,23 @@ class Particle {
   void update() {
     velocity.add(acceleration);
     location.add(velocity);
-    lifespan -= 10.0;
+    lifespan -= 10.0 * LiveInput.getLevel();
+    println(lifespan);
   }
 
   // Method to display
   void display() {
-    stroke(223,49,45,lifespan);
-    fill(223,49,45,lifespan);
-    ellipse(location.x,location.y,8,8);
-    stroke(245,239,94,lifespan);
-    fill(245,239,94,lifespan);
-    ellipse(location.x+10,location.y,8,8);
+    
+    for(int i = 0; i < 60; i++){
+      stroke(223,49,45,lifespan);
+      fill(223,49,45,lifespan);
+      ellipse(location.x,location.y,8,8);
+      stroke(245,239,94,lifespan);
+      fill(245,239,94,lifespan);
+      ellipse(location.x+10,location.y,8,8);
+      rotateY(radians(1));
+    }
+
   }
   
   // Is the particle still useful?

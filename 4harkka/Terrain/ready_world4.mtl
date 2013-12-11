@@ -1,0 +1,97 @@
+# Alias Wavefront MTL File Exported from SketchUp
+# with OBJexporter (c) 2013 TIG
+# Made for 'ready_world4.obj'
+
+newmtl Default_Material
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.333 0.333 0.333
+Ns 0
+d 1
+Tr 1
+
+newmtl Material4
+Ka 0.901961 0.901961 0.901961
+Kd 0.901961 0.901961 0.901961
+Ks 0.333 0.333 0.333
+Ns 0
+d 1
+Tr 1
+
+newmtl Roofing_Shingles_Multi
+Ka 0.529412 0.498039 0.482353
+Kd 0.529412 0.498039 0.482353
+Ks 0.333 0.333 0.333
+Ns 0
+d 1
+Tr 1
+map_Kd ready_world4_Textures/Roofing_Shingles_Multi.PNG
+
+newmtl Material5
+Ka 0.501961 0 0
+Kd 0.501961 0 0
+Ks 0.333 0.333 0.333
+Ns 0
+d 1
+Tr 1
+
+newmtl Material6
+Ka 0.298039 0.298039 0.298039
+Kd 0.298039 0.298039 0.298039
+Ks 0.333 0.333 0.333
+Ns 0
+d 1
+Tr 1
+
+newmtl Material8
+Ka 0.501961 0 0
+Kd 0.501961 0 0
+Ks 0.333 0.333 0.333
+Ns 0
+d 0.49
+Tr 0.49
+
+newmtl Material3
+Ka 0.501961 0.25098 0
+Kd 0.501961 0.25098 0
+Ks 0.333 0.333 0.333
+Ns 0
+d 1
+Tr 1
+
+newmtl Wood_Plywood_Knots
+Ka 0.533333 0.478431 0.152941
+Kd 0.533333 0.478431 0.152941
+Ks 0.333 0.333 0.333
+Ns 0
+d 1
+Tr 1
+map_Kd ready_world4_Textures/Wood_Plywood_Knots.PNG
+
+newmtl Material1
+Ka 0.356863 0.27451 0.176471
+Kd 0.356863 0.27451 0.176471
+Ks 0.333 0.333 0.333
+Ns 0
+d 1
+Tr 1
+
+newmtl 2291880-476517-old-mossy-pine-tree-bark-texture
+Ka 0.443137 0.431373 0.411765
+Kd 0.443137 0.431373 0.411765
+Ks 0.333 0.333 0.333
+Ns 0
+d 1
+Tr 1
+map_Kd ready_world4_Textures/2291880-476517-old-mossy-pine-tree-bark-texture.PNG
+
+newmtl Vegetation_Grass_Artificial
+Ka 0.380392 0.54902 0.282353
+Kd 0.380392 0.54902 0.282353
+Ks 0.333 0.333 0.333
+Ns 0
+d 1
+Tr 1
+map_Kd ready_world4_Textures/Vegetation_Grass_Artificial.PNG
+
+#EOF
