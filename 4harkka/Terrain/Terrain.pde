@@ -105,8 +105,8 @@ public void draw() {
       endShape();
       //lights();
       //noFill();
-      stroke(0);
       fill(255, 0, 0);
+      noStroke();
       sphere(5000);
       //spotLight(255, 0, 0, width/2, height/2, 400, 0, 0, -1, PI/4, 2);
       directionalLight(51, 102, 126, -1, 0, 0);
@@ -140,12 +140,12 @@ public void draw() {
      
       //t.display();
       //terrain.display();
-      for (int i =1;i<physics.rigidBodies.size();i++) {
+    /*  for (int i =1;i<physics.rigidBodies.size();i++) {
         BObject b = (BObject) physics.rigidBodies.get(i);
         b.display();
         
       }
-      physics.update();
+      physics.update();*/
       //println(this.g);
       break;
     default:
