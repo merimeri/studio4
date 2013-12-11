@@ -33,7 +33,7 @@ public void setup() {
   model.enableTexture();
   model.setDrawMode(POLYGON);
   //model.debugMode();
-  model.load("ready_world2.obj");
+  model.load("ready_world.obj");
 
   model.scale(50);
   model.translateToCenter();
