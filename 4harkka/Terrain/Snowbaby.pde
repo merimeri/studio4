@@ -1,5 +1,5 @@
-import peasy.*;
 
+/*
 
 // Stars parameters
 int           depth = 10;
@@ -14,7 +14,7 @@ int           sizeY = 640;
 
 int           diameter;
 int           transparency = 255;
-PeasyCam cam;
+
  
 
 
@@ -69,4 +69,4 @@ class Snow {
     if(y>=0)
       y = -2000.0;
   }
-}
+}*/
