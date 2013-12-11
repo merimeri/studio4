@@ -38,8 +38,10 @@ public void setup() {
   sound = new Sound();
   sound.play();
 
-  cam = new PeasyCam(this, 200);
-  cam.pan(0, 50);
+  cam = new PeasyCam(this, 0, 200, 0, 500);
+  cam.rotateX(radians(30));
+  //cam.pan(0, 50);
+  //cam.setWheelHandler(null);
 }
 
 public void draw() {
@@ -60,9 +62,11 @@ public void draw() {
     lights();
     fill(255, 0, 0);
     noStroke();
-    directionalLight(51, 102, 126, -1, 0, 0);
-    spotLight(51, 102, 126, 80, 20, 40, -1, 0, 0, PI/2, 2);
-    ambientLight(50, 50, 50);
+    cam.rotateY(0.01);
+    cam.rotateZ(-0.01);
+    //directionalLight(51, 102, 126, -1, 0, 0);
+    //spotLight(51, 102, 126, 80, 20, 40, -1, 0, 0, PI/2, 2);
+    //ambientLight(50, 50, 50);
     sphere.draw();
     model.draw();
     snowing.draw();
