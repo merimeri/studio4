@@ -3,7 +3,7 @@
 
 //here: build a TriangleMesh and use it as "Terrain"
 
-import gifAnimation.*;
+
 import javax.vecmath.Vector3f;
 import processing.core.PApplet;
 import peasy.*;
@@ -12,8 +12,12 @@ import saito.objloader.*;
 
 //cam-object, that moves the camera
 PeasyCam cam;
+<<<<<<< HEAD
 Gif gif;
 ParticleSystem ps;
+=======
+
+>>>>>>> 647918762ea87036923c025fc94bebca715075a3
 //physic-object that holds the physical rules
 BPhysics physics;
 BoundingBox bbox;
@@ -23,6 +27,10 @@ int g = 1;
 OBJModel model;
 BObject t;
 int state;
+
+Snowing snowing;
+int depth = 10;
+int transparency = 255;
 
 public void setup() {
   //moimoi 
@@ -41,6 +49,11 @@ public void setup() {
   model.scale(50);
   model.translateToCenter();
   bbox = new BoundingBox(this, model);
+<<<<<<< HEAD
+=======
+  //gif = new Gif(this, "fire.gif");
+  //gif.loop();
+>>>>>>> 647918762ea87036923c025fc94bebca715075a3
 
   cam = new PeasyCam(this, 200);
   cam.pan(0, 50);
@@ -51,6 +64,7 @@ public void setup() {
   //create a rigid physics engine with a bounding box
   physics = new BPhysics(min, max);
   physics.world.setGravity(new Vector3f(0, 40, 0));
+  snowing = new Snowing();
 
 
   float height = 0f;
@@ -73,6 +87,7 @@ public void setup() {
 }
 
 public void draw() {
+<<<<<<< HEAD
   switch(state) {
   case 1: 
     background(255);
@@ -101,6 +116,51 @@ public void draw() {
     ps.addParticle();
     ps.run();
     stroke(255, 0, 0);
+=======
+  
+  switch(state){
+    case 1: 
+        background(255);
+        fill(0);
+        stroke(3);
+        text("Paina mitä vaan näppäintä ääliö",10,10);
+        if(keyPressed){
+          state = 2 ;
+        }
+        break;
+    
+    case 2:
+      background(255);
+      background(0,0,0,0);
+      beginShape();
+      //texture(gif);
+      vertex(-20, -20, 0, 0,   0);
+      vertex( 20, -20, 0, 400, 0);
+      vertex( 20,  20, 0, 400, 400);
+      vertex(-20,  20, 0, 0,   400);
+      endShape();
+      background(0,0,0,0);
+      beginShape();
+      //texture(gif);
+      vertex(-20, -20, 0, 0,   0);
+      vertex( 20, -20, 0, 400, 0);
+      vertex( 20,  20, 0, 400, 400);
+      vertex(-20,  20, 0, 0,   400);
+      endShape();
+      //lights();
+      //noFill();
+      fill(255, 0, 0);
+      noStroke();
+      sphere(5000);
+      //spotLight(255, 0, 0, width/2, height/2, 400, 0, 0, -1, PI/4, 2);
+      directionalLight(51, 102, 126, -1, 0, 0);
+      spotLight(51, 102, 126, 80, 20, 40, -1, 0, 0, PI/2, 2);
+      ambientLight(50, 50, 50);
+      //bbox.draw();
+      model.draw();
+      
+      stroke(255,0,0);
+>>>>>>> 647918762ea87036923c025fc94bebca715075a3
     arrow(); // red x-axis
     text("x-akseli!", 0, 0, 0);
     rotateZ (radians(90));
@@ -111,6 +171,7 @@ public void draw() {
     stroke(0, 0, 255);
     arrow();
     text("z-akseli!", 0, 0, 0);
+<<<<<<< HEAD
 
     //changes the gravity acording to the camera angele ***NOT WORKING***
     float[] rotations = cam.getRotations();
@@ -125,6 +186,23 @@ public void draw() {
 
     //t.display();
     //terrain.display();
+=======
+    snowing.draw();
+      
+      //changes the gravity acording to the camera angele ***NOT WORKING***
+      float[] rotations = cam.getRotations();
+      //rotateX(rotations[0]);
+      //rotateY(rotations[1]);
+      //rotateZ(rotations[2]);
+     // println(rotations[0]);
+      //println(rotations[1]);
+      //println(rotations[2]);
+      //this.physics.world.setGravity(new Vector3f(0, 0, 40));
+      //this.physics.world.setGravity(new Vector3f(rotations[1]*40, rotations[2]*40, rotations[0]*40));
+     
+      //t.display();
+      //terrain.display();
+>>>>>>> 647918762ea87036923c025fc94bebca715075a3
     /*  for (int i =1;i<physics.rigidBodies.size();i++) {
      BObject b = (BObject) physics.rigidBodies.get(i);
      b.display();
