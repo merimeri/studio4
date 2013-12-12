@@ -64,8 +64,8 @@ public void draw() {
     lights();
     fill(255, 0, 0);
     noStroke();
-    //cam.rotateY(0.1);
-    //cam.rotateZ(-0.1);
+    cam.rotateY(.01);
+    //cam.rotateZ();
     //directionalLight(51, 102, 126, -1, 0, 0);
     //spotLight(51, 102, 126, 80, 20, 40, -1, 0, 0, PI/2, 2);
     //ambientLight(50, 50, 50);
@@ -75,32 +75,12 @@ public void draw() {
     pushMatrix();
     translate(100,250,0);
     rotateY(frameCount*2);
-    ps.addParticle();
-   
+    
+    if(ps.particles.size() < 500){
+      ps.addParticle();
+    }
     ps.run();
     popMatrix();
-    
-    /*stroke(255, 0, 0);
-    arrow(); // red x-axis
-    text("x-akseli!", 0, 0, 0);
-    rotateZ (radians(90));
-    stroke(0, 255, 0);
-    arrow(); // green y-axis
-    text("y-akseli!", 0, 0, 0);
-    rotateY(radians(90));
-    stroke(0, 0, 255);
-    arrow();
-    text("z-akseli!", 0, 0, 0);*/
-    
-    
-    float[] rotations = cam.getRotations();
-    println(rotations[0]);
-    /*if(rotations[0] > 0.5 || rotations[0] < -0.5){
-     cam.reset();
-      println("tadaa"); 
-    }*/
-    
-    
     
     break;
     

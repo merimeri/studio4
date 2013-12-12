@@ -6,11 +6,20 @@ class Particle {
   PVector velocity;
   PVector acceleration;
   float lifespan;
+  PVector start;
 
   Particle(PVector l) {
+    this.start = l;
     acceleration = new PVector(0,-0.05);
     velocity = new PVector(random(-1,1),random(-2,0));
     location = l.get();
+    lifespan = 255.0;
+  }
+
+  void zero(){
+    acceleration = new PVector(0,-0.05);
+    velocity = new PVector(random(-1,1),random(-2,0));
+    location = this.start.get();
     lifespan = 255.0;
   }
 
@@ -23,15 +32,14 @@ class Particle {
   void update() {
     velocity.add(acceleration);
     location.add(velocity);
-    lifespan -= 20.0 * LiveInput.getLevel();
-    //println(lifespan);
+
+    lifespan -= abs(20.0 * LiveInput.getLevel());
+    println(lifespan);
   }
 
   // Method to display
   void display() {
-      
-      
-      
+ 
       stroke(223,49,45,lifespan);
       fill(223,49,45,lifespan);
       ellipse(location.x,location.y,8,8);
@@ -45,7 +53,6 @@ class Particle {
       stroke(245,239,94,lifespan);
       fill(245,239,94,lifespan);
       ellipse(location.x+10,location.y,8,8);
-
 
   }
   

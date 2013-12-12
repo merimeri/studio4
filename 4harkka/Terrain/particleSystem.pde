@@ -3,13 +3,21 @@
 // An ArrayList is used to manage the list of Particles 
 
 class ParticleSystem {
-  ArrayList<Particle> particles;
+  public ArrayList<Particle> particles;
   PVector origin;
 
   ParticleSystem(PVector location) {
     origin = location.get();
     particles = new ArrayList<Particle>();
+    for(int i = 0; i < 100; i++){
+     particles.add(new Particle(origin)); 
+    }
   }
+
+  int getParticleAmount(){
+   return particles.size(); 
+  }
+
 
   void addParticle() {
     particles.add(new Particle(origin));
@@ -20,7 +28,7 @@ class ParticleSystem {
       Particle p = particles.get(i);
       p.run();
       if (p.isDead()) {
-        particles.remove(i);
+        p.zero();
       }
     }
   }
