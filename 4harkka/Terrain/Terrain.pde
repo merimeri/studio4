@@ -23,7 +23,7 @@ public void setup() {
   frameRate(30);  
   state =1;
   
-  ps = new ParticleSystem(new PVector(0,250, 0));
+  ps = new ParticleSystem(new PVector(0,0, 0));
   snowing = new Snowing();
   sphere = new Sphere();
  
@@ -64,7 +64,7 @@ public void draw() {
     lights();
     fill(255, 0, 0);
     noStroke();
-    cam.rotateY(0.1);
+    //cam.rotateY(0.1);
     //cam.rotateZ(-0.1);
     //directionalLight(51, 102, 126, -1, 0, 0);
     //spotLight(51, 102, 126, 80, 20, 40, -1, 0, 0, PI/2, 2);
@@ -72,8 +72,14 @@ public void draw() {
     sphere.draw();
     model.draw();
     snowing.draw();
+    pushMatrix();
+    translate(100,250,0);
+    rotateY(frameCount*2);
     ps.addParticle();
+   
     ps.run();
+    popMatrix();
+    
     /*stroke(255, 0, 0);
     arrow(); // red x-axis
     text("x-akseli!", 0, 0, 0);

@@ -29,16 +29,23 @@ class Particle {
 
   // Method to display
   void display() {
-    
-    for(int i = 0; i < 60; i++){
+      
+      
+      
       stroke(223,49,45,lifespan);
       fill(223,49,45,lifespan);
       ellipse(location.x,location.y,8,8);
       stroke(245,239,94,lifespan);
       fill(245,239,94,lifespan);
       ellipse(location.x+10,location.y,8,8);
-      rotateY(radians(1));
-    }
+      rotateY(radians(90));
+      stroke(223,49,45,lifespan);
+      fill(223,49,45,lifespan);
+      ellipse(location.x,location.y,8,8);
+      stroke(245,239,94,lifespan);
+      fill(245,239,94,lifespan);
+      ellipse(location.x+10,location.y,8,8);
+
 
   }
   
