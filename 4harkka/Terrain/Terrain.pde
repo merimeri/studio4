@@ -38,8 +38,10 @@ public void setup() {
   sound = new Sound();
   sound.play();
 
-  cam = new PeasyCam(this, 0, 200, 0, 500);
-  cam.rotateX(radians(30));
+  cam = new PeasyCam(this, 0, 200, 0, 1000);
+  //cam.rotateX(radians(20));
+  //cam.setActive(false);
+  cam.setMaximumDistance(1000);
   //cam.pan(0, 50);
   //cam.setWheelHandler(null);
 }
@@ -62,8 +64,8 @@ public void draw() {
     lights();
     fill(255, 0, 0);
     noStroke();
-    cam.rotateY(0.01);
-    cam.rotateZ(-0.01);
+    cam.rotateY(0.1);
+    //cam.rotateZ(-0.1);
     //directionalLight(51, 102, 126, -1, 0, 0);
     //spotLight(51, 102, 126, 80, 20, 40, -1, 0, 0, PI/2, 2);
     //ambientLight(50, 50, 50);
@@ -72,7 +74,7 @@ public void draw() {
     snowing.draw();
     ps.addParticle();
     ps.run();
-    stroke(255, 0, 0);
+    /*stroke(255, 0, 0);
     arrow(); // red x-axis
     text("x-akseli!", 0, 0, 0);
     rotateZ (radians(90));
@@ -82,8 +84,20 @@ public void draw() {
     rotateY(radians(90));
     stroke(0, 0, 255);
     arrow();
-    text("z-akseli!", 0, 0, 0);
+    text("z-akseli!", 0, 0, 0);*/
+    
+    
+    float[] rotations = cam.getRotations();
+    println(rotations[0]);
+    /*if(rotations[0] > 0.5 || rotations[0] < -0.5){
+     cam.reset();
+      println("tadaa"); 
+    }*/
+    
+    
+    
     break;
+    
   default:
     break;
   }

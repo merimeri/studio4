@@ -23,8 +23,8 @@ class Particle {
   void update() {
     velocity.add(acceleration);
     location.add(velocity);
-    lifespan -= 10.0 * LiveInput.getLevel();
-    println(lifespan);
+    lifespan -= 20.0 * LiveInput.getLevel();
+    //println(lifespan);
   }
 
   // Method to display
