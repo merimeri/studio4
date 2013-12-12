@@ -50,12 +50,17 @@ public void draw() {
 
   switch(state) {
   case 1: 
+    
     background(0);
     color(255);
     stroke(3);
     textSize(30);
-    text("Paina mitä vaan näppäintä ääliö", 10, 10);
-    
+    text("Armoton tuuli puskee lunta yksinäisen poronhoitajan karun kolkkoon kotaan.", -500, -100);
+    text("Porot ovat kuolleet, kodassa on hyytävän kylmä ja pakkanen puree yhä kovempaa.", -500, -65);
+    text("Edes auringon valo ei tuo lohdutusta loputtomaan yöhön.", -500, -30);
+    text("Lapin erämaat eivät lepää edes jouluna.", -500, 5);
+    text("Nuotion roihu on yhtä kova kuin hoitajan halu selviytyä.",-500, 40);
+    text("Napin painauksella pääset kurkistamaan poronhoitajan sielunmaisemaa.", -500, 200);
     if (keyPressed) {
       state = 2 ;
     }

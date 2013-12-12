@@ -3,8 +3,8 @@ class Sound{
   Sample mySample;
   
   Sound(){
-    // create a new sample object.
-    mySample = new Sample("testi.wav"); 
+    
+    mySample = new Sample("tausta.wav"); 
     LiveInput.start(1024);
   } 
   
