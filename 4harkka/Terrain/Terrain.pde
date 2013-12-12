@@ -30,7 +30,7 @@ public void setup() {
   model = new OBJModel(this);
   model.enableTexture();
   model.setDrawMode(POLYGON);
-  model.load("ready_world6.obj");
+  model.load("ready_worldFINAL.obj");
   model.scale(50);
   model.translateToCenter();
 
@@ -50,10 +50,12 @@ public void draw() {
 
   switch(state) {
   case 1: 
-    background(255);
-    fill(0);
+    background(0);
+    color(255);
     stroke(3);
+    textSize(30);
     text("Paina mitä vaan näppäintä ääliö", 10, 10);
+    
     if (keyPressed) {
       state = 2 ;
     }

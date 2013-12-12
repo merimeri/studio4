@@ -33,7 +33,7 @@ class Particle {
     velocity.add(acceleration);
     location.add(velocity);
 
-    lifespan -= abs(20.0 * LiveInput.getLevel());
+    lifespan -= abs(40.0 * LiveInput.getLevel());
     println(lifespan);
   }
 
