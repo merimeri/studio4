@@ -1,6 +1,5 @@
 
 // A simple Particle class
-
 class Particle {
   PVector location;
   PVector velocity;
@@ -32,9 +31,7 @@ class Particle {
   void update() {
     velocity.add(acceleration);
     location.add(velocity);
-
     lifespan -= abs(40.0 * LiveInput.getLevel());
-    println(lifespan);
   }
 
   // Method to display

@@ -1,18 +1,29 @@
+/*
+* This project uses 3 different external libraries, which can be 
+* downloaded here:
+* PeasyCam: http://mrfeinberg.com/peasycam/
+* OBJLoader: https://code.google.com/p/saitoobjloader/
+* Sonia: http://sonia.pitaru.com/
+*
+* The libraries were used to display import ready 3D sketches, to enable free
+* camera movement and to track the sound level of the background music.
+*
+*/
 import javax.vecmath.Vector3f;
 import processing.core.PApplet;
 import peasy.*;
 import saito.objloader.*;
-import pitaru.sonia_v2_9.*; // automatically created when importing sonia using the processing menu.
+import pitaru.sonia_v2_9.*;
 
 
-//cam-object, that moves the camera
+
 PeasyCam cam;
 ParticleSystem ps;
 OBJModel model;
-int state;
+int state;//state of the program (1 or 2)
 Snowing snowing;
-int transparency = 255;
-int depth = 10;
+int transparency = 255;//attribute for the particles in the fire
+int depth = 10;//attribute for the snow fall
 Sphere sphere;
 Sound sound;
 
@@ -34,36 +45,30 @@ public void setup() {
   model.scale(50);
   model.translateToCenter();
 
-  Sonia.start(this); // Start Sonia engine.
+  Sonia.start(this);
   sound = new Sound();
   sound.play();
 
-  cam = new PeasyCam(this, 0, 200, 0, 1000);
-  //cam.rotateX(radians(20));
-  //cam.setActive(false);
+  cam = new PeasyCam(this, 100, 100, 0, 600);
   cam.setMaximumDistance(1000);
-  //cam.pan(0, 50);
-  //cam.setWheelHandler(null);
+
 }
 
 public void draw() {
 
   switch(state) {
   case 1: 
-    
+   
     background(0);
     color(255);
     stroke(3);
-    textSize(30);
-    text("Armoton tuuli puskee lunta yksinäisen poronhoitajan karun kolkkoon kotaan.", -500, -100);
-    text("Porot ovat kuolleet, kodassa on hyytävän kylmä ja pakkanen puree yhä kovempaa.", -500, -65);
-    text("Edes auringon valo ei tuo lohdutusta loputtomaan yöhön.", -500, -30);
-    text("Lapin erämaat eivät lepää edes jouluna.", -500, 5);
-    text("Nuotion roihu on yhtä kova kuin hoitajan halu selviytyä.",-500, 40);
-    text("Napin painauksella pääset kurkistamaan poronhoitajan sielunmaisemaa.", -500, 200);
-    if (keyPressed) {
-      state = 2 ;
-    }
+    textSize(25);
+    text("Armoton tuuli puskee lunta yksinäisen poronhoitajan karun kolkkoon kotaan.", -450, -100);
+    text("Porot ovat kuolleet, kodassa on hyytävän kylmä ja pakkanen puree yhä kovempaa.", -450, -65);
+    text("Edes auringon valo ei tuo lohdutusta loputtomaan yöhön.", -450, -30);
+    text("Lapin erämaat eivät lepää edes jouluna.", -450, 5);
+    text("Nuotion roihu on yhtä kova kuin hoitajan halu selviytyä.",-450, 40);
+    text("Napin painauksella pääset kurkistamaan poronhoitajan sielunmaisemaan.", -450, 200);
     break;
 
   case 2:
@@ -71,11 +76,8 @@ public void draw() {
     lights();
     fill(255, 0, 0);
     noStroke();
+    cam.rotateX(-.002);
     cam.rotateY(.01);
-    //cam.rotateZ();
-    //directionalLight(51, 102, 126, -1, 0, 0);
-    //spotLight(51, 102, 126, 80, 20, 40, -1, 0, 0, PI/2, 2);
-    //ambientLight(50, 50, 50);
     sphere.draw();
     model.draw();
     snowing.draw();
@@ -96,6 +98,12 @@ public void draw() {
   }
 }
 
+public void keyPressed(){
+ state = 2;
+ cam.reset();
+}
+
+//Method to draw the axes
 public void arrow() {
   line(0, 0, 100, 0);
   triangle(1000, 0, 800, 100, 800, -100);

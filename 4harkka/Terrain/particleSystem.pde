@@ -1,5 +1,6 @@
 
-// A class to describe a group of Particles
+// A class to describe a group of Particles. The particles create
+// the fire effect in the model.
 // An ArrayList is used to manage the list of Particles 
 
 class ParticleSystem {

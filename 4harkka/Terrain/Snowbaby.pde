@@ -1,3 +1,6 @@
+/*
+* A class to represent the falling snow in the model.
+*/
 class Snowing{
   
   int numberSnowMax = 15000;
